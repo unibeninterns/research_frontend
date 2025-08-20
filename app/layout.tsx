@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Image from "next/image";
-import logo from "./components/Logo.png"; 
+import logo from "../components/Logo.png"; 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <header className="p-4 shadow-md flex items-center bg-background">
+        <header className="fixed top-0 w-full left-0 z-50 p-4 shadow-md flex items-center bg-pink-100">
           <div className="flex items-center justify-between w-full md:px-8 lg:px-15">
             <Image src={logo} alt="Drid Research Logo" width={54} height={54} />
             <div className="hidden md:flex md:items-center lg:text-xl text-black justify-between w-1/2">

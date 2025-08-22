@@ -1,36 +1,56 @@
 import React from 'react';
+import {
+  BriefcaseBusiness,
+  Calendar1,
+  CircleUserRound,
+  CreditCard,
+  Divide,
+  FileBadge,
+  ListChecks,
+  Monitor,
+  Video,
+} from 'lucide-react';
+import Image from 'next/image';
 
 const About = () => {
   const nutshell = [
-    { icon: '', title: 'Duration', text: '12 weeks' },
-    { icon: '', title: 'Format', text: 'Fully online & self-paced' },
     {
-      icon: '',
+      icon: <Calendar1 color='purple'></Calendar1>,
+      title: 'Duration',
+      text: '12 weeks',
+    },
+    {
+      icon: <Monitor color='purple' />,
+      title: 'Format',
+      text: 'Fully online & self-paced',
+    },
+    {
+      icon: <Video color='purple' />,
       title: 'Live Sessions',
       text: 'F2 weekly expert-led live sessions',
     },
     {
-      icon: '',
+      icon: <ListChecks color='purple' />,
       title: 'Assessment',
       text: 'Continuous quizzes + final project & exam',
     },
     {
-      icon: '',
+      icon: <BriefcaseBusiness color='purple' />,
       title: 'Capstone Project',
       text: 'Build and present a practical research portfolio',
     },
     {
-      icon: '',
+      icon: <FileBadge color='purple' />,
       title: 'Certification',
       text: 'Digital diploma [with optional tanscript]',
     },
     {
-      icon: '',
+      icon: <CircleUserRound color='purple' />,
       title: 'Support',
       text: 'Personalized expert feedback available',
     },
     {
-      icon: '',
+      icon: <CreditCard color='purple' />,
       title: 'Fee',
       text: '₦50,000+ (see full pricing for breakdown)',
     },
@@ -108,19 +128,18 @@ const About = () => {
           </button>
         </div>
       </section>
-      <section className='min-h-screen w-full'>
-        <div className='flex justify-center items-center flex items-center justify-center flex-col md:flex-row'>
-          <div>
-            <h1 className='text-2xl font-bold'>
+      <section className='min-h-screen w-full px-20 py-10'>
+        <div className='flex justify-center flex-col md:flex-row w-full h-[50vh] space-x-5'>
+          <div className='w-1/2'>
+            <h1 className='text-2xl font-bold mb-5'>
               The DRID Learning
               <br />
               Experience
             </h1>
-            <p>
+            <p className='text-sm'>
               The Professional Diploma in Research Technologies and Innovation
               is offered by the Directorate of Research, Innovation, and
               Development (DRID) at the University of Benin.
-              <br />
               <br />
               This 12-week fully online, self-paced program is designed to
               empower researchers, postgraduate students, lecturers, and
@@ -128,15 +147,46 @@ const About = () => {
               methods, academic writing skills, data analysis strategies, grant
               writing expertise, and personal branding techniques.
               <br />
-              <br />
               With expert-led live sessions, practical assignments, and a final
               portfolio project, learners build core research competencies for
               career and academic growth in today’s knowledge economy.
             </p>
           </div>
-          <div className='w-1/2 h-auto border-2'>
-            <img src='' alt='' />
+          <div className='w-1/2 md:w-3/5 h-full'>
+            <Image
+              src=''
+              alt=''
+              className='w-full h-full bg-gray-200 animate-pulse'
+            />
           </div>
+        </div>
+        <div className='mt-10'>
+          <h1 className='text-2xl font-bold leading-none my-5'>
+            The DRID Diploma in a Nutshell
+          </h1>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-3'>
+            {nutshell.map((n) => (
+              <div
+                key={n.title}
+                className='border border-purple-900 rounded-xl bg-white flex items-center space-x-2'
+              >
+                <div className='flex items-center justify-center mx-1 my-1'>
+                  {n.icon}
+                  <div className='flex flex-col ml-2'>
+                    <h1 className='mb-1 font-bold'>{n.title}</h1>
+                    <p>{n.text}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className='min-h-screen w-full px-20 py-10'>
+        <div className='flex flex-col items-center w-full'>
+          <h1 className='text-2xl font-bold leading-none my-5'>
+            Curriculum Snapshot
+          </h1>
         </div>
       </section>
     </>

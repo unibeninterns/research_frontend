@@ -15,12 +15,15 @@ import {
   Search,
   Video,
 } from 'lucide-react';
+import LecturerSection from '@/components/lecturers';
 // import Image from 'next/image';
 
 const About = () => {
   const nutshell = [
     {
-      icon: <Calendar1 color='purple' strokeWidth={3} className='h-5'></Calendar1>,
+      icon: (
+        <Calendar1 color='purple' strokeWidth={3} className='h-5'></Calendar1>
+      ),
       title: 'Duration',
       text: '12 weeks',
     },
@@ -40,7 +43,9 @@ const About = () => {
       text: 'Continuous quizzes + final project & exam',
     },
     {
-      icon: <BriefcaseBusiness color='purple' strokeWidth={3} className='h-5' />,
+      icon: (
+        <BriefcaseBusiness color='purple' strokeWidth={3} className='h-5' />
+      ),
       title: 'Capstone Project',
       text: 'Build and present a practical research portfolio',
     },
@@ -152,7 +157,9 @@ const About = () => {
       text: 'aiming to update their research practice with digital tools.',
     },
     {
-      icon: <BriefcaseBusiness color='#6e0085' strokeWidth={3} className='h-5' />,
+      icon: (
+        <BriefcaseBusiness color='#6e0085' strokeWidth={3} className='h-5' />
+      ),
       title: 'NGO researchers and data officers',
       text: 'working on evidence-based programs.',
     },
@@ -165,7 +172,7 @@ const About = () => {
 
   return (
     <>
-      <section className='h-screen w-full border p-10 flex items-center bg-[rgba(160,32,240,0.5)] opacity-80'>
+      <section className='h-screen w-full border p-20 flex items-center  bg-[linear-gradient(90deg,rgba(47,20,50,0.8),rgba(45,17,43,0.8),rgba(43,13,36,0.8),rgba(52,29,65,0.85))]'>
         <div className='space-y-5 w-3/5 mx-10'>
           <h1 className='text-2xl font-bold leading-none'>
             Welcome to the
@@ -179,12 +186,12 @@ const About = () => {
             <br />
             tomorrow
           </p>
-          <button className='px-5 py-1 bg-[rgba(160,32,240,1)]'>
+          <button className='px-5 py-1 bg-[rgba(128,0,128,1)] text-white text-[24px] font-semibold'>
             VIEW COURSE CURRICULUM
           </button>
         </div>
       </section>
-      <section className='min-h-screen w-full px-20 py-10'>
+      <section className='min-h-screen w-full px-20 py-20 bg-[#FBEFFF]'>
         <div className='flex justify-center flex-col md:flex-row w-full md:h-[50vh] space-x-5'>
           <div className='w-1/2'>
             <h1 className='text-2xl font-bold mb-5'>
@@ -224,7 +231,7 @@ const About = () => {
             {nutshell.map((n) => (
               <div
                 key={n.title}
-                className='border border-purple-900 rounded-xl bg-white flex items-start space-x-2'
+                className='border border-purple-900 rounded-xl bg-[rgba(256,256,256,.25)] flex items-start space-x-2'
               >
                 <div className='flex items-center justify-center mx-1 my-1'>
                   {n.icon}
@@ -238,7 +245,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className='min-h-screen w-full px-20 py-10'>
+      <section className='min-h-screen w-full px-20 py-20'>
         <div className='flex flex-col items-center w-full my-10'>
           <h1 className='text-2xl font-bold leading-none my-5'>
             Curriculum Snapshot
@@ -250,11 +257,13 @@ const About = () => {
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-5 justify-center justify-items-center'>
           <style jsx>{`
-            .grid > :nth-child(odd) {
-              justify-self: end;
-            }
-            .grid > :nth-child(even) {
-              justify-self: start;
+            @media (min-width: 768px) {
+              .grid > :nth-child(odd) {
+                justify-self: end;
+              }
+              .grid > :nth-child(even) {
+                justify-self: start;
+              }
             }
           `}</style>
           {weeks.map((week, index) => (
@@ -276,7 +285,7 @@ const About = () => {
           ))}
         </div>
       </section>
-      <section className='min-h-screen w-full px-20 py-10 flex flex-col justify-center items-center'>
+      <section className='min-h-screen w-full px-10 py-20 flex flex-col justify-center items-center'>
         <div className='w-full flex flex-col items-center justify-center tracking-wide'>
           <h1 className='text-4xl font-bold leading-none my-5 w-full text-center'>
             What You'll Gain
@@ -306,6 +315,19 @@ const About = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+      <section className='min-h-screen w-full px-15 py-20 bg-[rgba(254,251,255,1)]'>
+        <div className='w-full flex flex-col items-center'>
+          <div>
+            <h1 className='text-3xl font-bold leading-none my-1 w-full text-center'>
+              Meet Your Lecturers
+            </h1>
+            <p>Get mentored by top researchers across Africa</p>
+          </div>
+        </div>
+        <div>
+          <LecturerSection />
         </div>
       </section>
     </>

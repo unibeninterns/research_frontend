@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
+// import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 import Image from 'next/image';
 import logo from '../components/Logo.png';
 import logo2 from '../components/logo2.png';
-import photo from '../components/Photo.png';
-import About from '@/app/about/page';
+// import photo from '../components/Photo.png';
+// import About from '@/app/about/page';
 
 
   const montserrat = Montserrat({

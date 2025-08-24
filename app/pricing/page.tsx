@@ -1,4 +1,6 @@
+'use client';
 import { ArrowRight, Check, Minus } from 'lucide-react';
+import FAQs from '@/components/FAQs';
 
 const Pricing = () => {
   const features = [
@@ -62,6 +64,28 @@ const Pricing = () => {
   const addOns = [
     { feature: 'One-on-One Research Clinic', price: '₦15,000' },
     { feature: 'Capstone Project Feedback', price: '₦5,000' },
+  ];
+  const faqs = [
+    {
+      question: 'Can I upgrade from Basic to Premium later?',
+      answer: 'Yes—pay the difference and keep your progress.',
+    },
+    {
+      question: 'How long do I have access?',
+      answer: 'Yes—pay the difference and keep your progress.',
+    },
+    {
+      question: 'Do I get a certificate on Basic?',
+      answer: 'Yes—pay the difference and keep your progress.',
+    },
+    {
+      question: 'Is there a transcript?',
+      answer: 'Yes—pay the difference and keep your progress.',
+    },
+    {
+      question: 'What payment options are available?',
+      answer: 'Yes—pay the difference and keep your progress.',
+    },
   ];
   return (
     <>
@@ -127,8 +151,8 @@ const Pricing = () => {
             </button>
           </div>
         </div>
-        <div>
-          <table className='bg-white mt-10 md:w-[70%]'>
+        <div className='w-full flex items-center flex-col'>
+          <table className='bg-white mt-10 md:w-[70%] shadow-sm'>
             <thead className='bg-[rgba(251,239,255,0.4)] shadow-b-sm'>
               <tr>
                 <th className='text-left text-[16px] font-[500] px-2 py-1'>
@@ -148,7 +172,7 @@ const Pricing = () => {
                   key={f.feature}
                   className='border-b-[1px] border-b-[rgba(237,238,241,1)] last:border-b-0'
                 >
-                  <td className='py-1 px-2'>{f.feature}</td>
+                  <td className='py-1 px-2 text-[18px]'>{f.feature}</td>
                   <td className='py-1 px-2'>
                     {f.basic ? (
                       <Check
@@ -160,7 +184,7 @@ const Pricing = () => {
                       <Minus color='#800080' />
                     )}
                   </td>
-                  <td className='py-2 px-4'>
+                  <td className='py-1 px-2'>
                     {f.premium ? (
                       <Check
                         color='#800080'
@@ -180,8 +204,82 @@ const Pricing = () => {
             <ArrowRight color='#800080' />
           </a>
         </div>
-        <div className='mt-5 flex items-start'>
-          <div></div>
+        <div className='mt-10 flex flex-col md:flex-row items-start px-20 justify-around w-full'>
+          <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center'>
+              <h3 className='text-[36px] font-bold'>Everything at a Glance</h3>
+              <p className='text-[16px]'>
+                A transparent view of what you’re paying for — and what it’s
+                really worth.
+              </p>
+            </div>
+            <table className='bg-white shadow-sm w-full mt-2'>
+              <thead className='bg-[rgba(251,239,255,0.4)] shadow-b-sm'>
+                <tr>
+                  <th className='text-left text-[16px] font-[500] px-2 py-1'>
+                    Features
+                  </th>
+                  <th className='text-left text-[16px] font-[500] px-2 py-1'>
+                    Individual Price
+                  </th>
+                  <th className='text-left text-[16px] font-[500] px-2 py-1'>
+                    Included Plan
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {glance.map((g) => (
+                  <tr
+                    key={g.feature}
+                    className='border-b-[1px] border-b-[rgba(237,238,241,1)] last:border-b-0'
+                  >
+                    <td className='py-1 px-2 text-[18px]'>{g.feature}</td>
+                    <td className='py-1 px-2 text-[18px]'>{g.price}</td>
+                    <td>
+                      <Check
+                        color='#800080'
+                        className='p-1 border-2 rounded-full border-[#800080]'
+                        strokeWidth={4}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className='flex flex-col items-center mt-4 md:mt-0'>
+            <div className='flex flex-col items-center'>
+              <h3 className='text-[36px] font-bold'>Optional Add-ons</h3>
+              <p className='text-[16px]'>NB: Not included in package</p>
+            </div>
+            <table className='bg-white w-full mt-2 shadow-sm'>
+              <thead className='bg-[rgba(251,239,255,0.4)] shadow-b-sm'>
+                <tr>
+                  <th className='text-left text-[16px] font-[500] px-2 py-1'>
+                    Features
+                  </th>
+                  <th className='text-left text-[16px] font-[500] px-2 py-1'>
+                    Individual Price
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {addOns.map((g) => (
+                  <tr
+                    key={g.feature}
+                    className='border-b-[1px] border-b-[rgba(237,238,241,1)] last:border-b-0'
+                  >
+                    <td className='py-1 px-2 text-[18px]'>{g.feature}</td>
+                    <td className='py-1 px-2 text-[18px]'>{g.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div className='w-[80%] mt-20'>
+            <h3 className='text-[36px] font-bold text-center mb-5'>Frequently Asked Questions</h3>
+          <FAQs faqs={faqs} />
         </div>
       </section>
     </>

@@ -8,10 +8,9 @@ import logo2 from '../components/logo2.png';
 // import photo from '../components/Photo.png';
 // import About from '@/app/about/page';
 
-
-  const montserrat = Montserrat({
-    subsets: ['latin'],
-  });
+const montserrat = Montserrat({
+  subsets: ['latin'],
+});
 
 export default function RootLayout({
   children,
@@ -26,7 +25,7 @@ export default function RootLayout({
             <Image src={logo} alt='Drid Research Logo' width={54} height={54} />
             <div className='hidden md:flex md:items-center lg:text-xl text-black justify-between w-1/2'>
               <a href=''>Home</a>
-              <a href=''>Pricing</a>
+              <a href='/pricing'>Pricing</a>
               <Link href='/about'>About Course</Link>
               <a href=''>My Classroom</a>
             </div>

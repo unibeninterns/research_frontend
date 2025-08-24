@@ -16,6 +16,7 @@ import {
   Video,
 } from 'lucide-react';
 import LecturerSection from '@/components/lecturers';
+import FAQs from '@/components/FAQs';
 // import Image from 'next/image';
 
 const About = () => {
@@ -167,6 +168,41 @@ const About = () => {
       icon: <Lightbulb color='#6e0085' strokeWidth={3} className='h-5' />,
       title: 'Innovation and grant-focused professionals',
       text: 'involved in proposal writing and research-driven projects.',
+    },
+  ];
+
+  const criteria = [
+    'Complete all weekly modules',
+    'Score at least 70% in the final assessment',
+    'Attend 80% of live sessions',
+    'Complete final capstone project',
+  ];
+
+  const info = [
+    {
+      question: 'What is the duration of the course?',
+      answer:
+        'The course lasts for 12 weeks including virtual classes, assignments, and examination.',
+    },
+    {
+      question: 'Do I need any prior knowledge before enrolling?',
+      answer:
+        'The course lasts for 12 weeks including virtual classes, assignments, and examination.',
+    },
+    {
+      question: 'How can I track my learning progress?',
+      answer:
+        'The course lasts for 12 weeks including virtual classes, assignments, and examination.',
+    },
+    {
+      question: 'What payment methods are accepted?',
+      answer:
+        'The course lasts for 12 weeks including virtual classes, assignments, and examination.',
+    },
+    {
+      question: 'Can I interact with lecturers during the course?',
+      answer:
+        'The course lasts for 12 weeks including virtual classes, assignments, and examination.',
     },
   ];
 
@@ -329,7 +365,29 @@ const About = () => {
         <div className='w-full'>
           <LecturerSection />
         </div>
+        <div className='w-full flex flex-col md:flex-row items-start justify-center mt-10'>
+          <div className='bg-white border-2 border-[#F9DBFF] flex items-center justify-center flex-col py-4 px-2 m-4 rounded-2xl flex-1'>
+            <h1 className='text-4xl font-bold py-4 px-2 m-4 '>
+              Certification Criteria
+            </h1>
+            <div className='flex flex-col'>
+              {criteria.map((c) => (
+                <div key={c} className='flex py-4 px-2'>
+                  <Check strokeWidth={3} color='#800080CC' />
+                  <p className='text-[24px]'>{c}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className='bg-white border-2 border-[#F9DBFF] flex items-center justify-center flex-col py-4 px-2 m-4 rounded-2xl flex-1'>
+            <h1 className='text-4xl font-bold py-4 px-2 m-4 '>
+              Frequently Asked Questions
+            </h1>
+            <FAQs faqs={info} />
+          </div>
+        </div>
       </section>
+      <section className='min-h-screen w-full px-10 py-20 flex flex-col justify-center items-center'></section>
     </>
   );
 };

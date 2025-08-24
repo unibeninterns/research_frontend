@@ -317,7 +317,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className='min-h-screen w-full px-15 py-20 bg-[rgba(254,251,255,1)]'>
+      <section className='min-h-screen w-100vw px-15 py-20 bg-[rgba(254,251,255,1)]'>
         <div className='w-full flex flex-col items-center'>
           <div>
             <h1 className='text-3xl font-bold leading-none my-1 w-full text-center'>
@@ -326,7 +326,7 @@ const About = () => {
             <p>Get mentored by top researchers across Africa</p>
           </div>
         </div>
-        <div>
+        <div className='w-full'>
           <LecturerSection />
         </div>
       </section>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import image from "../components/LandingPageImage.png";
-import image2 from "../components/Image.png";
+import image2 from "../components/image.png";
 import { ScholarCap } from "@/components/scholarCap";
 import { Search } from "@/components/search";
 // import {CourseSVG} from "@/components/courseSVG"

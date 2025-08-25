@@ -5,7 +5,8 @@ import { ScholarCap } from "@/components/scholarCap";
 import { Search } from "@/components/search";
 // import {CourseSVG} from "@/components/courseSVG"
 import {Certificate} from "@/components/certificate"
-import photo from "../components/Photo.png"
+import Header from "../components/HomeHeader"
+import Footer from "../components/HomeFooter"
 
 
 export default function Home() {
@@ -33,6 +34,7 @@ export default function Home() {
   ];
   return (
     <>
+    <Header/>
       <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900 to-pink-600"></div>
 
@@ -215,25 +217,8 @@ export default function Home() {
         </div>
       </section>
     </div>
-    <div className="relative w-full">
-    <Image src={photo} alt="image" className="w-full h-auto object-cover" />
-    <div
-    className="
-      absolute inset-0 
-      flex flex-col items-center text-center px-4 
-      justify-center lg:justify-end 
-      pb-0 lg:pb-16
-      bg-black/30
-    "
-  >
-    <h2 className="text-white text-2xl md:text-4xl lg:text-7xl font-bold mb-2">
-      Learning never stops.
-    </h2>
-    <p className="text-white text-md md:text-2xl mb-2">
-      Join the next DRID cohort.
-    </p>
-  </div>
-    </div>
+    
+    <Footer/>
     </>
   );
 }

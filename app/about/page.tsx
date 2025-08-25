@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import LecturerSection from '@/components/lecturers';
 import FAQs from '@/components/FAQs';
+import Header from "../../components/HomeHeader"
+import Footer from "../../components/HomeFooter"
 // import Image from 'next/image';
 
 const About = () => {
@@ -208,6 +210,7 @@ const About = () => {
 
   return (
     <>
+    <Header/>
       <section className='h-screen w-full border p-20 flex items-center  bg-[linear-gradient(90deg,rgba(47,20,50,0.8),rgba(45,17,43,0.8),rgba(43,13,36,0.8),rgba(52,29,65,0.85))]'>
         <div className='space-y-5 w-3/5 mx-10'>
           <h1 className='text-2xl font-bold leading-none'>
@@ -388,6 +391,7 @@ const About = () => {
         </div>
       </section>
       <section className='min-h-screen w-full px-10 py-20 flex flex-col justify-center items-center'></section>
+      <Footer/>
     </>
   );
 };

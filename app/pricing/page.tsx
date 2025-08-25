@@ -1,6 +1,8 @@
 'use client';
 import { ArrowRight, Check, Minus } from 'lucide-react';
 import FAQs from '@/components/FAQs';
+import Header from "../../components/HomeHeader"
+import Footer from "../../components/HomeFooter"
 
 const Pricing = () => {
   const features = [
@@ -89,6 +91,7 @@ const Pricing = () => {
   ];
   return (
     <>
+    <Header/>
       <section className='min-h-screen w-full flex flex-col items-center px-10 py-20'>
         <div className='mt-10 flex flex-col items-center'>
           <h2 className='text-[#800080] text-[18px] font-semibold uppercase'>
@@ -282,6 +285,7 @@ const Pricing = () => {
           <FAQs faqs={faqs} />
         </div>
       </section>
+      <Footer/>
     </>
   );
 };

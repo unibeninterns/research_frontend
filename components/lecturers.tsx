@@ -28,14 +28,14 @@ const Lecturer = ({
           className='w-full h-[200px] object-cover rounded-[10px]'
         />
         <div>
-          <h3 className='text-lg font-bold mt-2'>{name}</h3>
-          <p className='text-xs'>{description}</p>
+          <h3 className='text-2xl font-semibold mt-2'>{name}</h3>
+          <p className='text-[20px]'>{description}</p>
         </div>
       </div>
       <div
         className={`fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.0.8)] ${showInfo} flex items-center justify-center`}
       >
-        <div className='md:w-[864px] max-h-[800px] h-auto bg-[rgba(255,255,255,1)] border-[rgba(186,184,184,1)] rounded-[15px] flex flex-col items-center justify-center py-4 px-2 border-4'>
+        <div className='md:w-[864px] max-h-[800px] bg-[rgba(255,255,255,1)] border-[rgba(186,184,184,1)] rounded-[15px] flex flex-col items-center justify-center py-4 border-2'>
           <div className=' flex flex-row gap-3 w-full justify-center'>
             <div className='h-[110px] w-[110px] z-20'>
               <img
@@ -47,8 +47,8 @@ const Lecturer = ({
             <div className='flex flex-col w-[600px]'>
               <div className='flex justify-between'>
                 <div className=''>
-                  <h3 className='text-xl font-semibold'>{name}</h3>
-                  <p className='text-sm'>{description}</p>
+                  <h3 className='text-2xl font-semibold'>{name}</h3>
+                  <p className='text-[18px] font-light'>{description}</p>
                 </div>
                 <button
                   onClick={hide}
@@ -58,13 +58,13 @@ const Lecturer = ({
                 </button>
               </div>
               <div className='mt-4'>
-                <p className='text-lg'>{fullDescription}</p>
+                <p className='text-[20px]'>{fullDescription}</p>
               </div>
             </div>
           </div>
           <a
             href=''
-            className='w-[280px] my-6 text-lg flex items-center justify-around text-[rgb(160,32,240)]'
+            className='w-[280px] mt-6 text-lg flex items-center justify-around text-[rgb(160,32,240)]'
           >
             <p>View Profile on LinkedIn </p>
             <ArrowRight />

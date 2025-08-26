@@ -92,7 +92,7 @@ const Pricing = () => {
   return (
     <>
     <Header/>
-      <section className='min-h-screen w-full flex flex-col items-center px-10 py-20'>
+      <section className='min-h-screen w-full flex flex-col items-center px-10 py-10 bg-white'>
         <div className='mt-10 flex flex-col items-center'>
           <h2 className='text-[#800080] text-[18px] font-semibold uppercase'>
             Plans & Pricing
@@ -100,7 +100,7 @@ const Pricing = () => {
           <h3 className='text-[48px] font-[700]'>Choose your plan</h3>
         </div>
         <div className='flex md:flex-row flex-col gap-5 mt-4'>
-          <div className='relative flex flex-col h-[691px] w-[400px] border border-[#D9D9D9] items-center py-4 px-2'>
+          <div className='relative flex flex-col w-[400px] border border-[#D9D9D9] items-center py-4 px-2'>
             <div className='flex flex-col items-center m-4 px-2 py-4'>
               <h4 className='text-[24px] font-[700]'>Basic</h4>
               <h4 className='text-[36px] font-[700]'>₦50,000</h4>
@@ -118,11 +118,11 @@ const Pricing = () => {
                   ))}
               </div>
             </div>
-            <button className='text-[24px] text-white font-[700] bg-[#800080] rounded-[5px] px-[60px] py-[20px] absolute bottom-20'>
+            <button className='text-[24px] text-white font-[700] bg-[#800080] rounded-[5px] px-[60px] py-[20px] mt-9 mb-5'>
               Get Started
             </button>
           </div>
-          <div className='flex flex-col h-[691px] w-[400px] border border-[#D9D9D9] items-center py-4 px-2 bg-[linear-gradient(30deg,rgba(159,63,159,0.8),rgba(251,239,255,0.9),rgba(251,239,255,1),rgba(159,63,159,0.8))] relative'>
+          <div className='flex flex-col w-[400px] border border-[#D9D9D9] items-center py-4 px-2 bg-[linear-gradient(30deg,rgba(159,63,159,0.8),rgba(251,239,255,0.9),rgba(251,239,255,1),rgba(159,63,159,0.8))] relative'>
             <button className='uppercase text-[12px] text-white font-bold absolute top-[-16px] left-[50px] px-4 py-2 bg-[#800080] rounded-[50px]'>
               recommended
             </button>
@@ -149,13 +149,13 @@ const Pricing = () => {
                   ))}
               </div>
             </div>
-            <button className='text-[24px] text-white font-[700] bg-[#800080] rounded-[5px] px-[60px] py-[20px] absolute bottom-20'>
+            <button className='text-[24px] text-white font-[700] bg-[#800080] rounded-[5px] px-[60px] py-[20px] mb-5'>
               Get Started
             </button>
           </div>
         </div>
         <div className='w-full flex items-center flex-col'>
-          <table className='bg-white mt-10 md:w-[70%] shadow-sm'>
+          <table className='bg-white mt-10 md:w-[90%] shadow-sm'>
             <thead className='bg-[rgba(251,239,255,0.4)] shadow-b-sm'>
               <tr>
                 <th className='text-left text-[16px] font-[500] px-2 py-1'>
@@ -207,7 +207,7 @@ const Pricing = () => {
             <ArrowRight color='#800080' />
           </a>
         </div>
-        <div className='mt-10 flex flex-col md:flex-row items-start px-20 justify-around w-full'>
+        <div className='mt-10 flex flex-col md:flex-row items-start px-10 justify-around w-full gap-3'>
           <div className='flex flex-col items-center'>
             <div className='flex flex-col items-center'>
               <h3 className='text-[36px] font-bold'>Everything at a Glance</h3>

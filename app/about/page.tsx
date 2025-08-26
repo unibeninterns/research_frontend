@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import {
   BriefcaseBusiness,
   Calendar1,
@@ -17,53 +18,75 @@ import {
 } from 'lucide-react';
 import LecturerSection from '@/components/lecturers';
 import FAQs from '@/components/FAQs';
-import Header from "../../components/HomeHeader"
-import Footer from "../../components/HomeFooter"
+import Header from '../../components/HomeHeader';
+import Footer from '../../components/HomeFooter';
 // import Image from 'next/image';
+import image1 from '../../public/about/8b55db4a8cc952ea101a90132d5ed08bbd565d47.jpg';
+import image2 from '../../public/about/fd22a6a3ffd7a34ff6b240ae40a44e4f66e25da8.jpg';
 
 const About = () => {
   const nutshell = [
     {
       icon: (
-        <Calendar1 color='purple' strokeWidth={3} className='h-5'></Calendar1>
+        <Calendar1 color='#800080' strokeWidth={1.5} height={40} width={40} />
       ),
       title: 'Duration',
       text: '12 weeks',
     },
     {
-      icon: <Monitor color='purple' strokeWidth={3} className='h-5' />,
+      icon: (
+        <Monitor color='#800080' strokeWidth={1.5} height={40} width={40} />
+      ),
       title: 'Format',
       text: 'Fully online & self-paced',
     },
     {
-      icon: <Video color='purple' strokeWidth={3} className='h-5' />,
+      icon: <Video color='#800080' strokeWidth={1.5} height={40} width={40} />,
       title: 'Live Sessions',
       text: 'F2 weekly expert-led live sessions',
     },
     {
-      icon: <ListChecks color='purple' strokeWidth={3} className='h-5' />,
+      icon: (
+        <ListChecks color='#800080' strokeWidth={1.5} height={40} width={40} />
+      ),
       title: 'Assessment',
       text: 'Continuous quizzes + final project & exam',
     },
     {
       icon: (
-        <BriefcaseBusiness color='purple' strokeWidth={3} className='h-5' />
+        <BriefcaseBusiness
+          color='#800080'
+          strokeWidth={1.5}
+          height={40}
+          width={40}
+        />
       ),
       title: 'Capstone Project',
       text: 'Build and present a practical research portfolio',
     },
     {
-      icon: <FileBadge color='purple' strokeWidth={3} className='h-5' />,
+      icon: (
+        <FileBadge color='#800080' strokeWidth={1.5} height={40} width={40} />
+      ),
       title: 'Certification',
       text: 'Digital diploma [with optional tanscript]',
     },
     {
-      icon: <CircleUserRound color='purple' strokeWidth={3} className='h-5' />,
+      icon: (
+        <CircleUserRound
+          color='#800080'
+          strokeWidth={1.5}
+          height={40}
+          width={40}
+        />
+      ),
       title: 'Support',
       text: 'Personalized expert feedback available',
     },
     {
-      icon: <CreditCard color='purple' strokeWidth={3} className='h-5' />,
+      icon: (
+        <CreditCard color='#800080' strokeWidth={1.5} height={40} width={40} />
+      ),
       title: 'Fee',
       text: '₦50,000+ (see full pricing for breakdown)',
     },
@@ -145,29 +168,40 @@ const About = () => {
 
   const enroll = [
     {
-      icon: <GraduationCap color='#6e0085' strokeWidth={3} className='h-5' />,
+      icon: (
+        <GraduationCap color='#800080' strokeWidth={1.5} height={40} width={40} />
+      ),
       title: 'Postgraduate students',
       text: 'seeking structured support in their research journey.',
     },
     {
-      icon: <Search color='#6e0085' strokeWidth={3} className='h-5' />,
+      icon: <Search color='#800080' strokeWidth={1.5} height={40} width={40} />,
       title: 'Early-career researchers',
       text: 'who want to strengthen their methodology and data skills.',
     },
     {
-      icon: <Presentation color='#6e0085' strokeWidth={3} className='h-5' />,
+      icon: (
+        <Presentation color='#800080' strokeWidth={1.5} height={40} width={40} />
+      ),
       title: 'Faculty and lecturers',
       text: 'aiming to update their research practice with digital tools.',
     },
     {
       icon: (
-        <BriefcaseBusiness color='#6e0085' strokeWidth={3} className='h-5' />
+        <BriefcaseBusiness
+          color='#800080'
+          strokeWidth={1.5}
+          height={40}
+          width={40}
+        />
       ),
       title: 'NGO researchers and data officers',
       text: 'working on evidence-based programs.',
     },
     {
-      icon: <Lightbulb color='#6e0085' strokeWidth={3} className='h-5' />,
+      icon: (
+        <Lightbulb color='#800080' strokeWidth={1.5} height={40} width={40} />
+      ),
       title: 'Innovation and grant-focused professionals',
       text: 'involved in proposal writing and research-driven projects.',
     },
@@ -210,15 +244,20 @@ const About = () => {
 
   return (
     <>
-    <Header/>
-      <section className='h-screen w-full border p-20 flex items-center  bg-[linear-gradient(90deg,rgba(47,20,50,0.8),rgba(45,17,43,0.8),rgba(43,13,36,0.8),rgba(52,29,65,0.85))]'>
-        <div className='space-y-5 w-3/5 mx-10'>
-          <h1 className='text-2xl font-bold leading-none'>
+      <Header />
+      <section className='relative h-screen w-full border p-10 flex items-center bg-[linear-gradient(90deg,rgba(47,20,50,0.8),rgba(45,17,43,0.8),rgba(43,13,36,0.8),rgba(52,29,65,0.85))]'>
+        <Image
+          src={image1}
+          alt='Students learning from a laptop screen'
+          className='absolute top-0 left-0 w-full object-cover z-[-5]'
+        />
+        <div className='space-y-5 w-3/5 mx-10 mt-5 text-white'>
+          <h1 className='text-5xl font-bold leading-none'>
             Welcome to the
             <br />
             DRID Course Platform
           </h1>
-          <p>
+          <p className='text-2xl leading-none'>
             A hub of dynamic research-driven training,
             <br />
             designed to equip you with practical tools for
@@ -230,15 +269,15 @@ const About = () => {
           </button>
         </div>
       </section>
-      <section className='min-h-screen w-full px-20 py-20 bg-[#FBEFFF]'>
-        <div className='flex justify-center flex-col md:flex-row w-full md:h-[50vh] space-x-5'>
-          <div className='w-1/2'>
-            <h1 className='text-2xl font-bold mb-5'>
+      <section className='min-h-screen w-full px-20 py-10 bg-[#FBEFFF]'>
+        <div className='flex justify-center flex-col md:flex-row w-full space-x-5'>
+          <div className='md:w-3/5'>
+            <h1 className='text-5xl font-bold mb-5'>
               The DRID Learning
               <br />
               Experience
             </h1>
-            <p className='text-sm'>
+            <p className='text-2xl'>
               The Professional Diploma in Research Technologies and Innovation
               is offered by the Directorate of Research, Innovation, and
               Development (DRID) at the University of Benin.
@@ -254,47 +293,47 @@ const About = () => {
               career and academic growth in today’s knowledge economy.
             </p>
           </div>
-          <div className='w-1/2 md:w-3/5 h-full bg-gray-200 animate-pulse'>
-            {/* <Image
-              src=''
-              alt=''
-              className='w-full h-full bg-gray-200 animate-pulse'
-            /> */}
+          <div className='w-100 h-125 self-center md:w-2/5 bg-[linear-gradient(0deg,rgba(37,11,39,0.5),rgba(133,40,141,0.2))] z-5 md:mt-0 mt-5'>
+            <Image
+              src={image2}
+              alt='Students learning from a laptop screen'
+              className='object-cover z-[-5] h-full'
+            />
           </div>
         </div>
-        <div className='mt-10'>
-          <h1 className='text-2xl font-bold leading-none my-5'>
+        <div className='mt-15'>
+          <h1 className='text-[28px] font-bold leading-none my-5'>
             The DRID Diploma in a Nutshell
           </h1>
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-3'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-2'>
             {nutshell.map((n) => (
               <div
                 key={n.title}
-                className='border border-purple-900 rounded-xl bg-[rgba(256,256,256,.25)] flex items-start space-x-2'
+                className='border-[0.5px] border-[#800080] rounded-xl bg-[rgba(256,256,256,.25)] flex items-start p-1 space-x-2'
               >
                 <div className='flex items-center justify-center mx-1 my-1'>
                   {n.icon}
-                  <div className='flex flex-col ml-2'>
-                    <h1 className='mb-1 font-bold'>{n.title}</h1>
-                    <p className='text-sm'>{n.text}</p>
-                  </div>
+                </div>
+                <div className='flex flex-col'>
+                  <h1 className='mb-1 font-semibold text-2xl'>{n.title}</h1>
+                  <p className='text-[20px]'>{n.text}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section className='min-h-screen w-full px-20 py-20'>
-        <div className='flex flex-col items-center w-full my-10'>
-          <h1 className='text-2xl font-bold leading-none my-5'>
+      <section className='min-h-screen w-full px-20 py-10 bg-white'>
+        <div className='flex flex-col items-center w-full mb-10'>
+          <h1 className='text-5xl font-bold leading-none mb-5'>
             Curriculum Snapshot
           </h1>
-          <p className='text-sm text-center'>
+          <p className='text-2xl text-center'>
             Explore the full learning journey—from foundational concepts to your
             final project.
           </p>
         </div>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-5 justify-center justify-items-center'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-15 justify-center justify-items-center'>
           <style jsx>{`
             @media (min-width: 768px) {
               .grid > :nth-child(odd) {
@@ -308,47 +347,47 @@ const About = () => {
           {weeks.map((week, index) => (
             <div
               key={week.title}
-              className='rounded-lg flex p-2 items-start space-x-2 shadow-[0_4px_6px_-3px_rgba(0,0,0,0.8)] bg-[rgba(160,32,240,0.2)] w-8/10'
+              className='rounded-lg flex p-2 items-start space-x-2 shadow-sm bg-[rgba(251,239,255,0.25)] w-8/10'
             >
               <div className=' flex items-center justify-center p-2 h-7 w-7 bg-purple-900 text-white text-lg rounded-full font-bold'>
                 {index + 1}
               </div>
               <div>
-                <h1 className='text-sm font-bold'>
+                <h1 className='text-2xl font-bold'>
                   Week {index + 1}:<br />
                   {week.title}
                 </h1>
-                <p className='text-xs'>{week.text}</p>
+                <p className='text-[20px]'>{week.text}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
-      <section className='min-h-screen w-full px-10 py-20 flex flex-col justify-center items-center'>
-        <div className='w-full flex flex-col items-center justify-center tracking-wide'>
-          <h1 className='text-4xl font-bold leading-none my-5 w-full text-center'>
+      <section className='min-h-screen w-full px-10 py-10 flex flex-col items-center'>
+        <div className='w-full flex flex-col items-center justify-center'>
+          <h1 className='text-5xl font-bold leading-none my-5 w-full text-center'>
             What You'll Gain
           </h1>
           <div className='mx-2 space-y-3'>
             {gains.map((gain) => (
-              <div key={gain.title} className='flex items-center'>
-                <Check color='purple' strokeWidth={4} className='h-5' />
-                <p className=' text-lg ml-2'>
+              <div key={gain.title} className='flex items-start'>
+                <Check color='#800080' strokeWidth={2} height={40} width={40} />
+                <p className='text-[28px] ml-2'>
                   <span className='font-bold'>{gain.title}</span> - {gain.text}
                 </p>
               </div>
             ))}
           </div>
         </div>
-        <div className='w-[72%] flex flex-col items-center justify-center tracking-wide mt-20'>
-          <h1 className='text-4xl font-bold leading-none my-5 w-full text-center'>
+        <div className='w-full flex flex-col items-center justify-center'>
+          <h1 className='text-5xl font-bold leading-none my-5 w-full text-center'>
             Who Should Enroll
           </h1>
           <div className='mx-2 space-y-3'>
             {enroll.map((e) => (
               <div key={e.title} className='flex items-center'>
                 {e.icon}
-                <p className=' text-lg ml-2'>
+                <p className='text-[28px] ml-2'>
                   <span className='font-bold'>{e.title}</span> - {e.text}
                 </p>
               </div>
@@ -359,10 +398,10 @@ const About = () => {
       <section className='min-h-screen w-100vw px-15 py-20 bg-[rgba(254,251,255,1)]'>
         <div className='w-full flex flex-col items-center'>
           <div>
-            <h1 className='text-3xl font-bold leading-none my-1 w-full text-center'>
+            <h1 className='text-5xl font-bold leading-none my-1 w-full text-center'>
               Meet Your Lecturers
             </h1>
-            <p>Get mentored by top researchers across Africa</p>
+            <p className='text-2xl'>Get mentored by top researchers across Africa</p>
           </div>
         </div>
         <div className='w-full'>
@@ -390,8 +429,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className='min-h-screen w-full px-10 py-20 flex flex-col justify-center items-center'></section>
-      <Footer/>
+      <Footer />
     </>
   );
 };

@@ -34,8 +34,8 @@ export function LoginForm() {
   }
 
   return (
-    <Card className="w-full bg-white/95 backdrop-blur-sm shadow-2xl border-0">
-      <CardContent className="p-8">
+    <Card className="w-full bg-white/95 backdrop-blur-sm shadow-2xl border-0 min-h-full flex flex-col">
+      <CardContent className="p-8 flex-1 flex flex-col">
         {/* Tab Navigation */}
         <div className="flex mb-8">
           <Link
@@ -47,7 +47,7 @@ export function LoginForm() {
           <div className="flex-1 pb-3 text-center font-medium border-b-2 text-purple-600 border-purple-600">Login</div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 flex-1 flex flex-col justify-center">
           <div className="relative">
             <Input
               type="email"
@@ -75,12 +75,16 @@ export function LoginForm() {
             </button>
           </div>
 
+          <div className="py-4"></div>
+
           {/* Forgot Password Link */}
           <div className="text-right">
             <a href="#" className="text-sm text-purple-600 hover:underline">
               Forgot your password?
             </a>
           </div>
+
+          <div className="py-2"></div>
 
           {/* Login Button */}
           <Button

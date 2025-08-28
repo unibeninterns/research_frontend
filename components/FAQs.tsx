@@ -21,8 +21,8 @@ const FAQ = ({
   return (
     <div className='flex items-center justify-between m-2 rounded-[16px] border-2 border-[#800080] py-4 px-2 w-full'>
       <div>
-        <h1 className='text-[20px] font-semibold'>{question}</h1>
-        {isFocused && <p className='text-[18px]'>{answer}</p>}
+        <h1 className='text-md lg:text-xl font-semibold'>{question}</h1>
+        {isFocused && <p className='text-sm mt-2 lg:text-lg'>{answer}</p>}
       </div>
       <div onClick={handleClick} className='text-[#800080 cursor-pointer'>
         {isFocused ? <ChevronUp /> : <ChevronDown />}

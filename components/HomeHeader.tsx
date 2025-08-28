@@ -41,7 +41,7 @@ export default function Header() {
         <div className="flex items-center justify-between w-full md:px-8 lg:px-15">
           <Image src={logo || "/placeholder.svg"} alt="Drid Research Logo" width={54} height={54} className="w-10 h-10" />
 
-          <div className="hidden md:flex md:items-center lg:text-xl text-black justify-between w-1/2">
+          <div className="hidden lg:flex md:items-center lg:text-xl text-black justify-between w-1/2">
             {navigationItems.map((item: NavigationItem, index: number) =>
               item.href === "/about" ? (
                 <Link key={index} href={item.href}>
@@ -57,7 +57,7 @@ export default function Header() {
 
           <button
             onClick={toggleMenu}
-            className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
+            className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
             aria-label="Toggle menu"
             type="button"
           >
@@ -66,8 +66,8 @@ export default function Header() {
             <span className="w-6 h-0.5 bg-black"></span>
           </button>
 
-          <div className="hidden md:flex">
-            <Image src={logo || "/placeholder.svg"} alt="Drid Research Logo" width={54} height={54} />
+          <div className="hidden lg:flex">
+            <Image src={logo || "/placeholder.svg"} alt="Drid Research Logo" width={54} height={54} className="w-10 h-10"/>
           </div>
         </div>
       </header>
@@ -82,7 +82,7 @@ export default function Header() {
             aria-label="Close menu overlay"
           />
 
-          <div className="fixed right-0 bg-pink-100 rounded-lg shadow-lg z-50 w-64 p-6 md:hidden">
+          <div className="fixed right-0 bg-pink-100 rounded-lg shadow-lg z-50 w-64 p-6 lg:hidden">
             <button
               onClick={closeMenu}
               className="absolute top-4 right-4 w-6 h-6 flex items-center justify-center text-gray-600 hover:text-black"

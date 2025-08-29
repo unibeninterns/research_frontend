@@ -1,20 +1,37 @@
-import { info } from 'console';
-import { ChevronDown, ChevronUp, Plus } from 'lucide-react';
+import {
+  ArrowLeft,
+  ChevronDown,
+  ChevronUp,
+  DivideSquare,
+  Plus,
+} from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 import Note from './NotesComponents';
+import Quiz from './Quiz';
 
-const ClassroomInteractiveComponent = () => {
+const ClassroomInteractiveComponent = ({
+  currentTab,
+  setTab,
+}: {
+  currentTab: string;
+  setTab: (tab: string) => void;
+}) => {
   const tabs = ['Overview', 'Notes', 'Resources', 'Quiz'];
-  const [currentTab, setCurrentTab] = useState('Resources');
   return (
     <div className='h-full w-full flex flex-col items-center'>
+      {currentTab === 'Quiz' && (
+        <button className='ml-5 my-3 flex gap-5 self-start'>
+          <ArrowLeft />
+          <p>Back to Module</p>
+        </button>
+      )}
       <div className='relative w-full shadow-xs'>
         <div className='flex w-full items-center justify-start gap-[36px] md:gap-[72px] mx-5'>
           {tabs.map((tab) => (
             <button
               key={tab}
-              onClick={() => setCurrentTab(tab)}
+              onClick={() => setTab(tab)}
               className={`text-[16px] font-semibold ${
                 currentTab === tab
                   ? 'text-[#800080] border-b-[#800080] border-b z-2 transition duration-100 ease-in-out transform scale-102'
@@ -32,6 +49,10 @@ const ClassroomInteractiveComponent = () => {
           <OverviewComponent />
         ) : currentTab === 'Notes' ? (
           <NotesComponent />
+        ) : currentTab === 'Resources' ? (
+          <ResourcesComponent />
+        ) : currentTab === 'Quiz' ? (
+          <QuizComponent />
         ) : null}
       </div>
     </div>
@@ -188,16 +209,151 @@ const NotesComponent = () => {
         </div>
       </div>
       <div className='flex flex-col h-full gap-5 mt-5'>
-        {notes.length > 0 ? notes.map(note => (<Note key={note.note} note={note} />)) : <div className='place-self-center my-10'><p>{`Click the "Create a new note" box or the "+" button to make your first note.`}</p></div>}
+        {notes.length > 0 ? (
+          notes.map((note) => <Note key={note.note} note={note} />)
+        ) : (
+          <div className='place-self-center my-10'>
+            <p>{`Click the "Create a new note" box or the "+" button to make your first note.`}</p>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 const ResourcesComponent = () => {
+  const resources = [
+    {
+      title: 'Lesson 1: Introduction to Data Analysis',
+      text: 'The goal is to familiarize students with emerging digital trends, demonstrate how to effectively leverage them in scholarly work, and encourage critical thinking around the ethical use of these technologies in research contexts.',
+    },
+  ];
   return (
-    <div className='border-5'></div>
-  )
-}
+    <div className='w-full'>
+      <div>
+        {resources.map((resource) => (
+          <>
+            <div
+              key={resource.title}
+              className='rounded-[5px] border-[1.5px] border-[#800080] px-[16px] py-[12px] mb-3'
+            >
+              <h5 className='text-lg font-bold border-b mb-3'>
+                {resource.title}
+              </h5>
+              <p>{resource.text}</p>
+            </div>
+            <div className='flex justify-end mr-5 text-[12px] font-bold gap-10'>
+              <button className='rounded-[5px] border border-[#800080] text-[#800080] px-[16px] py-[10px]'>
+                Cancel
+              </button>
+              <button className='rounded-[5px] border bg-[#800080] text-white px-[16px] py-[10px]'>
+                Save Note
+              </button>
+            </div>
+          </>
+        ))}
+      </div>
+      <div className='flex gap-10 mt-5'>
+        <button className='flex gap-3 px-[16px] py-[8px] border-[#800080] border text-[12px] text-[#800080] items-center rounded-[5px]'>
+          <span>Current Lecture</span>
+          <ChevronDown />
+        </button>
+        <button className='flex gap-3 px-[16px] py-[8px] border-[#800080] border text-[12px] text-[#800080] items-center rounded-[5px]'>
+          <span>Sort by Module</span>
+          <ChevronDown />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const QuizComponent = () => {
+  const quizzes = [
+    {
+      question:
+        'Q1: What is the main benefit of using digital tools in research?',
+      options: [
+        { option: 'Faster funding', checked: true },
+        { option: 'Improved collaboration', checked: false },
+        { option: 'Better typing', checked: false },
+        { option: 'Less paperwork', checked: false },
+      ],
+    },
+    {
+      question:
+        'Q2: What is the main benefit of using digital tools in research?',
+      options: [
+        { option: 'Faster funding', checked: true },
+        { option: 'Improved collaboration', checked: false },
+        { option: 'Better typing', checked: false },
+        { option: 'Less paperwork', checked: false },
+      ],
+    },
+    {
+      question:
+        'Q3: What is the main benefit of using digital tools in research?',
+      options: [
+        { option: 'Faster funding', checked: true },
+        { option: 'Improved collaboration', checked: false },
+        { option: 'Better typing', checked: false },
+        { option: 'Less paperwork', checked: false },
+      ],
+    },
+    {
+      question:
+        'Q4: What is the main benefit of using digital tools in research?',
+      options: [
+        { option: 'Faster funding', checked: true },
+        { option: 'Improved collaboration', checked: false },
+        { option: 'Better typing', checked: false },
+        { option: 'Less paperwork', checked: false },
+      ],
+    },
+    {
+      question:
+        'Q5: What is the main benefit of using digital tools in research?',
+      options: [
+        { option: 'Faster funding', checked: true },
+        { option: 'Improved collaboration', checked: false },
+        { option: 'Better typing', checked: false },
+        { option: 'Less paperwork', checked: false },
+      ],
+    },
+  ];
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  return (
+    <div>
+      <div></div>
+      <hr className='border-[#800080]' />
+      <div className='flex justify-between mt-3'>
+        <p className='font-medium text-[20px]'>{`Question ${
+          currentQuestionIndex + 1
+        } of ${quizzes.length}`}</p>
+        <div className='flex justify-end mr-5 text-[12px] font-bold gap-10'>
+          {currentQuestionIndex > 0 && (
+            <button
+              onClick={() => setCurrentQuestionIndex((prev) => prev - 1)}
+              className='rounded-[5px] border border-[#800080] text-[#800080] px-[16px] py-[10px]'
+            >
+              Prev
+            </button>
+          )}
+          {currentQuestionIndex + 1 === quizzes.length ? (
+            <button className='rounded-[5px] border bg-[#800080] text-white px-[16px] py-[10px]'>
+              Submit
+            </button>
+          ) : (
+            <button
+              onClick={() => setCurrentQuestionIndex((prev) => prev + 1)}
+              className='rounded-[5px] border border-[#800080] text-[#800080] px-[16px] py-[10px]'
+            >
+              Next
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default ClassroomInteractiveComponent;

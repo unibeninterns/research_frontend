@@ -30,7 +30,7 @@ export default function Classroom() {
           />
         </div>
       </div>
-      <div className={`flex-col md:flex hidden sm:z-20 md:z-0 w-150`}>
+      <div className={`flex-col md:flex hidden sm:z-20 md:z-0 w-150 ${currentTab === 'Quiz' ? 'md:hidden' : ''}`}>
         <ModulesComponent />
       </div>
       <div

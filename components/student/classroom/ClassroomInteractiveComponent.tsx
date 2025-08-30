@@ -6,10 +6,20 @@ import {
   Plus,
 } from 'lucide-react';
 import Image from 'next/image';
-import { useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import Note from './NotesComponents';
-import Quiz from './Quiz';
+import Quiz, { QuizCompletedComponent } from './Quiz';
 
+// interface ToggleCompletedFunctions {
+//   showCompleted: () => void;
+//   hideCompleted: () => void;
+// }
+
+export const QuizCompletedContext = createContext({
+  showCompleted: () => {},
+  hideCompleted: () => {},
+  completed: false,
+});
 const ClassroomInteractiveComponent = ({
   currentTab,
   setTab,
@@ -18,44 +28,55 @@ const ClassroomInteractiveComponent = ({
   setTab: (tab: string) => void;
 }) => {
   const tabs = ['Overview', 'Notes', 'Resources', 'Quiz'];
+  const [completed, setCompleted] = useState(true);
+  const hideCompleted = () => setCompleted(false);
+  const showCompleted = () => setCompleted(true);
+
   return (
-    <div className='h-full w-full flex flex-col items-center'>
-      {currentTab === 'Quiz' && (
-        <button className='ml-5 my-3 flex gap-5 self-start'>
-          <ArrowLeft />
-          <p>Back to Module</p>
-        </button>
-      )}
-      <div className='relative w-full shadow-xs'>
-        <div className='flex w-full items-center justify-start gap-[36px] md:gap-[72px] mx-5'>
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setTab(tab)}
-              className={`text-[16px] font-semibold ${
-                currentTab === tab
-                  ? 'text-[#800080] border-b-[#800080] border-b z-2 transition duration-100 ease-in-out transform scale-102'
-                  : ''
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+    <QuizCompletedContext.Provider
+      value={{ hideCompleted, showCompleted, completed }}
+    >
+      <div className='h-full w-full flex flex-col items-center'>
+        {currentTab === 'Quiz' && (
+          <button className='ml-5 my-3 flex gap-5 self-start'>
+            <ArrowLeft />
+            <p>Back to Module</p>
+          </button>
+        )}
+        <div className='relative w-full shadow-xs'>
+          <div className='flex w-full items-center justify-start gap-[36px] md:gap-[72px] mx-5'>
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => {
+                  setTab(tab);
+                  setCompleted(false);
+                }}
+                className={`text-[16px] font-semibold ${
+                  currentTab === tab
+                    ? 'text-[#800080] border-b-[#800080] border-b z-2 transition duration-100 ease-in-out transform scale-102'
+                    : ''
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+          <hr className='absolute bottom-0 w-full' />
         </div>
-        <hr className='absolute bottom-0 w-full' />
+        <div className='w-full h-full py-5'>
+          {currentTab === 'Overview' ? (
+            <OverviewComponent />
+          ) : currentTab === 'Notes' ? (
+            <NotesComponent />
+          ) : currentTab === 'Resources' ? (
+            <ResourcesComponent />
+          ) : currentTab === 'Quiz' ? (
+            <QuizComponent />
+          ) : null}
+        </div>
       </div>
-      <div className='w-full h-full py-5'>
-        {currentTab === 'Overview' ? (
-          <OverviewComponent />
-        ) : currentTab === 'Notes' ? (
-          <NotesComponent />
-        ) : currentTab === 'Resources' ? (
-          <ResourcesComponent />
-        ) : currentTab === 'Quiz' ? (
-          <QuizComponent />
-        ) : null}
-      </div>
-    </div>
+    </QuizCompletedContext.Provider>
   );
 };
 
@@ -321,9 +342,19 @@ const QuizComponent = () => {
     },
   ];
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const { completed, showCompleted } = useContext(QuizCompletedContext);
+
+  if (completed) {
+    return (
+      <div className='mt-20'>
+        <QuizCompletedComponent />
+      </div>
+    );
+  }
+
   return (
     <div>
-      <div></div>
+      <Quiz question={quizzes[currentQuestionIndex]} />
       <hr className='border-[#800080]' />
       <div className='flex justify-between mt-3'>
         <p className='font-medium text-[20px]'>{`Question ${
@@ -339,7 +370,7 @@ const QuizComponent = () => {
             </button>
           )}
           {currentQuestionIndex + 1 === quizzes.length ? (
-            <button className='rounded-[5px] border bg-[#800080] text-white px-[16px] py-[10px]'>
+            <button onClick={showCompleted} className='rounded-[5px] bg-[#800080] text-white px-[16px] py-[10px]'>
               Submit
             </button>
           ) : (

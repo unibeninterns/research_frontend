@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useContext } from 'react';
 // import { QuizCompletedContext } from './ClassroomInteractiveComponent';
 import image1 from '../../../public/student/classroom/eca6b6351bb12ea6e5a1a4cd759cda2ee10d5061.png';
 import { ArrowLeft } from 'lucide-react';

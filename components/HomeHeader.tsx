@@ -34,6 +34,7 @@ export default function Header() {
   const handleMenuItemClick = (
     e: React.MouseEvent<HTMLAnchorElement>
   ): void => {
+    e.preventDefault()
     closeMenu();
   };
 

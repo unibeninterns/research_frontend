@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   // Use custom layout if the page has one
-  const getLayout = (Component as any).getLayout || ((page: React.ReactNode) => page);
+  const getLayout = ((page: React.ReactNode) => page);
 
   return getLayout(<Component {...pageProps} />);
 }

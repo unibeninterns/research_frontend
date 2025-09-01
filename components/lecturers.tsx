@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
-import Image from 'next/image';
 import { useRef, useState } from 'react';
 
 interface LecturerProps {

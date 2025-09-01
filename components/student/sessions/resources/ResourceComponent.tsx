@@ -1,5 +1,4 @@
-'use client'
-import { ChevronRight } from 'lucide-react';
+'use client';
 import { useState } from 'react';
 import { LockedModule, OpenModule } from '../../classroom/ModulesComponent';
 

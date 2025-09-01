@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 
 interface FAQProps {
   question: string;

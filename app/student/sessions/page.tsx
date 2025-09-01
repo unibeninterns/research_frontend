@@ -9,8 +9,8 @@ export default function Sessions() {
   return (
     <div className='md:p-6 p-2 w-full'>
       <div className='mb-6'>
-        <h1 className='text-[32px] font-bold text-gray-900'>Live Sessions</h1>
-        <p className='text-[20px]'>
+        <h1 className='text-[28px] md:text-[32px] font-bold text-gray-900'>Live Sessions</h1>
+        <p className='text-[16px] md:text-[20px]'>
           Join our weekly sessions to interact with tutors and deepen your
           learning.
         </p>
@@ -21,7 +21,7 @@ export default function Sessions() {
             <button
               key={tab}
               onClick={() => setCurrentTab(tab)}
-              className={`text-[16px] font-semibold ${
+              className={`text-[14px] md:text-[16px] font-semibold ${
                 currentTab === tab
                   ? 'text-[#800080] border-b-[#800080] border-b z-2 transition duration-100 ease-in-out transform scale-102'
                   : ''
@@ -33,7 +33,7 @@ export default function Sessions() {
         </div>
         <hr className='absolute bottom-0 w-full' />
       </div>
-      <div className='w-full'>
+      <div className='w-full mt-2'>
         {currentTab === 'Upcoming' ? <UpcomingComponent /> : currentTab === 'Live' ? <LiveComponent /> : currentTab === 'Past' ? <PastComponent /> : null}
       </div>
     </div>

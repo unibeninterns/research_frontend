@@ -20,7 +20,7 @@ export default function RootLayout({
         {/*Add Paystack inline script globally */}
         <Script src="https://js.paystack.co/v1/inline.js" strategy="beforeInteractive" />
       </head>
-      <body>
+      <body className="w-full">
         <main className={`${montserrat.className} text-black`}>{children}</main>
       </body>
     </html>

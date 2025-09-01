@@ -2,7 +2,6 @@ import {
   ArrowLeft,
   ChevronDown,
   ChevronUp,
-  DivideSquare,
   Plus,
 } from 'lucide-react';
 import Image from 'next/image';
@@ -28,7 +27,7 @@ const ClassroomInteractiveComponent = ({
   setTab: (tab: string) => void;
 }) => {
   const tabs = ['Overview', 'Notes', 'Resources', 'Quiz'];
-  const [completed, setCompleted] = useState(true);
+  const [completed, setCompleted] = useState(false);
   const hideCompleted = () => setCompleted(false);
   const showCompleted = () => setCompleted(true);
 
@@ -52,7 +51,7 @@ const ClassroomInteractiveComponent = ({
                   setTab(tab);
                   setCompleted(false);
                 }}
-                className={`text-[16px] font-semibold ${
+                className={`text-[14px] md:text-[16px] font-semibold ${
                   currentTab === tab
                     ? 'text-[#800080] border-b-[#800080] border-b z-2 transition duration-100 ease-in-out transform scale-102'
                     : ''
@@ -101,26 +100,26 @@ const OverviewComponent = () => {
   };
   return (
     <div className='w-full flex flex-col items-center px-2'>
-      <div className='w-full text-[20px]'>{info.show}</div>
+      <div className='w-full text-[14px] md:text-[20px]'>{info.show}</div>
       {showMore ? (
-        <div className='w-full mt-3 flex flex-col'>
+        <div className='w-full mt-3 flex flex-col mx-4'>
           <div className='w-full'>
-            <h5 className='text-[20px] font-bold mb-2'>Key Topics Covered</h5>
+            <h5 className='text-[16px] md:text-[20px] font-bold mb-2 '>Key Topics Covered</h5>
             <>
               {info.topics.map((topic) => (
-                <li key={topic} className='text-[20px]'>
+                <li key={topic} className='text-[14px] md:text-[20px]'>
                   {topic}
                 </li>
               ))}
             </>
           </div>
           <div className='w-full my-3'>
-            <h5 className='text-[20px] font-bold mb-2'>
+            <h5 className='text-[16px] md:text-[20px] font-bold mb-2'>
               Key Learning Outcomes
             </h5>
             <>
               {info.outcomes.map((topic) => (
-                <li key={topic} className='text-[20px]'>
+                <li key={topic} className='text-[14px] md:text-[20px]'>
                   {topic}
                 </li>
               ))}
@@ -140,7 +139,7 @@ const OverviewComponent = () => {
         </div>
       ) : null}
       <div className='text-[#800080] text-[20px] flex gap-5 self-start my-5'>
-        <p>Show more</p>
+        <p className='text-[14px] md:text-[20px]'>Show more</p>
         <button onClick={() => setShowMore((prev) => !prev)}>
           {showMore ? (
             <ChevronUp color='#800080' />
@@ -162,7 +161,7 @@ const LecturerCard = () => {
     image: '969234aacd9ebc42fda5f7e9f5cb46d0c64ecd88.png',
   };
   return (
-    <div className=' flex flex-row gap-3 w-full justify-center my-5'>
+    <div className=' flex flex-row gap-3 w-full justify-center m-2 md:my-5'>
       <div className='h-[110px] w-[110px] z-20'>
         <Image
           src={`/lecturers/${lecturer.image}`}
@@ -175,8 +174,8 @@ const LecturerCard = () => {
       <div className='flex flex-col w-[600px]'>
         <div className='flex justify-between'>
           <div className=''>
-            <h3 className='text-2xl font-semibold'>{lecturer.name}</h3>
-            <p className='text-[18px] font-light'>{lecturer.description}</p>
+            <h3 className='text-[18px] md:text-2xl font-semibold'>{lecturer.name}</h3>
+            <p className='tex-[14px] md:text-[18px] font-light'>{lecturer.description}</p>
           </div>
           {/* <button
                   onClick={hide}
@@ -186,7 +185,7 @@ const LecturerCard = () => {
                 </button> */}
         </div>
         <div className='mt-4'>
-          <p className='text-[20px]'>{lecturer.fullDescription}</p>
+          <p className='text-[14px] md:text-[20px]'>{lecturer.fullDescription}</p>
         </div>
       </div>
     </div>
@@ -212,9 +211,9 @@ const NotesComponent = () => {
         <div className='flex items-start px-[12px] gap-[12px] border'>
           <textarea
             placeholder='Create a new note'
-            className='w-full py-[12px] outline-0'
+            className='w-full py-[12px] outline-0 text-[14px] md:text-[18px'
           />
-          <button className='mt-[12px] bg-black p-[4px] rounded-full'>
+          <button className='mt-[12px] bg-black p-[1px] md:p-[4px] rounded-full'>
             <Plus color='#FFFFFF' strokeWidth={3.5} />
           </button>
         </div>
@@ -258,10 +257,10 @@ const ResourcesComponent = () => {
               key={resource.title}
               className='rounded-[5px] border-[1.5px] border-[#800080] px-[16px] py-[12px] mb-3'
             >
-              <h5 className='text-lg font-bold border-b mb-3'>
+              <h5 className='md:text-lg font-bold border-b mb-3'>
                 {resource.title}
               </h5>
-              <p>{resource.text}</p>
+              <p className='md:text-lg'>{resource.text}</p>
             </div>
             <div className='flex justify-end mr-5 text-[12px] font-bold gap-10'>
               <button className='rounded-[5px] border border-[#800080] text-[#800080] px-[16px] py-[10px]'>
@@ -357,7 +356,7 @@ const QuizComponent = () => {
       <Quiz question={quizzes[currentQuestionIndex]} />
       <hr className='border-[#800080]' />
       <div className='flex justify-between mt-3'>
-        <p className='font-medium text-[20px]'>{`Question ${
+        <p className='font-medium text-[16px] md:text-[20px]'>{`Question ${
           currentQuestionIndex + 1
         } of ${quizzes.length}`}</p>
         <div className='flex justify-end mr-5 text-[12px] font-bold gap-10'>
@@ -370,7 +369,10 @@ const QuizComponent = () => {
             </button>
           )}
           {currentQuestionIndex + 1 === quizzes.length ? (
-            <button onClick={showCompleted} className='rounded-[5px] bg-[#800080] text-white px-[16px] py-[10px]'>
+            <button
+              onClick={showCompleted}
+              className='rounded-[5px] bg-[#800080] text-white px-[16px] py-[10px]'
+            >
               Submit
             </button>
           ) : (

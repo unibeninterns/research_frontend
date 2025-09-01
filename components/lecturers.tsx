@@ -18,10 +18,13 @@ const Lecturer = ({
 }: LecturerProps) => {
   const [showInfo, setShowInfo] = useState<'hidden' | 'block'>('hidden');
   const hide = () => setShowInfo('hidden');
-  const show = () => setShowInfo('block')
+  const show = () => setShowInfo('block');
   return (
     <>
-      <div onClick={show} className='h-[95%] w-[270px] rounded-[10px] m-2 p-3 flex flex-col bg-[rgba(251,239,255,0.5)] shadow-[4px_4px_6px_-3px_rgba(160,32,240,0.25)]  transition duration-500 ease-in-out transform hover:scale-105 overflow-hidden hover:border-[#800080] hover:border-1'>
+      <div
+        onClick={show}
+        className='h-[95%] w-[270px] rounded-[10px] m-2 p-3 flex flex-col bg-[rgba(251,239,255,0.5)] shadow-[4px_4px_6px_-3px_rgba(160,32,240,0.25)]  transition duration-500 ease-in-out transform hover:scale-105 overflow-hidden hover:border-[#800080] hover:border-1'
+      >
         <img
           src={`/lecturers/${image}`}
           alt={name}
@@ -33,22 +36,24 @@ const Lecturer = ({
         </div>
       </div>
       <div
-        className={`fixed inset-0 z-[9999] top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.0.8)] ${showInfo} flex items-center justify-center`}
+        className={`fixed inset-0 z-[9999] top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.0.8)] ${showInfo} flex items-center justify-center p-2`}
       >
-        <div className='md:w-[864px] max-h-[800px] bg-[rgba(255,255,255,1)] border-[rgba(186,184,184,1)] rounded-[15px] flex flex-col items-center justify-center py-4 border-2'>
-          <div className=' flex flex-row gap-3 w-full justify-center'>
-            <div className='h-full w-full lg:w-3/5 z-20'>
+        <div className='lg:w-[864px] max-h-[800px] bg-[rgba(255,255,255,1)] border-[rgba(186,184,184,1)] rounded-[15px] flex flex-col items-center justify-center lg:py-4 border-2'>
+          <div className=' flex flex-row md:gap-3 w-full justify-center'>
+            <div className='z-20 m-1 lg:m-2'>
               <img
                 src={`/lecturers/${image}`}
                 alt={name}
                 className='object-cover rounded-[10px]'
               />
             </div>
-            <div className='p-4 z-[9999] flex flex-col w-3/10]'>
+            <div className='p-2 md:p-4  flex flex-col'>
               <div className='flex justify-between'>
                 <div className=''>
-                  <h3 className='text-md lg:text-2xl font-semibold'>{name}</h3>
-                  <p className='text-sm lg:text-[18px] font-light'>{description}</p>
+                  <h3 className='text-[16px] lg:text-2xl font-semibold'>{name}</h3>
+                  <p className='text-sm lg:text-[18px] font-light'>
+                    {description}
+                  </p>
                 </div>
                 <button
                   onClick={hide}
@@ -58,13 +63,13 @@ const Lecturer = ({
                 </button>
               </div>
               <div className='mt-4'>
-                <p className='text-[16px] lg:text-[20px]'>{fullDescription}</p>
+                <p className='text-[14px] lg:text-[20px]'>{fullDescription}</p>
               </div>
             </div>
           </div>
           <a
             href=''
-            className='w-[280px] mt-6 text-md lg:text-lg flex items-center justify-around text-[rgb(160,32,240)]'
+            className='w-[280px] lg:mt-6 text-sm md:text-lg flex items-center justify-around text-[rgb(160,32,240)] mb-2'
           >
             <p>View Profile on LinkedIn </p>
             <ArrowRight />
@@ -150,41 +155,39 @@ const LecturerSection = () => {
   };
   return (
     <>
-     <div className='mt-5 h-auto w-full xl:w-3/5 p-2'>
-  <div className='mt-3 p-1 relative flex flex-row items-center justify-center'>
-    <button
-      onClick={scrollLeft}
-      className='absolute left-1 md:-left-8 z-10 p-1 rounded-full shadow-[4px_4px_6px_-3px_rgba(160,32,240,0.25)] border-1 border-[rgba(160,32,240,0.25)] cursor-pointer bg-white transition duration-150 ease-in transform hover:scale-110'
-    >
-      <ChevronLeft strokeWidth={3} color='#800080' />
-    </button>
+      <div className='mt-5 h-auto w-full lg:3/5 p-2'>
+        <div className='mt-3 p-1 relative flex flex-row items-center justify-center gap-2'>
+          <button
+            onClick={scrollLeft}
+            className='z-10 p-1 rounded-full shadow-[4px_4px_6px_-3px_rgba(160,32,240,0.25)] border-1 border-[rgba(160,32,240,0.25)] cursor-pointer bg-white transition duration-150 ease-in transform hover:scale-110'
+          >
+            <ChevronLeft strokeWidth={3} color='#800080' />
+          </button>
 
-    <div
-  ref={scrollRef}
-  className='flex flex-row overflow-x-auto flex-nowrap justify-around scroll-smooth h-full grow-1 w-full px-8 scrollbar-hide'
->
+          <div
+            ref={scrollRef}
+            className='flex flex-row overflow-x-auto flex-nowrap justify-around scroll-smooth h-full grow-1 w-full p-2 md:px-8 scrollbar-hide'
+          >
+            {lecturers.map(({ name, image, description, fullDescription }) => (
+              <div key={name} className='md:w-1/2'>
+                <Lecturer
+                  name={name}
+                  image={image}
+                  description={description}
+                  fullDescription={fullDescription}
+                />
+              </div>
+            ))}
+          </div>
 
-      {lecturers.map(({ name, image, description, fullDescription }) => (
-        <div key={name} className='md:w-1/2'>
-          <Lecturer
-            name={name}
-            image={image}
-            description={description}
-            fullDescription={fullDescription}
-          />
+          <button
+            onClick={scrollRight}
+            className='z-10 p-1 rounded-full shadow-[4px_4px_6px_-3px_rgba(160,32,240,0.25)] border-1 border-[rgba(160,32,240,0.25)] cursor-pointer bg-white transition duration-150 ease-in transform hover:scale-110'
+          >
+            <ChevronRight strokeWidth={3} color='#800080' />
+          </button>
         </div>
-      ))}
-    </div>
-
-    <button
-      onClick={scrollRight}
-      className='absolute right-1 md:-right-8 z-10 p-1 rounded-full shadow-[4px_4px_6px_-3px_rgba(160,32,240,0.25)] border-1 border-[rgba(160,32,240,0.25)] cursor-pointer bg-white transition duration-150 ease-in transform hover:scale-110'
-    >
-      <ChevronRight strokeWidth={3} color='#800080' />
-    </button>
-  </div>
-</div>
-
+      </div>
     </>
   );
 };

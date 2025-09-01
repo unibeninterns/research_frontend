@@ -4,12 +4,12 @@ import Image from 'next/image';
 import image1 from '../../../public/student/classroom/9ffc5617ef490086ab82dbbdd34fab6a43d3977e.jpg';
 import ClassroomInteractiveComponent from '@/components/student/classroom/ClassroomInteractiveComponent';
 import ModulesComponent from '@/components/student/classroom/ModulesComponent';
-import { ArrowLeft, ChevronLeft, Divide } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 
 export default function Classroom() {
   const [showModules, setShowModules] = useState(false);
   const hideMobileModules = () => setShowModules(false);
-  const [currentTab, setCurrentTab] = useState('Quiz');
+  const [currentTab, setCurrentTab] = useState('Resurces');
   const setTab = (tab: string) => setCurrentTab(tab);
   return (
     <div className='md:p-2 flex justify-items-center w-full gap-2 bg-white h-full'>
@@ -30,7 +30,11 @@ export default function Classroom() {
           />
         </div>
       </div>
-      <div className={`flex-col md:flex hidden sm:z-20 md:z-0 w-150 ${currentTab === 'Quiz' ? 'md:hidden' : ''}`}>
+      <div
+        className={`flex-col md:flex hidden sm:z-20 md:z-0 w-150 ${
+          currentTab === 'Quiz' ? 'md:hidden' : ''
+        }`}
+      >
         <ModulesComponent />
       </div>
       <div

@@ -6,9 +6,9 @@ const Note = ({
   note: { module: string; subModule: string; note: string };
 }) => {
   return (
-    <div className='flex flex-col w-full shadow-xs border'>
+    <div className='flex flex-col w-full shadow-xs border text-[14px] md:text-[16px]'>
       <div className='flex justify-between gap-5 px-4 bg-white'>
-        <div className='flex items-center justify-between w-full text-[16px] mr-4 md:mr-8'>
+        <div className='flex items-center justify-between w-full mr-4 md:mr-8'>
           <p className='font-bold'>{note.module}</p>
           <p>{note.subModule}</p>
         </div>

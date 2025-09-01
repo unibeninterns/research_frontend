@@ -37,9 +37,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 w-full left-0 z-50 p-4 shadow-md flex items-center bg-pink-100">
+      <header className="fixed top-0 w-full left-0 z-50 p-1 md:p-2 lg:p-4 shadow-md flex items-center bg-[#FBEFFF]">
         <div className="flex items-center justify-between w-full md:px-8 lg:px-15">
-          <Image src={logo || "/placeholder.svg"} alt="Drid Research Logo" width={54} height={54} className="w-10 h-10" />
+          <Image src={logo || "/placeholder.svg"} alt="Drid Research Logo" className="h-8 w-8 md:w-10 md:h-10" />
 
           <div className="hidden lg:flex md:items-center lg:text-xl text-black justify-between w-1/2">
             {navigationItems.map((item: NavigationItem, index: number) =>

@@ -98,7 +98,7 @@ const Pricing = () => {
   return (
     <>
       <Header />
-      <section className='min-h-screen w-full flex flex-col items-center px-1 py-10 md:px-10 md:py-20'>
+      <section className='bg-white min-h-screen w-full flex flex-col items-center px-1 py-10 md:px-10 md:py-20'>
         <div className='mt-3 lg:mt-10 flex flex-col items-center'>
           <h2 className='text-[#800080] text-[18px] font-semibold uppercase'>
             Plans & Pricing

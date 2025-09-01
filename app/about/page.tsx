@@ -354,7 +354,7 @@ const About = () => {
           ))}
         </div>
       </section>
-      <section className="flex lg:min-h-screen w-full flex-col items-center px-4 lg:px-10">
+      <section className="bg-[#FEFBFF] flex lg:min-h-screen w-full flex-col items-center px-4 lg:px-10">
         <div className="flex w-full flex-col items-center justify-center py-12">
           <h1 className="my-5 w-full text-center text-2xl leading-none font-bold lg:text-5xl">{`What You'll Gain`}</h1>
           <div className="lg-my-10 my-4 space-y-4 lg:space-y-10">

@@ -28,13 +28,15 @@ export const UpcomingEventComponent = ({ event }: { event: Event }) => {
           >
             {event.tag}
           </div>
-          <h3 className='text-[14px] md:text-[16px] font-bold ml-4 md:ml-10'>{event.topic}</h3>
+          <h3 className='text-[14px] md:text-[16px] font-bold ml-4 md:ml-10'>
+            {event.topic}
+          </h3>
         </div>
-        <div className='mt-1 flex gap-4'>
+        <div className='mt-1 flex gap-4 text-[12px] md:text-[16px]'>
           <div className='flex flex-col flex-1'>
-            <p className='text-sm font-medium text-[#1E1E1EB2]'>{event.date}</p>
+            <p className='font-medium text-[#1E1E1EB2]'>{event.date}</p>
             <p
-              className={`text-sm font-medium ${
+              className={`font-medium ${
                 event.time ? 'font-bold' : 'text-[#A3A3A3]'
               }`}
             >
@@ -42,11 +44,9 @@ export const UpcomingEventComponent = ({ event }: { event: Event }) => {
             </p>
           </div>
           <div className='flex flex-col flex-1'>
-            <p className={`text-sm font-medium text-[#1E1E1EB2]`}>
-              Facilitator
-            </p>
+            <p className={`font-medium text-[#1E1E1EB2]`}>Facilitator</p>
             <p
-              className={`text-sm font-medium ${
+              className={`font-medium ${
                 event.time ? 'font-bold' : 'text-[#A3A3A3]'
               }`}
             >
@@ -83,13 +83,15 @@ export const LiveEventComponent = ({ event }: { event: Event }) => {
           >
             {event.tag}
           </div>
-          <h3 className='text-[14px] md:text-[16px] font-bold ml-4 md:ml-10'>{event.topic}</h3>
+          <h3 className='text-[14px] md:text-[16px] font-bold ml-4 md:ml-10'>
+            {event.topic}
+          </h3>
         </div>
-        <div className='mt-1 flex'>
+        <div className='mt-1 flex text-[12px] md:text-[16px]'>
           <div className='flex flex-col flex-1'>
-            <p className='text-sm font-medium text-[#1E1E1EB2]'>{event.date}</p>
+            <p className='font-medium text-[#1E1E1EB2]'>{event.date}</p>
             <p
-              className={`text-sm font-medium ${
+              className={`font-medium ${
                 event.time ? 'font-bold' : 'text-[#A3A3A3]'
               }`}
             >
@@ -98,13 +100,13 @@ export const LiveEventComponent = ({ event }: { event: Event }) => {
           </div>
           <div className='flex flex-col flex-1'>
             <p
-              className={`text-sm font-medium ${
+              className={`font-medium ${
                 event.time ? 'font-bold' : 'text-[#A3A3A3]'
               }`}
             >
               Facilitator
             </p>
-            <p className='text-sm font-medium text-[#1E1E1EB2]'>{event.date}</p>
+            <p className='font-medium text-[#1E1E1EB2]'>{event.date}</p>
           </div>
         </div>
       </div>
@@ -138,13 +140,15 @@ export const PastEventComponent = ({ event }: { event: Event }) => {
           >
             {event.tag}
           </div>
-          <h3 className='text-[14px] md:text-[16px] font-bold ml-4 md:ml-10'>{event.topic}</h3>
+          <h3 className='text-[14px] md:text-[16px] font-bold ml-4 md:ml-10'>
+            {event.topic}
+          </h3>
         </div>
-        <div className='mt-1 flex'>
+        <div className='mt-1 flex text-[12px] md:text-[16px]'>
           <div className='flex flex-col flex-1'>
-            <p className='text-sm font-medium text-[#1E1E1EB2]'>{event.date}</p>
+            <p className='font-medium text-[#1E1E1EB2]'>{event.date}</p>
             <p
-              className={`text-sm font-medium ${
+              className={`font-medium ${
                 event.time ? 'font-bold' : 'text-[#A3A3A3]'
               }`}
             >
@@ -153,15 +157,13 @@ export const PastEventComponent = ({ event }: { event: Event }) => {
           </div>
           <div className='flex flex-col flex-1'>
             <p
-              className={`text-sm font-medium ${
+              className={`font-medium ${
                 event.time ? 'font-bold' : 'text-[#A3A3A3]'
               }`}
             >
               Facilitator
             </p>
-            <p className='text-sm font-medium text-[#1E1E1EB2]'>
-              {event.facilitator}
-            </p>
+            <p className='font-medium text-[#1E1E1EB2]'>{event.facilitator}</p>
           </div>
         </div>
       </div>

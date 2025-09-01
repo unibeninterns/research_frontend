@@ -8,7 +8,7 @@ export default function Sessions() {
   const [currentTab, setCurrentTab] = useState('Upcoming');
   return (
     <div className='md:p-6 p-2 w-full'>
-      <div className='mb-6'>
+      <div className=' mb-2 md:mb-6'>
         <h1 className='text-[28px] md:text-[32px] font-bold text-gray-900'>Live Sessions</h1>
         <p className='text-[16px] md:text-[20px]'>
           Join our weekly sessions to interact with tutors and deepen your

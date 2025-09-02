@@ -107,73 +107,78 @@ const Pricing = () => {
             Choose your plan
           </h3>
         </div>
-        <div className='flex gap-1 md:gap-5 mt-3 md:mt-4 '>
-          <div className='relative flex flex-col h-[400px] w-[190px] md:h-[500px] lg:h-[691px] md:w-[350px] lg:w-[400px] border border-[#D9D9D9] items-center p-1 lg:py-2 lg:px-4'>
-            <div className='flex flex-col items-center mt-5 md:mt-0 lg:m-4 md:px-4 md:py-2'>
-              <h4 className='text-[18px] md:text-[24px] font-[700]'>Basic</h4>
-              <h4 className='md:text-[32px] lg:text-[36px] text-[24px] lg:mb-2 font-[700]'>
-                ₦50,000
-              </h4>
-            </div>
-            <div className='flex flex-col items-start w-full mt-10 md:mt-5 md:px-4 md:py-2'>
-              <h4 className='lg:px-4 lg:py-2 md:m-4 m-1 font-[700] text-[14px] md:text-[18px] my-1 md:my-4 w-full '>
-                Key Features
-              </h4>
-              <div>
-                {features
-                  .filter((feature) => feature.basic)
-                  .map((f) => (
-                    <div
-                      key={f.feature}
-                      className='flex  items-start gap-1 md:gap-3'
-                    >
-                      <Check strokeWidth={2} color='#800080' />
-                      <p className='md:text-[16px] text-[12px]'>{f.feature}</p>
-                    </div>
-                  ))}
+        <div className='flex flex-col md:flex-row gap-6 mt-3 md:mt-5 items-center md:items-start'>
+          <div className='flex flex-col items-center'>
+            <div className='relative flex flex-col h-[450px] w-[300px] md:h-[500px] lg:h-[691px] md:w-[350px] lg:w-[400px] border border-[#D9D9D9] items-center px-4 lg:py-2'>
+              <div className='flex flex-col items-center mt-5 md:mt-0 lg:m-4 md:px-4 md:py-2'>
+                <h4 className='text-[24px] font-[700]'>Basic</h4>
+                <h4 className='text-[32px] lg:text-[36px] lg:mb-2 font-[700]'>
+                  ₦50,000
+                </h4>
               </div>
+              <div className='flex flex-col items-start w-full mt-5 md:px-4 md:py-2'>
+                <h4 className='lg:px-4 lg:py-2 md:m-4 m-1 font-[700] text-[18px] my-1 md:my-4 w-full '>
+                  Key Features
+                </h4>
+                <div className='mt-2 flex-col flex gap-1'>
+                  {features
+                    .filter((feature) => feature.basic)
+                    .map((f) => (
+                      <div
+                        key={f.feature}
+                        className='flex  items-start gap-2 md:gap-3'
+                      >
+                        <Check strokeWidth={2} color='#800080' />
+                        <p className='md:text-[16px] text-[14px]'>
+                          {f.feature}
+                        </p>
+                      </div>
+                    ))}
+                </div>
+              </div>
+              <button
+                onClick={() => handlePlanSelect('basic')}
+                className='text-[18px] md:text-[24px] text-white font-[700] bg-[#800080] rounded-[5px] px-[15px] md:px-[30px] lg:px-[60px] md:py-[10px] lg:py-[20px] py-[5px]  absolute bottom-5 md:bottom-10 lg:bottom-20 hover:cursor-pointer'
+              >
+                Get Started
+              </button>
             </div>
-            <button
-              onClick={() => handlePlanSelect('basic')}
-              className='text-[18px] md:text-[24px] text-white font-[700] bg-[#800080] rounded-[5px] px-[15px] md:px-[30px] lg:px-[60px] md:py-[10px] lg:py-[20px] py-[5px]  absolute bottom-5 md:bottom-10 lg:bottom-20 hover:cursor-pointer'
-            >
-              Get Started
-            </button>
+            <p className='w-full text-center text-[14px] md:text-[18px] mt-1 md:mt-3'>
+              NB: Access auto-expires after 12 weeks.
+            </p>
           </div>
-          <div className='flex flex-col h-[400px] w-[190px] md:h-[500px] lg:h-[691px] md:w-[350px] lg:w-[400px] items-center p-1 md:py-2 md:px-4 bg-[linear-gradient(30deg,rgba(159,63,159,0.8),rgba(251,239,255,0.9),rgba(251,239,255,1),rgba(159,63,159,0.8))] relative'>
-            <button className='uppercase text-[9px] md:text-[12px] text-white font-bold absolute top-[-9px] left-[10px] md:top-[-12px] lg:top-[-16px] md:left-[50px] px-3 md:px-2  lg:px-4 py-[2px] md:py-1 lg:py-2 bg-[#800080] rounded-[50px]'>
+          <div className='flex flex-col h-[450px] w-[300px] md:h-[500px] lg:h-[691px] md:w-[350px] lg:w-[400px] items-center px-4 md:py-2 md:px-4 bg-[linear-gradient(30deg,rgba(159,63,159,0.8),rgba(251,239,255,0.9),rgba(251,239,255,1),rgba(159,63,159,0.8))] relative'>
+            <p className='uppercase text-[12px] text-white font-bold absolute top-[-9px] left-[30px] md:top-[-12px] lg:top-[-16px] md:left-[50px] px-3 md:px-2  lg:px-4 py-[2px] md:py-1 lg:py-2 bg-[#800080] rounded-[50px]'>
               recommended
-            </button>
-            <h4 className='text-[18px] md:text-[24px] font-[700] self-start mt-2 lg:mt-4'>
+            </p>
+            <h4 className='text-[24px] font-[700] self-start mt-2 lg:mt-4'>
               Premium
             </h4>
             <div className='flex flex-col items-center px-2 py-1'>
-              <h4 className='md:text-[14px] lg:text-[16px] text-[12px] font-[700] line-through'>
+              <h4 className='text-[14px] lg:text-[16px] font-[700] line-through'>
                 ₦100,000
               </h4>
-              <h4 className='lg:text-[36px] md:text-[32px] text-[24px] font-[700] lg:mb-2'>
+              <h4 className='lg:text-[36px] text-[32px] font-[700] lg:mb-2'>
                 ₦90,000
               </h4>
-              <button className='bg-[linear-gradient(30deg,rgba(239,184,50,1),rgba(254,240,146,1),rgba(239,84,50,1))] md:px-[12px] px-[8px] py-[2px] rounded-[50px] md:text-[12px] text-[10px] font-semibold'>
+              <button className='bg-[linear-gradient(30deg,rgba(239,184,50,1),rgba(254,240,146,1),rgba(239,84,50,1))] md:px-[12px] px-[8px] py-[2px] rounded-[50px] text-[12px] font-semibold'>
                 Save ₦10,000
               </button>
             </div>
             <div className='flex flex-col items-start w-full lg:px-4 lg:py-2 lg:m-4 m-1'>
-              <h4 className='lg:px-4 lg:py-2 md:m-4 m-1 font-[700] text-[14px] md:text-[18px] my-1 md:my-4 w-full '>
+              <h4 className='lg:px-4 lg:py-2 md:m-4 m-1 font-[700] text-[18px] my-1 md:my-4 w-full '>
                 Everything in Basic plus...
               </h4>
-              <div>
+              <div className='mt-2 flex-col flex gap-1'>
                 {features
                   .filter((feature) => !feature.basic)
                   .map((f) => (
                     <div
                       key={f.feature}
-                      className='flex items-start gap-1 md:gap-3'
+                      className='flex items-start gap-2 md:gap-3'
                     >
                       <Check strokeWidth={2} color='#800080' />
-                      <p className='md:text-[16px] text-[12px] w-full'>
-                        {f.feature}
-                      </p>
+                      <p className='text-[14px] w-full'>{f.feature}</p>
                     </div>
                   ))}
               </div>
@@ -272,17 +277,16 @@ const Pricing = () => {
                     key={g.feature}
                     className='border-b-[1px] border-b-[rgba(237,238,241,1)] last:border-b-0'
                   >
-                    <td className='py-1 px-2 text-[14px] md:text-[16px] lg:text-[18px]'>
+                    <td className='py-1 px-2 text-[12px] md:text-[16px] lg:text-[18px]'>
                       {g.feature}
                     </td>
-                    <td className='py-1 px-2 text-[14px] md:text-[16px] lg:text-[18px]'>
+                    <td className='py-1 px-2 text-[12px] md:text-[16px] lg:text-[18px]'>
                       {g.price}
                     </td>
                     <td>
                       <Check
                         color='#800080'
-                        className='p-1 lg:border-2 rounded-full border-[#800080]'
-                        strokeWidth={4}
+                        className='p-1 rounded-full border-[#800080] md:border-2 stroke-2 md:stroke-4'
                       />
                     </td>
                   </tr>
@@ -292,7 +296,7 @@ const Pricing = () => {
           </div>
           <div className='flex flex-col items-center md:items-start mt-4 md:mt-0'>
             <div className='flex flex-col items-center md:items-start'>
-              <h3 className='md:text-[32px] lg:text-[36px] font-bold'>
+              <h3 className='text-[27px] md:text-[32px] lg:text-[36px] font-bold'>
                 Optional Add-ons
               </h3>
               <p className='text-[12px] md:text-[16px]'>
@@ -316,10 +320,10 @@ const Pricing = () => {
                     key={g.feature}
                     className='border-b-[1px] border-b-[rgba(237,238,241,1)] last:border-b-0'
                   >
-                    <td className='py-1 px-2 text-[14px] md:text-[16px] lg:text-[18px]'>
+                    <td className='py-1 px-2 text-[12px] md:text-[16px] lg:text-[18px]'>
                       {g.feature}
                     </td>
-                    <td className='py-1 px-2 text-[14px] md:text-[16px] lg:text-[18px]'>
+                    <td className='py-1 px-2 text-[12px] md:text-[16px] lg:text-[18px]'>
                       {g.price}
                     </td>
                   </tr>

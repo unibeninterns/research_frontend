@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -24,65 +23,77 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import logo2 from '../../components/logo2.png';
+import AdminHeader from '@/components/admin/AdminHeader';
 
 const navigationItems = [
   {
     name: 'Dashboard',
     href: '/admin/dashboard',
     icon: LayoutDashboard,
+    pageHeader: 'Greetings, Caleb',
   },
   {
     name: 'Courses',
     href: '/admin/courses',
     icon: LibraryBig,
+    pageHeader: 'Courses',
   },
   {
     name: 'Students',
     href: '/admin/students',
     icon: GraduationCap,
+    pageHeader: 'Student Management',
   },
   {
     name: 'Tutors',
     href: '/admin/tutors',
     icon: UserPen,
+    pageHeader: 'Tutor Management',
   },
   {
     name: 'Live Sessions',
     href: '/admin/sessions',
     icon: Video,
+    pageHeader: 'Live Sessions',
   },
   {
     name: 'Quizzes',
     href: '/admin/quizzes',
     icon: ListChecks,
+    pageHeader: 'Quizzes',
   },
   {
-    name: "Payments",
+    name: 'Payments',
     href: '/admin/payments',
     icon: CreditCard,
+    pageHeader: 'Payments',
   },
   {
     name: 'Analytics & Reports',
     href: '/admin/analytics',
     icon: ChartNoAxesCombined,
+    pageHeader: 'Analytics and Reports',
   },
   {
     name: 'Resources',
     href: '/admin/resources',
     icon: FolderOpen,
+    pageHeader: 'Resources',
   },
   {
     name: 'Certificates',
     href: '/admin/certificates',
     icon: FileBadge,
+    pageHeader: 'Certificates',
   },
 ];
 
 const bottomItems = [
   {
     name: 'Settings',
-    href: '/student/settings',
+    href: '/admin/settings',
     icon: Settings,
+    pageHeader: 'Settings',
   },
 ];
 
@@ -90,9 +101,10 @@ interface StudentLayoutProps {
   children: React.ReactNode;
 }
 
-export default function StudentLayout({ children }: StudentLayoutProps) {
+export default function AdminLayout({ children }: StudentLayoutProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [pageHeader, setPageHeader] = useState(navigationItems[0].pageHeader);
   const pathname = usePathname();
 
   // Close mobile menu when route changes
@@ -181,7 +193,10 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
                       ? 'bg-[#F9DBFF3D] text-[#800080]'
                       : 'text-gray-700 hover:bg-gray-100'
                   )}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setPageHeader(item.pageHeader);
+                  }}
                 >
                   <item.icon className='h-5 w-5 flex-shrink-0' />
                   <span>{item.name}</span>
@@ -203,7 +218,10 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
                       ? 'bg-[#F9DBFF3D] text-[#800080]'
                       : 'text-gray-700 hover:bg-gray-100'
                   )}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setPageHeader(item.pageHeader);
+                  }}
                 >
                   <item.icon className='h-5 w-5 flex-shrink-0' />
                   <span>{item.name}</span>
@@ -277,6 +295,9 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
                     isCollapsed && 'justify-center'
                   )}
                   title={isCollapsed ? item.name : undefined}
+                  onClick={() => {
+                    setPageHeader(item.pageHeader);
+                  }}
                 >
                   <item.icon className='h-5 w-5 flex-shrink-0' />
                   {!isCollapsed && <span>{item.name}</span>}
@@ -364,7 +385,8 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
         </div>
 
         {/* Main Content */}
-        <div className='flex-1 overflow-auto bg-white '>{children}</div>
+        <AdminHeader pageHeader={pageHeader} />
+        <div className='flex-1 overflow-auto bg-white w-full'>{children}</div>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ const FAQ = ({
 }) => {
   const handleClick = () => handleFocus(question);
   return (
-    <div className='flex items-center justify-between m-2 rounded-[16px] border-2 border-[#800080] py-4 px-2 w-full'>
+    <div className='flex items-center justify-between m-2 rounded-[16px] border-2 border-[#800080] py-4 px-4 w-full xl:w-4/5'>
       <div>
         <h1 className='text-md lg:text-xl font-semibold'>{question}</h1>
         {isFocused && <p className='text-sm mt-2 lg:text-lg'>{answer}</p>}
@@ -37,7 +37,7 @@ const FAQs = ({ faqs }: { faqs: FAQProps[] }) => {
     setFocus(focus === question ? '' : question);
   };
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className='flex flex-col items-center w-full justify-center'>
       {faqs.map(({ question, answer }) => (
         <FAQ
           key={question}

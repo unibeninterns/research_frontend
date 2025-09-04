@@ -1,18 +1,8 @@
-'use client'
-import {
-  ChevronDown,
-  ChevronRight,
-  ChevronUp,
-  LockKeyhole,
-  TvMinimalPlay,
-} from 'lucide-react';
+'use client';
 import { useState } from 'react';
+import { LockedModule, OpenModule } from '../../classroom/ModulesComponent';
 
-const ModuleComponent = ({
-  hideMobileModules,
-}: {
-  hideMobileModules?: () => void;
-}) => {
+const ResourcesComponent = () => {
   const [focus, setFocus] = useState('');
   const handleFocus = (topic: string) => setFocus(focus === topic ? '' : topic);
   const modules = [
@@ -176,14 +166,8 @@ const ModuleComponent = ({
   return (
     <div className='w-full h-full bg-white'>
       <div className='w-full justify-between px-2 flex items center border'>
-        <button
-          className='flex place-items-center p-2 rounded-full bg-white md:hidden'
-          onClick={hideMobileModules}
-        >
-          <ChevronRight height={24} width={24} strokeWidth={3} />
-        </button>
         <h2 className='w-full text-14px font-bold text-center  py-2'>
-          Course Content
+          All Course Resources
         </h2>
       </div>
       <div className='w-full overflow-y-scroll'>
@@ -204,74 +188,4 @@ const ModuleComponent = ({
     </div>
   );
 };
-
-export const OpenModule = ({
-  module,
-  isFocused,
-  handleFocus,
-}: {
-  module: {
-    topic: string;
-    subModules: {
-      topic: string;
-      len: number;
-      checked: boolean;
-    }[];
-    locked: boolean;
-  };
-  isFocused: boolean;
-  handleFocus: (topic: string) => void;
-}) => {
-  return (
-    <div className='w-full flex-col flex px-[12px] py-[8px]'>
-      <div>
-        <div className='flex justify-between'>
-          <h3 className='text-[12px] font-bold'>{module.topic}</h3>
-          <button onClick={() => handleFocus(module.topic)}>
-            {isFocused ? <ChevronUp /> : <ChevronDown />}
-          </button>
-        </div>
-        <p className='text-[10px]'>{`${
-          module.subModules.filter((subModule) => subModule.checked).length
-        }/${module.subModules.length} | ${module.subModules.reduce(
-          (acc, curr) => acc + curr.len,
-          0
-        )} min`}</p>
-      </div>
-      <div className='flex flex-col'>
-        {isFocused &&
-          module.subModules.map((subModule) => (
-            <div
-              key={subModule.topic}
-              className='flex items-start py-[8px] px-[12px] hover:bg-[rgba(251,239,255,0.4)] gap-3'
-            >
-              <input
-                type='checkbox'
-                name={subModule.topic}
-                checked={subModule.checked}
-                className='mt-[4px]'
-              />
-              <div className='flex flex-col space-around'>
-                <p className='text-[12px]'>{subModule.topic}</p>
-                <div className='flex items-center'>
-                  <TvMinimalPlay height={10} />
-                  <p className='text-[10px]'>{subModule.len} min</p>
-                </div>
-              </div>
-            </div>
-          ))}
-      </div>
-    </div>
-  );
-};
-
-export const LockedModule = ({ topic }: { topic: string }) => {
-  return (
-    <div className='w-full flex items-center px-[12px] py-[8px]'>
-      <LockKeyhole color='#A3A3A3' height={14} strokeWidth={3} />
-      <p className='text-[#A3A3A3] text-xs'>{topic}</p>
-    </div>
-  );
-};
-
-export default ModuleComponent;
+export default ResourcesComponent;

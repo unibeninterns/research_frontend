@@ -13,7 +13,7 @@ interface Course {
   completionRate: number
 }
 
-type CoursesTableProps = {}
+type CoursesTableProps = Record<string, never>
 
 const CoursesTable: React.FC<CoursesTableProps> = (): React.JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>("")

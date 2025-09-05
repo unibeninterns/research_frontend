@@ -10,7 +10,7 @@ interface QuickAction {
   textColor: string
 }
 
-type CourseQuickActionsProps = {}
+type CourseQuickActionsProps = Record<string, never>
 
 const CourseQuickActions: React.FC<CourseQuickActionsProps> = (): React.JSX.Element => {
   const actions: QuickAction[] = [

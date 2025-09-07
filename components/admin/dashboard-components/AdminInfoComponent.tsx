@@ -27,7 +27,7 @@ export const AdminInfoCard = ({ icon, param, value }: AdminCardInfo) => {
 
 const AdminInfoComponent = ({ cardInfo }: { cardInfo?: AdminCardInfo[] }) => {
   return (
-    <div className='flex overflow-x-scroll p-1'>
+    <div className='flex overflow-x-scroll p-1 w-full'>
       <style jsx>{`
         @keyframes scroll-x {
           from {

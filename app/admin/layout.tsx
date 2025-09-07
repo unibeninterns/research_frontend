@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import logo2 from '../../components/logo2.png';
-import AdminHeader from '@/components/admin/AdminHeader';
+import AdminHeader from '@/components/admin/dashboard-components/AdminHeader';
 
 const navigationItems = [
   {
@@ -345,7 +345,7 @@ export default function AdminLayout({ children }: StudentLayoutProps) {
       </div>
 
       {/* Main Content Area - Add mobile header */}
-      <div className='flex-1 flex flex-col overflow-hidden'>
+      <div className='flex-1 flex flex-col overflow-x-hidden h-full bg-white'>
         {/* Mobile Header Bar */}
         <div className='lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between'>
           <button
@@ -385,8 +385,10 @@ export default function AdminLayout({ children }: StudentLayoutProps) {
         </div>
 
         {/* Main Content */}
-        <AdminHeader pageHeader={pageHeader} />
-        <div className='flex-1 overflow-auto bg-white w-full'>{children}</div>
+        <div className='px-4 py-2 bg-white h-full'>
+          <AdminHeader pageHeader={pageHeader} />
+          <div className='flex-1 bg-white w-full h-full'>{children}</div>
+        </div>
       </div>
     </div>
   );

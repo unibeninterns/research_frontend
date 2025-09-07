@@ -12,7 +12,7 @@ interface StudentsPageProps {
   }
 }
 
-export default function StudentsPage({ searchParams }: StudentsPageProps = {}): React.JSX.Element {
+export default function StudentsPage({ searchParams }: StudentsPageProps = { searchParams: {} }): React.JSX.Element {
   return (
     <div className="min-h-screen bg-gray-50 p-3 sm:p-4 md:p-6 lg:p-8">
       <div className="mx-auto w-full space-y-4 sm:space-y-6 lg:space-y-8">

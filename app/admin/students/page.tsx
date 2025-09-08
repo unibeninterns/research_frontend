@@ -1,3 +1,4 @@
+'use client';
 import type React from 'react';
 import { StudentStats } from '@/components/admin/student-components/student-stats';
 import { StudentsTable } from '@/components/admin/student-components/students-table';

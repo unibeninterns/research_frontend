@@ -1,13 +1,12 @@
 "use client"
 import { Users, UserCheck, Hourglass, BookOpen } from "lucide-react"
 import type React from "react"
-import TutorStats from "@/components/admin/tutor-components/tutor-stats"
 import TutorsTable from "@/components/admin/tutor-components/tutors-table"
 import ExpertInstructorsTable from "@/components/admin/tutor-components/expert-instructors-table"
 import AssistantTutorsTable from "@/components/admin/tutor-components/assistant-tutors-table"
 import TutorNotifications from "@/components/admin/tutor-components/tutor-notifications"
 import TutorQuickActions from "@/components/admin/tutor-components/tutor-quick-actions"
-import AdminInfoComponent from '@/components/admin/dashboard-components/AdminInfoComponent';
+import AdminInfoComponent from '@/components/admin/AdminInfoComponent';
 
 
 const TutorsPage: React.FC = (): React.JSX.Element => {

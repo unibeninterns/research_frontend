@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 interface ModuleData {
   week: string;
   moduleTitle: string;
@@ -35,11 +37,11 @@ function WeeklyModuleCompletion() {
 
   return (
     <div className='flex-1 flex flex-col gap-6 p-6 rounded-[10px] border-[0.5px]'>
-      <div className='flex flex-row items-center justify-between'>
-        <div className='text-[16px] font-semibold'>
+      <div className='flex flex-row items-center justify-between text-nowrap'>
+        <h2 className='text-[16px] font-semibold flex-1'>
           Weekly Module Completion
-        </div>
-        <div className='flex flex-row gap-8 ml-4'>
+        </h2>
+        <div className='flex flex-row gap-4'>
           <select
             defaultValue='research-technologies'
             className='w-32 px-2 py-1 border border-gray-200 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-[#800080] text-[10px] truncate'
@@ -54,9 +56,9 @@ function WeeklyModuleCompletion() {
             <option value='weekly'>Weekly</option>
             <option value='last-month'>Last Month</option>
           </select>
-          <button className='text-sm text-purple-600 hover:text-purple-700'>
+          <Button variant='link' className='text-[10px] text-[#800080] p-1'>
             View all
-          </button>
+          </Button>
         </div>
       </div>
       <div>

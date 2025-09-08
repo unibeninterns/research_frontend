@@ -4,7 +4,7 @@ import React from 'react';
 interface AdminCardInfo {
   icon: React.ReactNode;
   param: string;
-  value: string;
+  value: string | number;
 }
 
 export const AdminInfoCard = ({ icon, param, value }: AdminCardInfo) => {
@@ -25,9 +25,13 @@ export const AdminInfoCard = ({ icon, param, value }: AdminCardInfo) => {
   );
 };
 
-const AdminInfoComponent = ({ cardInfo }: { cardInfo?: AdminCardInfo[] }) => {
+const AdminInfoComponent = ({ cardInfo }: { cardInfo: AdminCardInfo[] }) => {
   return (
-    <div className='flex overflow-x-scroll p-1 w-full'>
+    <div
+      className={`flex p-1 w-full ${
+        cardInfo.length > 3 ? 'overflow-x-scroll' : ''
+      }`}
+    >
       <style jsx>{`
         @keyframes scroll-x {
           from {
@@ -42,7 +46,11 @@ const AdminInfoComponent = ({ cardInfo }: { cardInfo?: AdminCardInfo[] }) => {
           animation: scroll-x 30s linear infinite;
         }
       `}</style>
-      <div className='flex gap-4 animate-scroll flex-nowrap'>
+      <div
+        className={`flex gap-4 ${
+          cardInfo.length > 3 ? 'animate-scroll flex-nowrap' : ''
+        }`}
+      >
         {cardInfo &&
           cardInfo.map((info, index) => (
             <AdminInfoCard
@@ -52,7 +60,7 @@ const AdminInfoComponent = ({ cardInfo }: { cardInfo?: AdminCardInfo[] }) => {
               icon={info.icon}
             />
           ))}
-        {cardInfo &&
+        {cardInfo.length > 3 &&
           cardInfo.map((info, index) => (
             <AdminInfoCard
               key={`second-${index}`}

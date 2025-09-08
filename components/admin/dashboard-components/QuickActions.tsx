@@ -52,7 +52,7 @@ function QuickActions() {
               className='flex items-center justify-center p-4 bg-white border border-[#FBEFFFE5] rounded-[5px] gap-3'
             >
               <div className='text-[#800080]'>{action.icon}</div>
-              <span className='text-center'>{action.title}</span>
+              <span className='text-center text-sm'>{action.title}</span>
             </button>
           ))}
         </div>

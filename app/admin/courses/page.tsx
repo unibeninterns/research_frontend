@@ -1,27 +1,46 @@
-"use client"
+'use client';
+import type React from 'react';
+import { CoursesTable } from '@/components/admin/course-components/CoursesTable';
+import { WeeklyModuleCompletion } from '@/components/admin/course-components/WeeklyModuleCompletion';
+import { CourseQuickActions } from '@/components/admin/course-components/CourseQuickActions';
+import { ChartNoAxesCombined, Clock, LibraryBig } from 'lucide-react';
+import AdminInfoComponent from '@/components/admin/AdminInfoComponent';
 
-import type React from "react"
-import { CourseStats } from "@/components/admin/course-components/course-stats"
-import { CoursesTable } from "@/components/admin/course-components/courses-table"
-import { WeeklyModuleCompletion } from "@/components/admin/course-components/weekly-module-completion"
-import { CourseQuickActions } from "@/components/admin/course-components/course-quick-actions"
+export default function CoursesPage() {
+  const cardInfo = [
+    {
+      param: 'Total Courses',
+      value: 10,
+      icon: <LibraryBig />,
+    },
+    {
+      param: 'Average Course Duration',
+      value: '12 Weeks',
+      icon: <Clock />,
+    },
+    {
+      param: 'Revenue from Courses',
+      value: '₦1,240,000',
+      icon: <ChartNoAxesCombined />,
+    },
+  ];
 
-export default function CoursesPage(): React.JSX.Element {
   return (
-    <div className="min-h-screen bg-gray-50 p-4 ">
-      <div className="mx-auto w-full space-y-6">
-        <CourseStats />
+    <div className='mt-5 '>
+      <div className='mx-auto w-full space-y-6'>
+        <AdminInfoComponent cardInfo={cardInfo} />
+      </div>
+      <div>
         <CoursesTable />
-
-        <div className="grid gap-6 lg:grid-cols-5">
-        <div className="lg:col-span-3">
-            <WeeklyModuleCompletion />
-          </div>
-          <div className="lg:col-span-2">
-            <CourseQuickActions />
-          </div>
+      </div>
+      <div className='flex gap-3 mt-5'>
+        <div className='flex-1'>
+          <WeeklyModuleCompletion />
+        </div>
+        <div>
+          <CourseQuickActions />
         </div>
       </div>
     </div>
-  )
+  );
 }

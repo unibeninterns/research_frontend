@@ -30,8 +30,8 @@ const Lecturer = ({
           className='w-full h-[200px] object-cover rounded-[10px]'
         />
         <div>
-          <h3 className='text-lg lg:text-2xl font-semibold mt-2'>{name}</h3>
-          <p className='text-sm lg:text-[20px]'>{description}</p>
+          <p className='text-lg lg:text-xl font-semibold mt-2'>{name}</p>
+          <p className='text-sm lg:text-[16px] mt-1'>{description}</p>
         </div>
       </div>
       <div
@@ -49,7 +49,7 @@ const Lecturer = ({
             <div className='p-2 md:p-4  flex flex-col'>
               <div className='flex justify-between'>
                 <div className=''>
-                  <h3 className='text-[16px] lg:text-2xl font-semibold'>{name}</h3>
+                  <p className='text-[16px] lg:text-2xl font-semibold'>{name}</p>
                   <p className='text-sm lg:text-[18px] font-light'>
                     {description}
                   </p>
@@ -68,7 +68,7 @@ const Lecturer = ({
           </div>
           <a
             href=''
-            className='w-[280px] lg:mt-6 text-sm md:text-lg flex items-center justify-around text-[rgb(160,32,240)] mb-2'
+            className='tertiary-button w-[280px] lg:mt-6 text-sm md:text-lg flex items-center justify-around text-[#800080] mb-2'
           >
             <p>View Profile on LinkedIn </p>
             <ArrowRight />
@@ -154,7 +154,7 @@ const LecturerSection = () => {
   };
   return (
     <>
-      <div className='mt-5 h-auto w-full lg:3/5 p-2'>
+      <div className='mt-5 h-auto w-full p-2'>
         <div className='mt-3 p-1 relative flex flex-row items-center justify-center gap-2'>
           <button
             onClick={scrollLeft}

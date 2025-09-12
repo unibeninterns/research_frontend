@@ -1,6 +1,23 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+
+h1 {
+  font-size: 84px;
+}
+
+h2 {
+  font-size: 42px;
+}
+
+h3 {
+  font-size: 56px;
+}
+
+h4 {
+  font-size: 32px;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -60,7 +77,9 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: #800080;
+  --hover: #aa47aa;
+  --active: #690069;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -85,6 +104,17 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --primary-button-color: #800080;
+  --primary-button-hover-color: #aa47aa;
+  --primary-button-active-color: #690069;
+
+  --secondary-button-color: #800080;
+  --secondary-button-hover-color: #aa47aa;
+  --secondary-button-active-color: #690069;
+
+  --tertiary-button-color: #800080;
+  --tertiary-button-hover-color: #aa47aa;
+  --tertiary-button-active-color: #690069;
 }
 
 .dark {
@@ -144,4 +174,57 @@ body::-webkit-scrollbar {
 /* For Firefox */
 body {
   scrollbar-width: none;
+}
+.primary-button {
+  background-color: var(--primary-button-color);
+  color: #fff; /* White text for contrast */
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Define the hover state */
+.primary-button:hover {
+  background-color: var(--primary-button-hover-color);
+  border-color: var(--primary-button-hover-color);
+}
+
+/* Define the active state (when the user clicks) */
+.primary-button:active {
+  background-color: var(--primary-button-active-color);
+  border-color: var(--primary-button-active-color);
+}
+
+/* Apply the same logic to a secondary button */
+.secondary-button {
+  /* background-color: inherit; */
+  color: var(--secondary-button-color);
+  border: 1px solid var(--secondary-button-color);
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.secondary-button:hover {
+  color: var(--secondary-button-hover-color);
+  border-color: var(--secondary-button-hover-color);
+}
+
+.secondary-button:active {
+  color: var(--secondary-button-active-color);
+  border-color: var(--secondary-button-active-color);
+}
+
+.tertiary-button {
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.tertiary-button:hover {
+  color: var(--tertiary-button-hover-color);
+  background-color: #f9dbff3d;
+}
+
+.tertiary-button:active {
+  color: var(--tertiary-button-active-color);
+  background-color: #f9dbff3d;
 }

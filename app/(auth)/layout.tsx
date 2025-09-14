@@ -1,5 +1,6 @@
 import type React from "react"
 import Image from "next/image"
+import { AuthProvider } from "@/auth-context"
 
 export default function AuthLayout({
   children,
@@ -49,7 +50,11 @@ export default function AuthLayout({
 
             {/* Right Section */}
             <div className="w-full lg:w-1/2 flex-1 lg:h-full flex items-center justify-center bg-white overflow-y-auto">
-              <div className="w-full h-full">{children}</div>
+            <div className="w-full h-full">
+  <AuthProvider>
+    {children}
+  </AuthProvider>
+</div>
             </div>
           </div>
         </div>

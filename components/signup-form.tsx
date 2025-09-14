@@ -1,33 +1,79 @@
 "use client"
+
 import { useState, type ChangeEvent, type MouseEvent } from "react"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Card, CardContent } from "./ui/card"
 import { Checkbox } from "./ui/checkbox"
 import Link from "next/link"
+import { useAuth } from "@/hooks/use-auth"
+import { Loader2 } from "lucide-react"
+import { useRouter } from "next/navigation" 
+
 
 interface SignupFormData {
-  fullName: string
+  fullname: string
   username: string
   email: string
   password: string
   agreeToTerms: boolean
 }
 
+interface FormErrors {
+  fullname?: string
+  username?: string
+  email?: string
+  password?: string
+  agreeToTerms?: string
+  general?: string
+}
+
 type FormField = keyof SignupFormData
 
 export function SignupForm() {
+  const { signup, isLoading } = useAuth()
+  const router = useRouter()  
+
+
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const [formData, setFormData] = useState<SignupFormData>({
-    fullName: "",
+    fullname: "",
     username: "",
     email: "",
     password: "",
     agreeToTerms: false,
   })
+  const [errors, setErrors] = useState<FormErrors>({})
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {}
+
+    if (!formData.fullname) newErrors.fullname = "Full name is required"
+    if (!formData.username) newErrors.username = "Username is required"
+    if (!formData.email) {
+      newErrors.email = "Email is required"
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid"
+    }
+    if (!formData.password) {
+      newErrors.password = "Password is required"
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters"
+    }
+
+    if (!formData.agreeToTerms) {
+      newErrors.agreeToTerms = "You must agree to the terms"
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   const handleInputChange = (field: FormField, value: string | boolean): void => {
-    setFormData((prev: SignupFormData) => ({ ...prev, [field]: value }))
+    setFormData((prev) => ({ ...prev, [field]: value }))
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: undefined }))
+    }
   }
 
   const handlePasswordToggle = (event: MouseEvent<HTMLButtonElement>): void => {
@@ -35,9 +81,25 @@ export function SignupForm() {
     setShowPassword(!showPassword)
   }
 
-  const handleFormSubmit = (event: MouseEvent<HTMLButtonElement>): void => {
+  const handleFormSubmit = async (event: MouseEvent<HTMLButtonElement>): Promise<void> => {
     event.preventDefault()
-    console.log("Signup form submitted:", formData)
+
+    if (!validateForm()) return
+
+    try {
+      await signup({
+        fullname: formData.fullname,
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        acceptedTermsOfUse: formData.agreeToTerms,
+      })
+      router.push("/verify-email")
+    } catch (error) {
+      setErrors({
+        general: error instanceof Error ? error.message : "Signup failed",
+      })
+    }
   }
 
   return (
@@ -57,14 +119,23 @@ export function SignupForm() {
         </div>
 
         <div className="space-y-6 flex-1 flex flex-col justify-center">
+          {errors.general && (
+            <div className="text-red-600 text-sm bg-red-50 border border-red-200 p-2 rounded-md">
+              {errors.general}
+            </div>
+          )}
+
           <div className="relative">
             <Input
               type="text"
               placeholder="Full Name"
-              value={formData.fullName}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("fullName", e.target.value)}
-              className="h-12 border-gray-200 focus:border-purple-600 focus:ring-purple-600"
+              value={formData.fullname}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                handleInputChange("fullname", e.target.value)
+              }
+              className={`h-12 ${errors.fullname ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
+            {errors.fullname && <p className="text-sm text-red-600 mt-1">{errors.fullname}</p>}
           </div>
 
           <div className="relative">
@@ -72,9 +143,12 @@ export function SignupForm() {
               type="text"
               placeholder="Username"
               value={formData.username}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("username", e.target.value)}
-              className="h-12 border-gray-200 focus:border-purple-600 focus:ring-purple-600"
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                handleInputChange("username", e.target.value)
+              }
+              className={`h-12 ${errors.username ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
+            {errors.username && <p className="text-sm text-red-600 mt-1">{errors.username}</p>}
           </div>
 
           <div className="relative">
@@ -82,9 +156,12 @@ export function SignupForm() {
               type="email"
               placeholder="Email Address"
               value={formData.email}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("email", e.target.value)}
-              className="h-12 border-gray-200 focus:border-purple-600 focus:ring-purple-600"
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                handleInputChange("email", e.target.value)
+              }
+              className={`h-12 ${errors.email ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
+            {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
           </div>
 
           <div className="relative">
@@ -92,8 +169,10 @@ export function SignupForm() {
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={formData.password}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("password", e.target.value)}
-              className="pr-20 h-12 border-gray-200 focus:border-purple-600 focus:ring-purple-600"
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                handleInputChange("password", e.target.value)
+              }
+              className={`pr-20 h-12 ${errors.password ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
             <button
               type="button"
@@ -102,6 +181,7 @@ export function SignupForm() {
             >
               {showPassword ? "Hide" : "Show"}
             </button>
+            {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password}</p>}
           </div>
 
           {/* Terms Checkbox */}
@@ -112,7 +192,7 @@ export function SignupForm() {
               onCheckedChange={(checked: boolean | "indeterminate") =>
                 handleInputChange("agreeToTerms", checked === true)
               }
-              className="mt-1 data-[state=checked]:bg-purple-600 data-[state=checked]:border-purple-600"
+              className={`mt-1 data-[state=checked]:bg-purple-600 data-[state=checked]:border-purple-600 ${errors.agreeToTerms ? "border-red-300" : ""}`}
             />
             <label htmlFor="terms" className="text-sm text-gray-600 leading-relaxed">
               I agree to the{" "}
@@ -123,6 +203,9 @@ export function SignupForm() {
               <a href="#" className="text-purple-600 hover:underline">
                 Privacy Policy
               </a>
+              {errors.agreeToTerms && (
+                <p className="text-sm text-red-600 mt-1">{errors.agreeToTerms}</p>
+              )}
             </label>
           </div>
 
@@ -130,9 +213,16 @@ export function SignupForm() {
           <Button
             onClick={handleFormSubmit}
             className="w-full h-12 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg"
-            disabled={!formData.agreeToTerms}
+            disabled={!formData.agreeToTerms || isLoading}
           >
-            Register
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Creating Account...
+              </>
+            ) : (
+              "Register"
+            )}
           </Button>
 
           {/* Divider */}

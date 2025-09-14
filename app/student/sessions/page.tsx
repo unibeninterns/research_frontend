@@ -7,36 +7,36 @@ export default function Sessions() {
 
   const [currentTab, setCurrentTab] = useState('Upcoming');
   return (
-    <div className='md:p-6 p-2 w-full'>
-      <div className=' mb-2 md:mb-6'>
-        <h1 className='text-[28px] md:text-[32px] font-bold text-gray-900'>Live Sessions</h1>
-        <p className='text-[16px] md:text-[20px]'>
-          Join our weekly sessions to interact with tutors and deepen your
-          learning.
-        </p>
-      </div>
-      <div className='relative w-full shadow-xs'>
-        <div className='flex w-full items-center justify-start gap-[36px] md:gap-[72px]'>
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setCurrentTab(tab)}
-              className={`text-[14px] md:text-[16px] font-semibold ${
-                currentTab === tab
-                  ? 'text-[#800080] border-b-[#800080] border-b z-2 transition duration-100 ease-in-out transform scale-102'
-                  : ''
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+      <div className='md:p-6 p-2 w-full'>
+        <div className=' mb-2 md:mb-6'>
+          <h1 className='text-[28px] md:text-[32px] font-bold text-gray-900'>Live Sessions</h1>
+          <p className='text-[16px] md:text-[20px]'>
+            Join our weekly sessions to interact with tutors and deepen your
+            learning.
+          </p>
         </div>
-        <hr className='absolute bottom-0 w-full' />
+        <div className='relative w-full shadow-xs'>
+          <div className='flex w-full items-center justify-start gap-[36px] md:gap-[72px]'>
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setCurrentTab(tab)}
+                className={`text-[14px] md:text-[16px] font-semibold ${
+                  currentTab === tab
+                    ? 'text-[#800080] border-b-[#800080] border-b z-2 transition duration-100 ease-in-out transform scale-102'
+                    : ''
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+          <hr className='absolute bottom-0 w-full' />
+        </div>
+        <div className='w-full mt-2'>
+          {currentTab === 'Upcoming' ? <UpcomingComponent /> : currentTab === 'Live' ? <LiveComponent /> : currentTab === 'Past' ? <PastComponent /> : null}
+        </div>
       </div>
-      <div className='w-full mt-2'>
-        {currentTab === 'Upcoming' ? <UpcomingComponent /> : currentTab === 'Live' ? <LiveComponent /> : currentTab === 'Past' ? <PastComponent /> : null}
-      </div>
-    </div>
   );
 }
 

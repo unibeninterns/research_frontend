@@ -1,4 +1,4 @@
-const CreditCard = () => {
+const CreditCard = ({...props}) => {
   return (
     <svg
       width='40'
@@ -6,6 +6,7 @@ const CreditCard = () => {
       viewBox='0 0 60 60'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      {...props}
     >
       <g clip-path='url(#clip0_485_81)'>
         <path

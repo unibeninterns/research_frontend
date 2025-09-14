@@ -1,4 +1,4 @@
-const QuotationMark = () => {
+const QuotationMark = ({ ...props }) => {
   return (
     <svg
       width='31'
@@ -7,6 +7,7 @@ const QuotationMark = () => {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
+      {...props}
     >
       <rect
         x='0.666748'

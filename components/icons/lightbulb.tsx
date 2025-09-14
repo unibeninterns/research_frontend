@@ -1,4 +1,4 @@
-const Lightbulb = () => {
+const Lightbulb = ({ ...props }) => {
   return (
     <svg
       width='35'
@@ -6,6 +6,7 @@ const Lightbulb = () => {
       viewBox='0 0 35 35'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      {...props}
     >
       <g clip-path='url(#clip0_545_349)'>
         <path

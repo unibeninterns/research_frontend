@@ -214,7 +214,7 @@ const About = () => {
           priority
         />
         <div className='mt-5 w-full text-white lg:w-3/5'>
-          <h2 className='text-3xl leading-none font-bold md:text-4xl'>
+          <h2 className='text-3xl leading-none font-bold md:text-4xl lg:text-[42px]'>
             Welcome to the
             <br />
             DRID Course Platform
@@ -234,7 +234,7 @@ const About = () => {
       <section className='h-screen w-full bg-[#FBEFFF] lg:px-25 flex place-items-center'>
         <div className='flex w-full flex-col justify-start md:flex-row gap-21 lg:mt-20'>
           <div className='md:w-1/2'>
-            <h2 className='mb-5 text-[18px] font-bold md:text-3xl'>
+            <h2 className='mb-5 text-[18px] lg:text-[42px] font-bold md:text-3xl'>
               The DRID Learning
               <br />
               Experience
@@ -295,7 +295,7 @@ const About = () => {
       </section>
       <section className='min-h-screen w-full bg-white px-2 py-10 md:px-4 lg:px-[100px]'>
         <div className='flex w-full flex-col items-center lg:mt-25'>
-          <h2 className='mb-2 text-2xl leading-none font-bold lg:mb-5'>
+          <h2 className='mb-2 text-2xl lg:text-[42px] leading-none font-bold lg:mb-5'>
             Curriculum Snapshot
           </h2>
           <p className='text-center text-[14px]'>
@@ -337,7 +337,7 @@ const About = () => {
       </section>
       <section className='bg-[#FEFBFF] flex min-h-screen w-full flex-col items-center lg:px-25 lg:pb-15'>
         <div className='flex w-full flex-col items-center justify-center lg:mt-25'>
-          <h2 className=' w-full text-center text-2xl leading-none font-bold lg:text-5xl'>{`What You'll Gain`}</h2>
+          <h2 className=' w-full text-center text-2xl leading-none font-bold lg:text-[42px]'>{`What You'll Gain`}</h2>
           <div className='flex flex-col gap-5 mt-6'>
             {gains.map((gain) => (
               <div key={gain.title} className='flex items-start'>
@@ -350,7 +350,7 @@ const About = () => {
           </div>
         </div>
         <div className='flex w-full flex-col items-center justify-center mt-20'>
-          <h2 className='my-5 w-full text-center text-2xl leading-none font-bold lg:text-5xl'>
+          <h2 className='my-5 w-full text-center text-2xl leading-none font-bold lg:text-[42px]'>
             Who Should Enroll
           </h2>
           <div className='flex flex-col gap-5 mt-6'>
@@ -368,7 +368,7 @@ const About = () => {
       <section className='min-h-screen w-full py-5 lg:py-20 lg:px-25 bg-[#FEFBFF]'>
         <div className='flex w-full flex-col items-center'>
           <div className=''>
-            <h2 className='my-1 w-full text-center text-2xl leading-none font-bold lg:text-5xl'>
+            <h2 className='my-1 w-full text-center text-2xl leading-none font-bold lg:text-[42px]'>
               Meet Your Lecturers
             </h2>
             <p className='text-md mx-1 text-center lg:text-[22px]'>
@@ -381,7 +381,7 @@ const About = () => {
         </div>
         <div className='mt-10 flex w-full flex-col md:items-start justify-center md:flex-row'>
           <div className='m-2 flex flex-1 flex-col items-center justify-center rounded-2xl border-2 border-[#F9DBFF] bg-white px-2 py-4'>
-            <h4 className='lg:m-4 px-2 py-4 text-xl font-bold lg:text-3xl'>
+            <h4 className='lg:m-4 px-2 py-4 text-xl font-bold lg:text-[32px]'>
               Certification Criteria
             </h4>
             <div className='flex flex-col'>
@@ -394,7 +394,7 @@ const About = () => {
             </div>
           </div>
           <div className='m-2 flex flex-1 flex-col items-center justify-center rounded-2xl border-2 border-[#F9DBFF] bg-white px-2 py-4'>
-            <h4 className='lg:m-4 px-2 py-4 text-xl font-bold lg:text-3xl'>
+            <h4 className='lg:m-4 px-2 py-4 text-xl font-bold lg:text-[32px]'>
               Frequently Asked Questions
             </h4>
             <FAQs faqs={info} />
@@ -411,8 +411,8 @@ const About = () => {
           <ArrowRight />
         </a>
       </section>
-      <section className='min-h-screen flex flex-col items-center justify-center bg-[#FEFBFF]'>
-        <h4 className='text-2xl md:text-4xl font-bold mb-2'>
+      <section className='flex flex-col items-center justify-start lg:py-25 bg-[#FEFBFF]'>
+        <h4 className='text-2xl md:text-4xl lg:text-[32px] font-bold mb-2'>
           Ready to start learning with DRID?
         </h4>
         <p className='mt-3 text-sm md:text-xl text-center'>
@@ -421,7 +421,7 @@ const About = () => {
         <div className=' mt-12 flex flex-col items-center justify-center'>
           <a
             href='#'
-            className='primary-button text-white text-sm md:text-[20px] font-[500] md:py-5 lg:px-8 lg:py-3 rounded-md '
+            className='primary-button font-semibold text-white text-sm md:text-[20px] md:py-5 lg:px-8 lg:py-3 rounded-md '
           >
             REGISTER NOW
           </a>

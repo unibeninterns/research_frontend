@@ -9,8 +9,9 @@ import Header from '../components/HomeHeader';
 import Footer from '../components/HomeFooter';
 import Project from '@/components/icons/project';
 import QuotationMark from '@/components/icons/quotation';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Help from '@/components/icons/help';
+import Notes from '@/components/icons/notes';
 // import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
@@ -60,7 +61,7 @@ export default function Home() {
         {/* Hero Content */}
         <div className='relative z-10 max-w-7xl py-16 grid md:grid-cols-2 lg:grid-cols-2 items-center'>
           <div className='w-full col-span-1 text-white'>
-            <h1 className='text-5xl md:text-6xl lg:text-[96px] font-bold leading-none'>
+            <h1 className='text-5xl md:text-6xl lg:text-[84px] font-bold leading-none'>
               Connect. <br />
               Learn. Grow.
             </h1>
@@ -83,8 +84,8 @@ export default function Home() {
       <div className='w-full flex justify-center items-center bg-background lg:px-[100px] mt-33 '>
         <div className='grid items-center max-w-7xl grid-cols-2 text-black'>
           <div className='col-span-2 md:col-span-1'>
-            <div className='text-3xl md:text-5xl mb-5 font-bold'>
-              <h2>About the DRID Course</h2>
+            <div className='text-3xl md:text-5xl lg:text-[42px] mb-5 font-bold'>
+              <h2 className='lg:text-[42px]'>About the DRID Course</h2>
             </div>
             <div className='lg:text-lg'>
               <p>
@@ -129,9 +130,11 @@ export default function Home() {
           <h2 className='text-3xl md:text-4xl lg:text-[42px] font-bold text-black md:col-span-1 col-span-2 justify-center flex'>
             Course Module Preview
           </h2>
-          <p className='lg:text-lg'>Explore core topics covered in the DRID course</p>
+          <p className='lg:text-lg'>
+            Explore core topics covered in the DRID course
+          </p>
         </div>
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5'>
+        <div className='relative grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5 z-5'>
           {weeks.map((week) => (
             <div
               key={week.number}
@@ -154,13 +157,15 @@ export default function Home() {
               </div>
             </div>
           ))}
+          <Notes className='h-57 w-58 lg:absolute lg:top-[-120px] right-20 z-[-5] transform rotate-12'/>
         </div>
         <a
           href='#'
           className='secondary-button px-12 py-4 self-center rounded-[4px] mt-15 lg:text-base'
         >
           <button className='flex justify-between gap-4'>
-                  <p>View Full Curriculum</p><ArrowRight/>
+            <p>View Full Curriculum</p>
+            <ArrowRight />
           </button>
         </a>
       </div>
@@ -189,7 +194,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <a href='#' className='tertiary-button flex-nowrap font-medium mt-10'>
+        <a href='#' className='text-[#800080] tertiary-button flex-nowrap font-medium mt-10'>
           <button className='flex flex-row gap-5 items-center'>
             <p>See More</p>
             <ArrowRight />
@@ -201,7 +206,7 @@ export default function Home() {
       <section className='min-h-screen flex flex-col justify-center items-center'>
         <Help />
 
-        <h2 className='text-2xl md:text-4xl font-bold mb-2'>
+        <h2 className='text-2xl md:text-4xl lg:text-[42px] font-bold mt-4'>
           Got Questions About the Course?
         </h2>
         <p className='text-sm md:text-lg mb-4 max-w-md text-center mt-5'>
@@ -209,7 +214,7 @@ export default function Home() {
           certification and more.
         </p>
 
-        <a href='#' className='tertiary-button flex-nowrap font-medium mt-10'>
+        <a href='#' className='text-[#800080] tertiary-button flex-nowrap font-medium mt-10'>
           <button className='flex flex-row gap-5 items-center lg:text-base'>
             <p>View FAQs</p>
             <ArrowRight />
@@ -219,7 +224,7 @@ export default function Home() {
 
       {/* CTA */}
       <section className='min-h-screen flex flex-col items-center'>
-        <h2 className='text-2xl md:text-4xl font-bold mb-2'>
+        <h2 className='text-2xl md:text-4xl lg:text-[42px] font-bold mb-2'>
           Ready to start learning with DRID?
         </h2>
         <p className='mt-3 text-sm md:text-2xl text-center'>

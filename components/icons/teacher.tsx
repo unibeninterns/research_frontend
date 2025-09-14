@@ -1,4 +1,4 @@
-const Teacher = () => {
+const Teacher = ({ ...props }) => {
   return (
     <svg
       width='30'
@@ -7,6 +7,7 @@ const Teacher = () => {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
+      {...props}
     >
       <rect width='30' height='30' fill='url(#pattern0_545_375)' />
       <defs>

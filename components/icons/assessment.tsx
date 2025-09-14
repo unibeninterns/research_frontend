@@ -1,4 +1,4 @@
-const Assessment = () => {
+const Assessment = ({...props}) => {
   return (
     <svg
       width='30'
@@ -6,6 +6,7 @@ const Assessment = () => {
       viewBox='0 0 62 62'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      {...props}
     >
       <g clip-path='url(#clip0_483_62)'>
         <path

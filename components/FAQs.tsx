@@ -39,7 +39,7 @@ const FAQs = ({ faqs }: { faqs: FAQProps[] }) => {
   };
   return (
 
-    <div className='flex flex-col items-center  w-full'>
+    <div className='flex flex-col items-center w-full px-4'>
       {faqs.map(({ question, answer }) => (
         <FAQ
           key={question}

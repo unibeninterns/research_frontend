@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import footerImg from '../components/Photo.png';
 import Logo from './icons/logo';
-import { link } from 'fs';
 import LinkedIn from './icons/linkedIn';
 
 export default function Footer() {
@@ -59,7 +58,7 @@ export default function Footer() {
           <div className='w-full'>
             <div className='flex items-center gap-4 mb-3'>
               <Logo />
-              <h4 className='font-bold'>DRID</h4>
+              <h4 className='font-bold lg:text-[32px]'>DRID</h4>
             </div>
             <p className='mb-5 max-w-md text-base'>
               Gain future-ready skills with structured research and innovation

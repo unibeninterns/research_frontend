@@ -1,4 +1,4 @@
-const Monitor = () => {
+const Monitor = ({ ...props }) => {
   return (
     <svg
       width='40'
@@ -6,6 +6,7 @@ const Monitor = () => {
       viewBox='0 0 60 55'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      {...props}
     >
       <path
         fill-rule='evenodd'

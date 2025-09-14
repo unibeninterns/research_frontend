@@ -1,4 +1,4 @@
-const Help = () => {
+const Help = (props: object) => {
   return (
     <svg
       width='61'
@@ -6,7 +6,7 @@ const Help = () => {
       viewBox='0 0 61 60'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
-      xmlnsXlink='http://www.w3.org/1999/xlink'
+      xmlnsXlink='http://www.w3.org/1999/xlink' {...props}
     >
       <rect x='0.5' width='60' height='60' fill='url(#pattern0_409_1727)' />
       <defs>

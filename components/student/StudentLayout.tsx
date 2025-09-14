@@ -19,6 +19,7 @@ import {
 import Image from 'next/image';
 import logo2 from '../logo2.png';
 
+
 const navigationItems = [
   {
     name: 'Dashboard',
@@ -112,16 +113,16 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
         )}
       >
         {/* Mobile Header */}
-        <div className='p-4 border-b border-gray-200 flex items-center justify-between'>
-          <div className='flex items-center gap-4'>
+        <div className='p-3 border-b border-gray-200 flex items-center justify-between'>
+          <div className='flex items-center gap-3'>
             <Image
               src={logo2}
               width={56}
               height={56}
               alt='DRID logo'
-              className='h-10 w-12'
+              className='h-8 w-10'
             />
-            <span className='text-xl text-[#800080] md:text-3xl font-extrabold pt-4 tracking-wide'>
+            <span className='text-lg text-[#800080] md:text-2xl font-extrabold pt-3 tracking-wide'>
               DRID
             </span>
           </div>
@@ -136,19 +137,21 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
         </div>
 
         {/* Mobile Navigation */}
-        <div className='flex-1 flex flex-col justify-between p-4'>
+        <div className='flex-1 flex flex-col justify-between p-3'>
           <nav className='space-y-2'>
             {navigationItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = item.name === 'My Classroom' 
+              ? pathname.startsWith(item.href)
+              : pathname === item.href;
               return (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    'flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                    'flex items-center space-x-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors',
                     isActive
                       ? 'bg-[#F9DBFF3D] text-[#800080]'
-                      : 'text-gray-700 hover:bg-gray-100'
+                      : 'text-[#1E1E1E] hover:bg-gray-100'
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -161,16 +164,18 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
 
           <nav className='space-y-2'>
             {bottomItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = item.name === 'My Classroom' 
+              ? pathname.startsWith(item.href)
+              : pathname === item.href;
               return (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    'flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                    'flex items-center space-x-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors',
                     isActive
                       ? 'bg-[#F9DBFF3D] text-[#800080]'
-                      : 'text-gray-700 hover:bg-gray-100'
+                      : 'text-[#1E1E1E] hover:bg-gray-100'
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -181,7 +186,7 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
             })}
             {/* Mobile Logout Button */}
             <button
-              className='flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors w-full text-left text-gray-700 hover:bg-gray-100'
+              className='flex items-center space-x-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors w-full text-left text-[#1E1E1E] hover:bg-gray-100'
               disabled
               title='Logout (not implemented)'
             >
@@ -196,21 +201,21 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
       <div
         className={cn(
           'hidden lg:flex bg-white border-r border-gray-200 flex-col transition-all duration-300',
-          isCollapsed ? 'w-16' : 'w-64'
+          isCollapsed ? 'w-16' : 'w-48'
         )}
       >
         {/* Desktop Header with Logo and Toggle */}
-        <div className='p-4 border-b border-gray-200 flex items-center justify-between'>
+        <div className='p-3 border-b border-gray-200 flex items-center justify-between'>
           {!isCollapsed && (
-            <div className='flex items-center gap-4'>
+            <div className='flex items-center gap-3'>
               <Image
                 src={logo2}
                 width={56}
                 height={56}
                 alt='DRID logo'
-                className='h-10 w-12'
+                className='h-8 w-10'
               />
-              <span className='text-xl text-[#800080] md:text-3xl font-extrabold pt-4 tracking-wide'>
+              <span className='text-lg text-[#800080] md:text-2xl font-extrabold pt-3 tracking-wide'>
                 DRID
               </span>
             </div>
@@ -230,19 +235,21 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
         </div>
 
         {/* Desktop Navigation */}
-        <div className='flex-1 flex flex-col justify-between p-4'>
+        <div className='flex-1 flex flex-col justify-between p-3'>
           <nav className='space-y-2'>
             {navigationItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = item.name === 'My Classroom' 
+              ? pathname.startsWith(item.href)
+              : pathname === item.href;
               return (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    'flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                    'flex items-center space-x-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors',
                     isActive
                       ? 'bg-[#F9DBFF3D] text-[#800080]'
-                      : 'text-gray-700 hover:bg-gray-100',
+                      : 'text-[#1E1E1E] hover:bg-gray-100',
                     isCollapsed && 'justify-center'
                   )}
                   title={isCollapsed ? item.name : undefined}
@@ -256,16 +263,18 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
 
           <nav className='space-y-2'>
             {bottomItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = item.name === 'My Classroom' 
+              ? pathname.startsWith(item.href)
+              : pathname === item.href;
               return (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    'flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                    'flex items-center space-x-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors',
                     isActive
                       ? 'bg-[#F9DBFF3D] text-[#800080]'
-                      : 'text-gray-700 hover:bg-gray-100',
+                      : 'text-[#1E1E1E] hover:bg-gray-100',
                     isCollapsed && 'justify-center'
                   )}
                   title={isCollapsed ? item.name : undefined}
@@ -278,8 +287,8 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
             {/* Desktop Logout Button */}
             <button
               className={cn(
-                'flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors w-full text-left',
-                'text-gray-700 hover:bg-gray-100',
+                'flex items-center space-x-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors w-full text-left',
+                'text-[#1E1E1E] hover:bg-gray-100',
                 isCollapsed && 'justify-center'
               )}
               disabled
@@ -317,15 +326,15 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
               />
             </svg>
           </button>
-          <div className='flex items-center gap-4'>
+          <div className='flex items-center gap-3'>
             <Image
               src={logo2}
               width={56}
               height={56}
               alt='DRID logo'
-              className='h-10 w-12'
+              className='h-8 w-10'
             />
-            <span className='text-xl text-[#800080] md:text-3xl font-extrabold pt-4 tracking-wide'>
+            <span className='text-lg text-[#800080] md:text-2xl font-extrabold pt-3 tracking-wide'>
               DRID
             </span>
           </div>

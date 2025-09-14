@@ -5,6 +5,7 @@ import Image from 'next/image';
 import success from '../../../components/success.png';
 import Loading from '@/components/Loading';
 import { Suspense } from 'react';
+import { ArrowRight } from 'lucide-react';
 
 const plans = {
   basic: {
@@ -32,6 +33,12 @@ function PaymentSuccess() {
     (planParam === 'basic' ? '₦50,000' : '₦90,000');
 
   const selectedPlan = plans[planParam as keyof typeof plans];
+  const paymentDetails = [
+    { detail: 'Reference ID', value: '456-789' },
+    { detail: 'Amount paid', value: '₦90,000' },
+    { detail: 'Plan', value: 'Premium' },
+    { detail: 'Email', value: 'rayweb@gmail.com' },
+  ];
 
   // ✅ Generate and download receipt as PDF
   const downloadReceipt = () => {
@@ -93,57 +100,80 @@ function PaymentSuccess() {
   };
 
   return (
-    <div className='flex-col w-[430px] h-[560px] shadow-lg p-4 items-center my-5 mx-auto justify-center bg-gray-50 px-6 rounded-lg'>
-      {/* Success Icon */}
-      <div className='flex justify-center my-8'>
-        <Image
-          className='bg-transparent'
-          src={success}
-          alt='Payment Successful Icon'
-          width={280}
-          height={280}
-        />
-      </div>
-
-      {/* Title */}
-      <h1 className='text-2xl text-center font-bold text-gray-900 mb-2'>
-        Payment Successful
-      </h1>
-      <p className='text-gray-600 text-center mb-6'>
-        Thank you! Your payment has been confirmed.
-      </p>
-
-      {/* Payment Details */}
-      <div className='text-left border-black border-2 rounded-md p-4 mb-6'>
-        <div className='grid grid-cols-2 gap-y-2'>
-          <div className='font-semibold'>Reference ID:</div>
-          <div>{reference}</div>
-
-          <div className='font-semibold'>Plan:</div>
-          <div>{selectedPlan.name}</div>
-
-          <div className='font-semibold'>Email:</div>
-          <div>{email}</div>
-
-          <div className='font-semibold'>Amount Paid:</div>
-          <div>{amount}</div>
+    <div className='bg-white min-h-screen w-full flex flex-col place-items-center py-8'>
+      <div className='flex-col p-4 items-center my-5 mx-auto justify-center px-6 rounded-lg'>
+        {/* Success Icon */}
+        <div className='flex justify-center'>
+          <Image
+            className='bg-transparent'
+            src='/payment/success.png'
+            alt='Payment Successful Icon'
+            width={387}
+            height={178}
+          />
         </div>
-      </div>
 
-      {/* Buttons */}
-      <div className='flex flex-row gap-3'>
-        <button
-          onClick={() => router.push('/classroom')}
-          className='bg-[#800080] text-white py-2 px-6 rounded-sm hover:cursor-pointer font-medium hover:bg-purple-900 transition'
-        >
-          Go to Classroom
-        </button>
-        <button
-          onClick={downloadReceipt}
-          className='border border-gray-400 py-2 px-6 rounded-sm font-medium hover:cursor-pointer hover:bg-gray-100 transition'
-        >
-          Download Payment Receipt
-        </button>
+        {/* Title */}
+        <h1 className='text-[42px] text-center font-bold'>
+          Payment Successful
+        </h1>
+        <p className='text-center text-base'>
+          Thank you! Your payment has been confirmed.
+        </p>
+
+        {/* Payment Details */}
+        <div className='text-left border-[#EDEEF1] border-1 rounded-[10px] p-4 mt-15'>
+          <div className='flex flex-col gap-6 text-base'>
+            {paymentDetails.map((d) => (
+              <div key={d.detail} className='flex'>
+                <p className='flex-1 lg:text-[14px]'>{d.detail}</p>
+                <p className='flex-1 lg:text-[14px]'>{d.value}</p>
+              </div>
+            ))}
+          </div>
+          {/* Buttons */}
+          <div className='flex flex-row gap-7 mt-12'>
+            <a
+              href='#'
+              className='primary-button px-6 py-3 self-center rounded-[4px] lg:text-[14px]'
+            >
+              <button className='flex justify-center items-center text-nowrap'>
+                <p>Go To My Classroom</p>
+              </button>
+            </a>
+            <a
+              href='#'
+              className='secondary-button px-6 py-3 self-center rounded-[4px] lg:text-[14px]'
+            >
+              <button className='flex justify-between gap-4 items-center text-nowrap'>
+                <p>View Payment</p>
+                <ArrowRight />
+              </button>
+            </a>
+          </div>
+          <div className='flex items-center justify-center mt-12'>
+            <a
+              href='#'
+              className='px-6 py-3 self-center rounded-[4px] lg:text-[12px]'
+            >
+              <button className='flex justify-center items-center text-nowrap'>
+                <p>
+                  {`Don't have an`} <br />
+                  account?
+                </p>
+              </button>
+            </a>
+            <a
+              href='#'
+              className='tertiary-button text-[#800080] px-4 py-2 self-center rounded-[4px] lg:text-[12px]'
+            >
+              <button className='flex justify-between gap-4 items-center text-nowrap'>
+                <p>Contact Support</p>
+                <ArrowRight />
+              </button>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );

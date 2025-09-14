@@ -9,7 +9,7 @@ export default function AuthLayout({
   return (
     <div className="min-h-screen relative">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat backdrop-blur-[2px]"
         style={{
           backgroundImage: `url('/image.png')`,
         }}

@@ -74,7 +74,7 @@ const plans = {
 const PaymentScreen = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const plan = searchParams.get('plan') || 'basic'; // default = basic
+  const plan = searchParams.get('plan') || 'premium'; // default = basic
   const selectedPlan = plans[plan as keyof typeof plans];
 
   const planFeatures = features.filter(
@@ -121,39 +121,45 @@ const PaymentScreen = () => {
   };
 
   return (
-    <div className='min-h-screen w-full justify-center items-center flex'>
-      <div className='rounded-md border-black text-center border-3 w-[500px] px-4 py-10'>
-        <p className='text-3xl font-bold pb-3'>{selectedPlan.name}</p>
+    <div className='min-h-screen w-full justify-center items-center flex flex-col bg-white p-8'>
+      <div className='rounded-[10px] border-[#EDEEF1] text-center border-[0.5px] p-5 lg:px-5 lg:py-4 shadow-sm'>
+        <p className='text-3xl lg:text-[42px] font-bold px-15'>
+          {selectedPlan.name}
+        </p>
 
-        <ul className='list-disc pl-6 text-left border-y-[1px] py-6 border-gray-300'>
+        <hr className='mt-2 text-[#EDEEF1] border-[0.5px]' />
+
+        <ul className='list-disc pl-6 text-left flex flex-col items-start gap-2 mt-4'>
           {planFeatures.map((f) => (
-            <li key={f.feature}>{f.feature}</li>
+            <li key={f.feature} className='text-base'>
+              {f.feature}
+            </li>
           ))}
         </ul>
+        <hr className='mt-4 text-[#EDEEF1] border-[0.5px]' />
 
-        <div>
-          <p className='font-bold text-xl pt-6'>Total Cost</p>
+        <div className='mt-4'>
+          <p className='font-bold text-xl'>Total Cost</p>
           <p className='font-bold text-2xl'>{selectedPlan.price}</p>
 
           <button
             onClick={payWithPaystack}
-            className='bg-[#800080] hover:cursor-pointer text-[15px] text-white px-8 my-5 py-3 rounded-sm'
+            className='primary-button hover:cursor-pointer text-[15px] text-white px-14 mt-10 py-4 rounded-sm mb-7'
           >
             Pay Now
           </button>
         </div>
-
-        <p className='flex items-center text-sm pt-5 justify-center'>
-          Secure checkout with
-          <Image
-            className='w-20 pl-2'
-            src={paystack.src}
-            alt='Paystack Logo'
-            width={80}
-            height={32}
-          />
-        </p>
       </div>
+      <p className='flex items-center text-sm pt-5 justify-center mt-8'>
+        Secure checkout with
+        <Image
+          className='w-20 pl-2'
+          src={paystack.src}
+          alt='Paystack Logo'
+          width={80}
+          height={32}
+        />
+      </p>
     </div>
   );
 };

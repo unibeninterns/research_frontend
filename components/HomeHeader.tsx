@@ -3,27 +3,31 @@
 import type React from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import logo from './Logo.png';
+import Logo from './icons/logo';
 import { useState } from 'react';
+import { Montserrat } from 'next/font/google';
 
 interface NavigationItem {
   href: string;
   label: string;
   isExternal?: boolean;
+  name: string;
 }
 
-export default function Header() {
+const montserrat = Montserrat({
+  subsets: ['latin'],
+});
+export default function Header({ ...props }) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const toggleMenu = (): void => setIsMenuOpen(!isMenuOpen);
   const closeMenu = (): void => setIsMenuOpen(false);
 
   const navigationItems: NavigationItem[] = [
-    { href: '/', label: 'Home' },
-    { href: '/pricing', label: 'Pricing' },
-    { href: '/about', label: 'About Course', isExternal: false },
-    { href: '/student/dashboard', label: 'My Classroom' },
+    { name: 'home', href: '/', label: 'Home' },
+    { name: 'about', href: '/about', label: 'About Course', isExternal: false },
+    { name: 'pricing', href: '/pricing', label: 'Pricing' },
+    { name: 'classroom', href: '/student/dashboard', label: 'My Classroom' },
   ];
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>): void => {
@@ -31,35 +35,30 @@ export default function Header() {
     closeMenu();
   };
 
-  const handleMenuItemClick = (
-    e: React.MouseEvent<HTMLAnchorElement>
-  ): void => {
-    e.preventDefault()
-    closeMenu();
-  };
-
+  // const handleMenuItemClick = (
+  //   e: React.MouseEvent<HTMLAnchorElement>
+  // ): void => {
+  //   components / icons;
+  //   e.preventDefault();
+  //   closeMenu();
+  // };
   return (
-    <>
-      <header className='fixed top-0 w-full left-0 z-50 p-1 md:p-2 lg:p-4 shadow-md flex items-center bg-[#FBEFFF]'>
+    <div className={`${montserrat.className}`} {...props}>
+      <header className='fixed top-0 w-full left-0 z-50 p-1 md:px-[100px] md:py-[14px] shadow-md flex items-center bg-[#FBEFFFB2] backdrop-blur-[2px]'>
         <div className='flex items-center justify-between w-full md:px-8 lg:px-15'>
-          <Image
-            src={logo || '/placeholder.svg'}
-            alt='Drid Research Logo'
-            className='h-8 w-8 md:w-10 md:h-10'
-          />
+          <Logo />
 
-          <div className='hidden lg:flex md:items-center lg:text-xl text-black justify-between w-1/2'>
-            {navigationItems.map((item: NavigationItem, index: number) =>
-              item.href === '/about' ? (
+          <div className='hidden md:flex items-center lg:text-xl text-black justify-between w-1/2 lg:gap-5'>
+            {navigationItems.map((item, index) => (
+              <button
+                className='tertiary-button text-black bg-inherit px-4 rounded-full text-nowrap text-[18px]'
+                key={index}
+              >
                 <Link key={index} href={item.href}>
                   {item.label}
                 </Link>
-              ) : (
-                <a key={index} href={item.href}>
-                  {item.label}
-                </a>
-              )
-            )}
+              </button>
+            ))}
           </div>
 
           <button
@@ -74,13 +73,7 @@ export default function Header() {
           </button>
 
           <div className='hidden lg:flex'>
-            <Image
-              src={logo || '/placeholder.svg'}
-              alt='Drid Research Logo'
-              width={54}
-              height={54}
-              className='w-10 h-10'
-            />
+            <Logo />
           </div>
         </div>
       </header>
@@ -114,7 +107,6 @@ export default function Header() {
                     key={index}
                     href={item.href}
                     className='block text-black hover:text-purple-600 transition-colors'
-                    onClick={handleMenuItemClick}
                   >
                     {item.label}
                   </Link>
@@ -123,7 +115,6 @@ export default function Header() {
                     key={index}
                     href={item.href}
                     className='block text-black hover:text-purple-600 transition-colors'
-                    onClick={handleMenuItemClick}
                   >
                     {item.label}
                   </a>
@@ -133,6 +124,6 @@ export default function Header() {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }

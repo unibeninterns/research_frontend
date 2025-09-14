@@ -46,9 +46,9 @@ function StatusBadge({ status }: StatusBadgeProps): React.JSX.Element {
   )
 }
 
-export function StudentsTable({
+function StudentsTable({
   searchTerm = "",
-  selectedCourse = "All Courses",
+  selectedCourse = "All Courses", 
   onSearchChange,
   onCourseChange,
   onAddStudent,
@@ -302,3 +302,5 @@ export function StudentsTable({
     </div>
   )
 }
+
+export default StudentsTable

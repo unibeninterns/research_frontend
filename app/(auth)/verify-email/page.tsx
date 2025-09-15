@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
+import Email from '@/components/icons/email';
+
 
 export default function VerifyEmailPage() {
   const [otp, setOtp] = useState(Array(6).fill(""))
@@ -89,24 +91,11 @@ export default function VerifyEmailPage() {
   const isComplete = otp.every((digit) => digit !== "")
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white px-4">
+    <div className="flex items-center justify-center min-h-full bg-white px-4">
       <div className="w-full max-w-md text-center">
         {/* Icon */}
         <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-fuchsia-600">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M16 12H8m0 0l4-4m-4 4l4 4m8-8v10a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2h6"
-            />
-          </svg>
+         <Email/>
         </div>
 
         {/* Title */}
@@ -114,8 +103,7 @@ export default function VerifyEmailPage() {
           Check your email
         </h2>
         <p className="mb-6 text-gray-500">
-          We’ve just sent a 6-digit code to your email. Please enter the code
-          below to verify your account.
+        We’ve just sent a 6-digit code to your email. Please enter the code below to verify your account.
         </p>
 
         {/* OTP Inputs */}
@@ -131,7 +119,7 @@ export default function VerifyEmailPage() {
                 onChange={(e) => handleChange(e.target.value, index)}
                 className={`h-12 w-12 rounded-lg border text-center text-lg font-semibold focus:ring-2 focus:ring-fuchsia-600 ${
                   digit
-                    ? "border-fuchsia-600 text-fuchsia-600"
+                    ? "border-[#800080] text-black"
                     : "border-gray-300 text-gray-900"
                 }`}
               />
@@ -139,17 +127,20 @@ export default function VerifyEmailPage() {
           </div>
 
           {/* Timer / Resend link */}
-          <p className="mb-6 text-sm text-gray-500">
+          <p className="mb-6 text-sm flex text-[#800080] text-start">
             {timer > 0 ? (
-              <>Resend code in <span className="font-medium">{timer}s</span></>
+              <>Resend code in  <span className=" ml-1"> 00:{timer}</span></>
             ) : (
+              <>
+              <p className="text-[#1E1E1E]">Didn’t get a code?</p>
               <button
                 type="button"
                 onClick={handleResend}
-                className="font-medium text-fuchsia-600 hover:underline"
+                className="font-medium text-[#800080] ml-6 hover:underline"
               >
                 Resend code
               </button>
+              </>
             )}
           </p>
 
@@ -159,7 +150,7 @@ export default function VerifyEmailPage() {
             disabled={!isComplete || loading}
             className={`w-full rounded-lg px-4 py-3 font-medium text-white transition ${
               isComplete && !loading
-                ? "bg-fuchsia-600 hover:bg-fuchsia-700"
+                ? "bg-[#800080] hover:bg-fuchsia-700"
                 : "bg-gray-200 cursor-not-allowed"
             }`}
           >

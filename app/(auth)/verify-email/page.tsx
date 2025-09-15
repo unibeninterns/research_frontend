@@ -32,12 +32,13 @@ export default function VerifyEmailPage() {
         throw new Error("Verification failed. Please try again.")
       }
 
-      const data = await res.json()
+      // const data = await res.json()
       setMessage("✅ Email verified successfully!")
 
       setTimeout(() => {
         router.push("/login")
       }, 2000)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setMessage(err.message || "Something went wrong")
     } finally {

@@ -1,7 +1,4 @@
 'use client'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ChevronDown, TrendingUp } from 'lucide-react';
 import WelcomeHeader from '@/components/student/dashboard/WelcomeHeader';
 import WeekIndicator from '@/components/student/dashboard/WeekIndicator';
 import NextSession from '@/components/student/dashboard/NextSession';

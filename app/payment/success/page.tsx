@@ -1,8 +1,7 @@
 'use client';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { jsPDF } from 'jspdf';
 import Image from 'next/image';
-import success from '../../../components/success.png';
 import Loading from '@/components/Loading';
 import { Suspense } from 'react';
 import { ArrowRight } from 'lucide-react';
@@ -21,7 +20,6 @@ const plans = {
 };
 
 function PaymentSuccess() {
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   // Read details from query string (from your payment verification step)
@@ -145,7 +143,10 @@ function PaymentSuccess() {
               href='#'
               className='secondary-button px-6 py-3 self-center rounded-[4px] lg:text-[14px]'
             >
-              <button className='flex justify-between gap-4 items-center text-nowrap'>
+              <button
+                onClick={downloadReceipt}
+                className='flex justify-between gap-4 items-center text-nowrap'
+              >
                 <p>View Payment</p>
                 <ArrowRight />
               </button>

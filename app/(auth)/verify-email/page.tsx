@@ -83,9 +83,13 @@ export default function VerifyEmailPage() {
       if (!res.ok) throw new Error("Failed to resend code")
       setMessage("📩 Code resent to your email!")
       setTimer(60)
-    } catch (err: any) {
-      setMessage(err.message || "Something went wrong")
-    }
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setMessage(err.message || "Something went wrong")
+      } else {
+        setMessage("Something went wrong")
+      }
+    }    
   }
 
   const isComplete = otp.every((digit) => digit !== "")
@@ -99,16 +103,16 @@ export default function VerifyEmailPage() {
         </div>
 
         {/* Title */}
-        <h2 className="mb-2 text-2xl font-semibold text-gray-900">
+        <h2 className="mb-2 text-lg md:text-2xl font-semibold text-gray-900">
           Check your email
         </h2>
-        <p className="mb-6 text-gray-500">
+        <p className="mb-6 text-sm md:text-md text-gray-500 w-full">
         We’ve just sent a 6-digit code to your email. Please enter the code below to verify your account.
         </p>
 
         {/* OTP Inputs */}
         <form onSubmit={handleSubmit}>
-          <div className="mb-4 flex justify-center gap-3">
+          <div className="mb-4 flex justify-center gap-1 md:gap-3">
             {otp.map((digit, index) => (
               <input
                 key={index}

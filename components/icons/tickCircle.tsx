@@ -1,12 +1,12 @@
-const TickCircle = ({ ...props }) => {
+const TickCircle = ({ size = 100, ...props }) => {
   return (
     <svg
-      width='101'
-      height='100'
-      viewBox='0 0 101 100'
       fill='none'
-      xmlns='http://www.w3.org/2000/svg'
+      width={size}
+      height={size}
       {...props}
+      viewBox='0 0 101 100'
+      xmlns='http://www.w3.org/2000/svg'
     >
       <rect x='0.5' width='100' height='100' rx='50' fill='#DEFFD8' />
       <path

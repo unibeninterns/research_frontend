@@ -1,4 +1,4 @@
-const Check = ({...props}) => {
+const Check = ({ ...props }) => {
   return (
     <svg
       width='22'
@@ -12,10 +12,10 @@ const Check = ({...props}) => {
         <path
           d='M5 7L9 11L17 3'
           stroke='#800080'
-          stroke-opacity='0.8'
-          stroke-width='3'
-          stroke-linecap='round'
-          stroke-linejoin='round'
+          strokeOpacity='0.8'
+          strokeWidth='3'
+          strokeLinecap='round'
+          strokeLinejoin='round'
           shape-rendering='crispEdges'
         />
       </g>

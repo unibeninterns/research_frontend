@@ -1,0 +1,15 @@
+import DoubleStar from '@/components/icons/doubleStar';
+const Encouragement = () => {
+  return (
+    <div className='flex items-start border-[0.5px] p-4 rounded-[5px] gap-3'>
+      <div>
+        <DoubleStar size={16} />
+      </div>
+      <p className='text-xs text-gray-600'>
+        Small progress is still progress. You are doing great!
+      </p>
+    </div>
+  );
+};
+
+export default Encouragement;

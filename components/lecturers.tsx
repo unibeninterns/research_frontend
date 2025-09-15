@@ -1,3 +1,4 @@
+'use client'
 /* eslint-disable @next/next/no-img-element */
 import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { useRef, useState } from 'react';

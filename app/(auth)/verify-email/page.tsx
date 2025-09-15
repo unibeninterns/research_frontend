@@ -63,8 +63,12 @@ export default function VerifyEmailPage() {
       setTimeout(() => {
         router.push("/login")
       }, 2000)
-    } catch (err: any) {
-      setMessage(err.message || "Something went wrong")
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setMessage(err.message || "Something went wrong")
+      } else {
+        setMessage("Something went wrong")
+      }    
     } finally {
       setLoading(false)
     }

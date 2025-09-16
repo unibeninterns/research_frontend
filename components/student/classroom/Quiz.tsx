@@ -9,10 +9,8 @@ interface Question {
 
 export const Quiz = ({ question }: { question: Question }) => {
   return (
-    <div className="mx-2 mb-5 md:mx-4">
-      <h1 className="mb-3 text-[18px] font-semibold md:text-[24px]">
-        {question.question}
-      </h1>
+    <div className="flex flex-col gap-4">
+      <h1 className="text-[18px] font-semibold">{question.question}</h1>
       <div className="flex flex-col gap-2">
         {question.options.map((o) => (
           <div key={o.option} className="flex items-center">
@@ -22,15 +20,15 @@ export const Quiz = ({ question }: { question: Question }) => {
               name="options"
               value={o.option}
               checked
-              className="mr-5 h-6 w-6 cursor-pointer appearance-none rounded-full border-2 border-[#800080] p-0 checked:bg-[#800080]"
+              className="mr-5 h-4 w-4 cursor-pointer appearance-none rounded-full border border-black p-0 checked:border-[#800080] checked:bg-[#800080]"
             />
-            <label htmlFor={o.option} className="md:text-[18px]">
+            <label htmlFor={o.option} className="text-[16px]">
               {o.option}
             </label>
-            <br></br>
           </div>
         ))}
       </div>
+      <br />
     </div>
   );
 };

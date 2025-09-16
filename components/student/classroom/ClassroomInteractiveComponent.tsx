@@ -3,6 +3,9 @@ import Image from "next/image";
 import { createContext, useContext, useState } from "react";
 import Note from "./NotesComponents";
 import Quiz, { QuizCompletedComponent } from "./Quiz";
+import PDF from "@/components/icons/pdf";
+import PPT from "@/components/icons/ppt";
+import Link from "@/components/icons/link";
 
 // interface ToggleCompletedFunctions {
 //   showCompleted: () => void;
@@ -239,47 +242,51 @@ const NotesComponent = () => {
 };
 
 const ResourcesComponent = () => {
+  const [active, setActive] = useState<number | null>(null);
+  const getIcon = (type: string) => {
+    switch (type) {
+      case "pdf":
+        return <PDF />;
+      case "ppt":
+        return <PPT />;
+      case "link":
+        return <Link />;
+      default:
+        return <PDF />;
+    }
+  };
   const resources = [
     {
-      title: "Lesson 1: Introduction to Data Analysis",
-      text: "The goal is to familiarize students with emerging digital trends, demonstrate how to effectively leverage them in scholarly work, and encourage critical thinking around the ethical use of these technologies in research contexts.",
+      title: "Lecture Slides",
+      subtitle: "Overview of core concepts from module 6",
+      type: "ppt",
+    },
+    {
+      title: "The Future of Digital Research",
+      subtitle: "Trends shaping digital research globally.",
+      type: "link",
+    },
+    {
+      title: "Understanding Research Innovation",
+      subtitle: "Introductory guide to research workflows and digital tools.",
+      type: "pdf",
     },
   ];
   return (
-    <div className="w-full">
-      <div>
-        {resources.map((resource) => (
-          <>
-            <div
-              key={resource.title}
-              className="mb-3 rounded-[5px] border-[1.5px] border-[#800080] px-[16px] py-[12px]"
-            >
-              <h5 className="mb-3 border-b font-bold md:text-lg">
-                {resource.title}
-              </h5>
-              <p className="md:text-lg">{resource.text}</p>
-            </div>
-            <div className="mr-5 flex justify-end gap-10 text-[12px] font-bold">
-              <button className="rounded-[5px] border border-[#800080] px-[16px] py-[10px] text-[#800080]">
-                Cancel
-              </button>
-              <button className="rounded-[5px] border bg-[#800080] px-[16px] py-[10px] text-white">
-                Save Note
-              </button>
-            </div>
-          </>
-        ))}
-      </div>
-      <div className="mt-5 flex gap-10">
-        <button className="flex items-center gap-3 rounded-[5px] border border-[#800080] px-[16px] py-[8px] text-[12px] text-[#800080]">
-          <span>Current Lecture</span>
-          <ChevronDown />
-        </button>
-        <button className="flex items-center gap-3 rounded-[5px] border border-[#800080] px-[16px] py-[8px] text-[12px] text-[#800080]">
-          <span>Sort by Module</span>
-          <ChevronDown />
-        </button>
-      </div>
+    <div className="flex flex-col gap-3 p-2">
+      {resources.map((resource, index) => (
+        <div
+          onClick={() => setActive(index)}
+          key={resource.title}
+          className={`${active === index ? "border-primary border" : ""} rounded-[10px] px-6 py-2 shadow-xs`}
+        >
+          <h3 className="text-base font-semibold">{resource.title}</h3>
+          <div className="flex gap-3">
+            {getIcon(resource.type)}
+            <p className="text-sm">{resource.subtitle}</p>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
@@ -353,29 +360,29 @@ const QuizComponent = () => {
       <Quiz question={quizzes[currentQuestionIndex]} />
       <hr className="border-[#800080]" />
       <div className="mt-3 flex justify-between">
-        <p className="text-[16px] font-medium md:text-[20px]">{`Question ${
+        <p className="text-[16px] font-[500]">{`Question ${
           currentQuestionIndex + 1
         } of ${quizzes.length}`}</p>
         <div className="mr-5 flex justify-end gap-10 text-[12px] font-bold">
           {currentQuestionIndex > 0 && (
             <button
               onClick={() => setCurrentQuestionIndex((prev) => prev - 1)}
-              className="rounded-[5px] border border-[#800080] px-[16px] py-[10px] text-[#800080]"
+              className="secondary-button rounded-[5px] px-5 py-2 text-base font-[400]"
             >
-              Prev
+              Previous
             </button>
           )}
           {currentQuestionIndex + 1 === quizzes.length ? (
             <button
               onClick={showCompleted}
-              className="rounded-[5px] bg-[#800080] px-[16px] py-[10px] text-white"
+              className="primary-button rounded-[5px] px-5 py-2 text-base font-[600] text-[#800080]"
             >
               Submit
             </button>
           ) : (
             <button
               onClick={() => setCurrentQuestionIndex((prev) => prev + 1)}
-              className="rounded-[5px] border border-[#800080] px-[16px] py-[10px] text-[#800080]"
+              className="primary-button rounded-[5px] px-5 py-2 text-base font-[600] text-[#800080]"
             >
               Next
             </button>

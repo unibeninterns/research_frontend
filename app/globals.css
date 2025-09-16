@@ -155,7 +155,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/* For Firefox */
 body {
   scrollbar-width: none;
 }
@@ -169,21 +168,17 @@ body {
     border-color 0.3s;
 }
 
-/* Define the hover state */
 .primary-button:hover {
   background-color: var(--primary-button-hover-color);
   border-color: var(--primary-button-hover-color);
 }
 
-/* Define the active state (when the user clicks) */
 .primary-button:active {
   background-color: var(--primary-button-active-color);
   border-color: var(--primary-button-active-color);
 }
 
-/* Apply the same logic to a secondary button */
 .secondary-button {
-  /* background-color: inherit; */
   color: var(--secondary-button-color);
   border: 1px solid var(--secondary-button-color);
   cursor: pointer;

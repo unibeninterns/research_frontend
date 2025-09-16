@@ -12,22 +12,20 @@ export default function Sessions() {
   const [currentTab, setCurrentTab] = useState("Upcoming");
   return (
     <div className="w-full p-2 md:p-6">
-      <div className="mb-2 md:mb-6">
-        <h1 className="text-[28px] font-bold text-gray-900 md:text-[32px]">
-          Live Sessions
-        </h1>
-        <p className="text-[16px] md:text-[20px]">
+      <div>
+        <h1 className="text-[28px] font-bold text-gray-900">Live Sessions</h1>
+        <p className="text-[16px]">
           Join our weekly sessions to interact with tutors and deepen your
           learning.
         </p>
       </div>
-      <div className="relative w-full shadow-xs">
-        <div className="flex w-full items-center justify-start gap-[36px] md:gap-[72px]">
+      <div className="relative w-full shadow-xs mt-6">
+        <div className="flex w-full items-center justify-start gap-[36px] md:gap-14">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setCurrentTab(tab)}
-              className={`text-[14px] font-semibold md:text-[16px] ${
+              className={`text-[14px] font-semibold ${
                 currentTab === tab
                   ? "z-2 scale-102 transform border-b border-b-[#800080] text-[#800080] transition duration-100 ease-in-out"
                   : ""
@@ -39,7 +37,7 @@ export default function Sessions() {
         </div>
         <hr className="absolute bottom-0 w-full" />
       </div>
-      <div className="mt-2 w-full">
+      <div className="mt-8 w-full">
         {currentTab === "Upcoming" ? (
           <UpcomingComponent />
         ) : currentTab === "Live" ? (

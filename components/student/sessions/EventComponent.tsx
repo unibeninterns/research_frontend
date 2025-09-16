@@ -18,9 +18,9 @@ export const UpcomingEventComponent = ({ event }: { event: Event }) => {
     }
   };
   return (
-    <div className="flex w-full items-center border-b-2">
-      <div className="flex w-full flex-col py-2 md:p-4">
-        <div className="flex items-start">
+    <div className="flex w-full items-start border-b-2">
+      <div className="flex w-full flex-col py-2">
+        <div className="flex items-start gap-4">
           <div
             className={`${getBadgeStyles(
               event.tag,
@@ -28,11 +28,9 @@ export const UpcomingEventComponent = ({ event }: { event: Event }) => {
           >
             {event.tag}
           </div>
-          <h3 className="ml-4 text-[14px] font-bold md:ml-10 md:text-[16px]">
-            {event.topic}
-          </h3>
+          <h3 className="text-[14px] font-bold">{event.topic}</h3>
         </div>
-        <div className="mt-1 flex gap-4 text-[12px] md:text-[16px]">
+        <div className="mt-1 flex text-[12px]">
           <div className="flex flex-1 flex-col">
             <p className="font-medium text-[#1E1E1EB2]">{event.date}</p>
             <p
@@ -55,9 +53,9 @@ export const UpcomingEventComponent = ({ event }: { event: Event }) => {
           </div>
         </div>
       </div>
-      <button className="rounded-[5px] bg-[#800080] px-[8px] py-[6px] text-[10px] font-semibold text-nowrap text-white md:px-[16px] md:py-[8px]">
-        Join Session
-      </button>
+      <button className={`primary-button rounded-[5px] px-[8px] py-[6px] text-[10px] font-semibold text-nowrap md:px-[16px] md:py-[8px] ${event.tag.toLowerCase() === "this week"} ? '' : 'invisible'`}>
+          Add to Calendar
+        </button>
     </div>
   );
 };
@@ -73,9 +71,9 @@ export const LiveEventComponent = ({ event }: { event: Event }) => {
     }
   };
   return (
-    <div className="flex w-full items-center border-b-2">
-      <div className="flex w-full flex-col py-2 md:p-4">
-        <div className="flex items-start">
+    <div className="flex w-full items-start border-b-2">
+      <div className="flex w-full flex-col py-2">
+        <div className="flex items-start gap-4">
           <div
             className={`${getBadgeStyles(
               event.tag,
@@ -83,11 +81,9 @@ export const LiveEventComponent = ({ event }: { event: Event }) => {
           >
             {event.tag}
           </div>
-          <h3 className="ml-4 text-[14px] font-bold md:ml-10 md:text-[16px]">
-            {event.topic}
-          </h3>
+          <h3 className="text-[14px] font-bold">{event.topic}</h3>
         </div>
-        <div className="mt-1 flex text-[12px] md:text-[16px]">
+        <div className="mt-1 flex gap-4 text-[12px]">
           <div className="flex flex-1 flex-col">
             <p className="font-medium text-[#1E1E1EB2]">{event.date}</p>
             <p
@@ -99,19 +95,19 @@ export const LiveEventComponent = ({ event }: { event: Event }) => {
             </p>
           </div>
           <div className="flex flex-1 flex-col">
+            <p className={`font-medium text-[#1E1E1EB2]`}>Facilitator</p>
             <p
               className={`font-medium ${
                 event.time ? "font-bold" : "text-[#A3A3A3]"
               }`}
             >
-              Facilitator
+              {event.facilitator ? event.facilitator : "To be Announced"}
             </p>
-            <p className="font-medium text-[#1E1E1EB2]">{event.date}</p>
           </div>
         </div>
       </div>
-      <button className="rounded-[5px] bg-[#800080] px-[8px] py-[6px] text-[10px] font-semibold text-white md:px-[16px] md:py-[8px]">
-        Add to Calendar
+      <button className="primary-button rounded-[5px] px-[8px] py-[6px] text-[10px] font-semibold text-nowrap md:px-[16px] md:py-[8px]">
+        Join Session
       </button>
     </div>
   );
@@ -130,21 +126,19 @@ export const PastEventComponent = ({ event }: { event: Event }) => {
     }
   };
   return (
-    <div className="flex w-full items-center border-b-2">
-      <div className="flex w-full flex-col py-2 md:p-4">
-        <div className="flex items-start">
+    <div className="flex w-full items-start border-b-2">
+      <div className="flex w-full flex-col py-2">
+        <div className="flex items-start gap-4">
           <div
             className={`${getBadgeStyles(
               event.tag,
-            )} rounded-[5px] px-2 py-1 text-[10px] font-medium uppercase`}
+            )} rounded-[5px] px-2 py-1 text-[10px] font-medium text-nowrap uppercase`}
           >
             {event.tag}
           </div>
-          <h3 className="ml-4 text-[14px] font-bold md:ml-10 md:text-[16px]">
-            {event.topic}
-          </h3>
+          <h3 className="text-[14px] font-bold">{event.topic}</h3>
         </div>
-        <div className="mt-1 flex text-[12px] md:text-[16px]">
+        <div className="mt-1 flex gap-4 text-[12px]">
           <div className="flex flex-1 flex-col">
             <p className="font-medium text-[#1E1E1EB2]">{event.date}</p>
             <p
@@ -156,18 +150,18 @@ export const PastEventComponent = ({ event }: { event: Event }) => {
             </p>
           </div>
           <div className="flex flex-1 flex-col">
+            <p className={`font-medium text-[#1E1E1EB2]`}>Facilitator</p>
             <p
               className={`font-medium ${
                 event.time ? "font-bold" : "text-[#A3A3A3]"
               }`}
             >
-              Facilitator
+              {event.facilitator ? event.facilitator : "To be Announced"}
             </p>
-            <p className="font-medium text-[#1E1E1EB2]">{event.facilitator}</p>
           </div>
         </div>
       </div>
-      <button className="rounded-[5px] border border-[#800080] px-[8px] py-[6px] text-[10px] font-semibold text-[#800080] md:px-[16px] md:py-[8px]">
+      <button className="secondary-button rounded-[5px] px-[8px] py-[6px] text-[10px] font-semibold text-nowrap md:px-[16px] md:py-[8px]">
         Watch Replay
       </button>
     </div>

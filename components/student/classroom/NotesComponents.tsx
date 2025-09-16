@@ -6,10 +6,10 @@ const Note = ({
   note: { module: string; subModule: string; note: string };
 }) => {
   return (
-    <div className="flex w-full flex-col text-[16px] shadow-xs gap-2">
+    <div className="flex w-full flex-col gap-2 text-[16px] shadow-xs">
       <div className="flex justify-between gap-3 bg-white">
         <div className="flex flex-1 items-center justify-between text-[14px]">
-          <p className="font-bold flex-1  text-ellipsis">{note.module}</p>
+          <p className="flex-1 font-bold text-ellipsis">{note.module}</p>
           <p className="flex-1 text-ellipsis">{note.subModule}</p>
         </div>
         <div className="flex items-center justify-between">

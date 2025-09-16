@@ -1,4 +1,4 @@
-import ResourcesComponent from "@/components/student/sessions/resources/ResourceComponent";
+import ResourcesComponent from "@/components/student/resources/ResourceComponent";
 
 export default function Resources() {
   return (

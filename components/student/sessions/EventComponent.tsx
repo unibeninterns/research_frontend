@@ -53,9 +53,11 @@ export const UpcomingEventComponent = ({ event }: { event: Event }) => {
           </div>
         </div>
       </div>
-      <button className={`primary-button rounded-[5px] px-[8px] py-[6px] text-[10px] font-semibold text-nowrap md:px-[16px] md:py-[8px] ${event.tag.toLowerCase() === "this week"} ? '' : 'invisible'`}>
-          Add to Calendar
-        </button>
+      <button
+        className={`primary-button rounded-[5px] px-[8px] py-[6px] text-[10px] font-semibold text-nowrap md:px-[16px] md:py-[8px] ${event.tag.toLowerCase() === "this week"} ? '' : 'invisible'`}
+      >
+        Add to Calendar
+      </button>
     </div>
   );
 };

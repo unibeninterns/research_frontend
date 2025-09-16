@@ -19,7 +19,7 @@ export default function Sessions() {
           learning.
         </p>
       </div>
-      <div className="relative w-full shadow-xs mt-6">
+      <div className="relative mt-6 w-full shadow-xs">
         <div className="flex w-full items-center justify-start gap-[36px] md:gap-14">
           {tabs.map((tab) => (
             <button

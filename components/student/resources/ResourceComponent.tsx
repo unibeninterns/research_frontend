@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { LockedModule, OpenModule } from "../../classroom/ModulesComponent";
+import { LockedModule, OpenModule } from "../classroom/ModulesComponent";
 
 const ResourcesComponent = () => {
   const [focus, setFocus] = useState("");

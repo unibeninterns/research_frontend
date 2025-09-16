@@ -1,13 +1,13 @@
-import type React from "react"
-import Image from "next/image"
+import type React from "react";
+import Image from "next/image";
 
 export default function AuthLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen relative">
+    <div className="relative min-h-screen">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat backdrop-blur-[2px]"
         style={{
@@ -17,34 +17,40 @@ export default function AuthLayout({
 
       <div className="absolute inset-0 bg-black/30" />
 
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-6xl bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl">
-          <div className="flex flex-col lg:flex-row h-[90vh] lg:h-[80vh]">
+      <div className="relative z-10 flex min-h-screen items-center justify-center p-4">
+        <div className="w-full max-w-6xl overflow-hidden rounded-2xl bg-white/10 shadow-2xl backdrop-blur-sm">
+          <div className="flex h-[90vh] flex-col lg:h-[80vh] lg:flex-row">
             {/* Left Section */}
-            <div className="w-full lg:w-1/2 h-3/10 lg:h-full relative">
+            <div className="relative h-3/10 w-full lg:h-full lg:w-1/2">
               <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
                   backgroundImage: `url('/image.png')`,
                 }}
               />
               <div className="absolute inset-0 bg-black/20" />
 
-              <div className="relative z-10 flex items-center justify-center lg:justify-start p-8 lg:p-16 h-full">
-                <div className="text-white max-w-md text-center lg:text-left">
-                  <div className="flex left-0 mb-4">
-                    <Image 
-                src="/authLogo.png" 
-                alt="Drid Research Logo" 
-                width={54} 
-                height={54}
-                className="w-11 h-11 lg:w-[64px] lg:h-[64px]"
-/>
-                <p className="ml-4 text-left font-bold text-sm lg:text-xl">DIRECTORATE OF <br/>RESEARCH, INNOVATION<br/> AND DEVELOPMENT</p>
+              <div className="relative z-10 flex h-full items-center justify-center p-8 lg:justify-start lg:p-16">
+                <div className="max-w-md text-center text-white lg:text-left">
+                  <div className="left-0 mb-4 flex">
+                    <Image
+                      src="/authLogo.png"
+                      alt="Drid Research Logo"
+                      width={54}
+                      height={54}
+                      className="h-11 w-11 lg:h-[64px] lg:w-[64px]"
+                    />
+                    <p className="ml-4 text-left text-sm font-bold lg:text-xl">
+                      DIRECTORATE OF <br />
+                      RESEARCH, INNOVATION
+                      <br /> AND DEVELOPMENT
+                    </p>
                   </div>
-                
-                  <h1 className="text-2xl lg:text-5xl font-bold mb-4 leading-tight">Enter a World of Knowledge</h1>
-                  <p className="text-md lg:text-xl text-white/90 leading-relaxed">
+
+                  <h1 className="mb-4 text-2xl leading-tight font-bold lg:text-5xl">
+                    Enter a World of Knowledge
+                  </h1>
+                  <p className="text-md leading-relaxed text-white/90 lg:text-xl">
                     Join us in promoting education and research
                   </p>
                 </div>
@@ -52,12 +58,12 @@ export default function AuthLayout({
             </div>
 
             {/* Right Section */}
-            <div className="w-full lg:w-1/2 flex-1 lg:h-full flex items-center justify-center bg-white overflow-y-auto">
-              <div className="w-full h-full">{children}</div>
+            <div className="flex w-full flex-1 items-center justify-center overflow-y-auto bg-white lg:h-full lg:w-1/2">
+              <div className="h-full w-full">{children}</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

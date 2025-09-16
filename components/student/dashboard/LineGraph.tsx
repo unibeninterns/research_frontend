@@ -9,8 +9,8 @@ import {
   Legend,
   ChartData,
   Scale,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -19,7 +19,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const info = [
@@ -37,15 +37,15 @@ const info = [
   { week: 12, completed: 0 },
 ];
 
-const data: ChartData<'line', number[], string> = {
+const data: ChartData<"line", number[], string> = {
   labels: info.map((i) => `Week ${i.week}`),
   datasets: [
     {
       data: info.map((i) => i.completed),
-      backgroundColor: '#800080',
-      borderColor: '#800080',
+      backgroundColor: "#800080",
+      borderColor: "#800080",
       borderWidth: 1,
-      cubicInterpolationMode: 'monotone' as const,
+      cubicInterpolationMode: "monotone" as const,
     },
   ],
 };
@@ -54,7 +54,7 @@ const options = {
   responsive: true,
   maintainAspectRatio: false,
   font: {
-    family: 'Montserrat',
+    family: "Montserrat",
   },
   plugins: {
     legend: {
@@ -69,8 +69,8 @@ const options = {
       },
       title: {
         display: true,
-        text: 'Modules Completed',
-        position: 'top' as const,
+        text: "Modules Completed",
+        position: "top" as const,
       },
     },
     x: {
@@ -78,21 +78,21 @@ const options = {
         callback: function (
           this: Scale,
           value: string | number,
-          index: number
+          index: number,
         ): string | null {
           return index % 2 === 1 ? this.getLabelForValue(Number(value)) : null;
         },
       },
       title: {
         display: true,
-        text: 'Weeks', // Name for the x-axis
+        text: "Weeks", // Name for the x-axis
       },
     },
   },
 };
 
 const LineGraph = () => {
-  return <Line options={options} data={data} className='' />;
+  return <Line options={options} data={data} className="" />;
 };
 
 export default LineGraph;

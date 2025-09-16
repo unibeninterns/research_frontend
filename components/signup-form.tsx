@@ -1,90 +1,93 @@
-"use client"
+"use client";
 
-import { useState, type ChangeEvent, type MouseEvent } from "react"
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Card, CardContent } from "./ui/card"
-import { Checkbox } from "./ui/checkbox"
-import Link from "next/link"
-import { useAuth } from "@/hooks/use-auth"
-import { Loader2 } from "lucide-react"
-import { useRouter } from "next/navigation" 
-
+import { useState, type ChangeEvent, type MouseEvent } from "react";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Card, CardContent } from "./ui/card";
+import { Checkbox } from "./ui/checkbox";
+import Link from "next/link";
+import { useAuth } from "@/hooks/use-auth";
+import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface SignupFormData {
-  fullname: string
-  username: string
-  email: string
-  password: string
-  agreeToTerms: boolean
+  fullname: string;
+  username: string;
+  email: string;
+  password: string;
+  agreeToTerms: boolean;
 }
 
 interface FormErrors {
-  fullname?: string
-  username?: string
-  email?: string
-  password?: string
-  agreeToTerms?: string
-  general?: string
+  fullname?: string;
+  username?: string;
+  email?: string;
+  password?: string;
+  agreeToTerms?: string;
+  general?: string;
 }
 
-type FormField = keyof SignupFormData
+type FormField = keyof SignupFormData;
 
 export function SignupForm() {
-  const { signup, isLoading } = useAuth()
-  const router = useRouter()  
+  const { signup, isLoading } = useAuth();
+  const router = useRouter();
 
-
-  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [formData, setFormData] = useState<SignupFormData>({
     fullname: "",
     username: "",
     email: "",
     password: "",
     agreeToTerms: false,
-  })
-  const [errors, setErrors] = useState<FormErrors>({})
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const validateForm = (): boolean => {
-    const newErrors: FormErrors = {}
+    const newErrors: FormErrors = {};
 
-    if (!formData.fullname) newErrors.fullname = "Full name is required"
-    if (!formData.username) newErrors.username = "Username is required"
+    if (!formData.fullname) newErrors.fullname = "Full name is required";
+    if (!formData.username) newErrors.username = "Username is required";
     if (!formData.email) {
-      newErrors.email = "Email is required"
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid"
+      newErrors.email = "Email is invalid";
     }
     if (!formData.password) {
-      newErrors.password = "Password is required"
+      newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters"
+      newErrors.password = "Password must be at least 6 characters";
     }
 
     if (!formData.agreeToTerms) {
-      newErrors.agreeToTerms = "You must agree to the terms"
+      newErrors.agreeToTerms = "You must agree to the terms";
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-  const handleInputChange = (field: FormField, value: string | boolean): void => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
+  const handleInputChange = (
+    field: FormField,
+    value: string | boolean,
+  ): void => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }))
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
-  }
+  };
 
   const handlePasswordToggle = (event: MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault()
-    setShowPassword(!showPassword)
-  }
+    event.preventDefault();
+    setShowPassword(!showPassword);
+  };
 
-  const handleFormSubmit = async (event: MouseEvent<HTMLButtonElement>): Promise<void> => {
-    event.preventDefault()
+  const handleFormSubmit = async (
+    event: MouseEvent<HTMLButtonElement>,
+  ): Promise<void> => {
+    event.preventDefault();
 
-    if (!validateForm()) return
+    if (!validateForm()) return;
 
     try {
       await signup({
@@ -93,34 +96,34 @@ export function SignupForm() {
         email: formData.email,
         password: formData.password,
         acceptedTermsOfUse: formData.agreeToTerms,
-      })
-      router.push("/verify-email")
+      });
+      router.push("/verify-email");
     } catch (error) {
       setErrors({
         general: error instanceof Error ? error.message : "Signup failed",
-      })
+      });
     }
-  }
+  };
 
   return (
-    <Card className="w-full bg-white/95 backdrop-blur-sm shadow-2xl border-0 min-h-full flex flex-col">
-      <CardContent className="p-8 flex-1 flex flex-col">
+    <Card className="flex min-h-full w-full flex-col border-0 bg-white/95 shadow-2xl backdrop-blur-sm">
+      <CardContent className="flex flex-1 flex-col p-8">
         {/* Tab Navigation */}
-        <div className="flex mb-8">
-          <div className="flex-1 pb-3 text-center font-medium border-b-2 text-purple-600 border-purple-600">
+        <div className="mb-8 flex">
+          <div className="flex-1 border-b-2 border-purple-600 pb-3 text-center font-medium text-purple-600">
             Register
           </div>
           <Link
             href="/login"
-            className="flex-1 pb-3 text-center font-medium border-b-2 text-gray-500 border-transparent hover:text-gray-700 transition-colors"
+            className="flex-1 border-b-2 border-transparent pb-3 text-center font-medium text-gray-500 transition-colors hover:text-gray-700"
           >
             Login
           </Link>
         </div>
 
-        <div className="space-y-6 flex-1 flex flex-col justify-center">
+        <div className="flex flex-1 flex-col justify-center space-y-6">
           {errors.general && (
-            <div className="text-red-600 text-sm bg-red-50 border border-red-200 p-2 rounded-md">
+            <div className="rounded-md border border-red-200 bg-red-50 p-2 text-sm text-red-600">
               {errors.general}
             </div>
           )}
@@ -135,7 +138,9 @@ export function SignupForm() {
               }
               className={`h-12 ${errors.fullname ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
-            {errors.fullname && <p className="text-sm text-red-600 mt-1">{errors.fullname}</p>}
+            {errors.fullname && (
+              <p className="mt-1 text-sm text-red-600">{errors.fullname}</p>
+            )}
           </div>
 
           <div className="relative">
@@ -148,7 +153,9 @@ export function SignupForm() {
               }
               className={`h-12 ${errors.username ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
-            {errors.username && <p className="text-sm text-red-600 mt-1">{errors.username}</p>}
+            {errors.username && (
+              <p className="mt-1 text-sm text-red-600">{errors.username}</p>
+            )}
           </div>
 
           <div className="relative">
@@ -161,7 +168,9 @@ export function SignupForm() {
               }
               className={`h-12 ${errors.email ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
-            {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
+            {errors.email && (
+              <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+            )}
           </div>
 
           <div className="relative">
@@ -172,16 +181,18 @@ export function SignupForm() {
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 handleInputChange("password", e.target.value)
               }
-              className={`pr-20 h-12 ${errors.password ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
+              className={`h-12 pr-20 ${errors.password ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
             <button
               type="button"
               onClick={handlePasswordToggle}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 text-sm"
+              className="absolute top-1/2 right-3 -translate-y-1/2 transform text-sm text-gray-400 hover:text-gray-600"
             >
               {showPassword ? "Hide" : "Show"}
             </button>
-            {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password}</p>}
+            {errors.password && (
+              <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+            )}
           </div>
 
           {/* Terms Checkbox */}
@@ -192,9 +203,12 @@ export function SignupForm() {
               onCheckedChange={(checked: boolean | "indeterminate") =>
                 handleInputChange("agreeToTerms", checked === true)
               }
-              className={`mt-1 data-[state=checked]:bg-purple-600 data-[state=checked]:border-purple-600 ${errors.agreeToTerms ? "border-red-300" : ""}`}
+              className={`mt-1 data-[state=checked]:border-purple-600 data-[state=checked]:bg-purple-600 ${errors.agreeToTerms ? "border-red-300" : ""}`}
             />
-            <label htmlFor="terms" className="text-sm text-gray-600 leading-relaxed">
+            <label
+              htmlFor="terms"
+              className="text-sm leading-relaxed text-gray-600"
+            >
               I agree to the{" "}
               <a href="#" className="text-purple-600 hover:underline">
                 Terms of Service
@@ -204,7 +218,9 @@ export function SignupForm() {
                 Privacy Policy
               </a>
               {errors.agreeToTerms && (
-                <p className="text-sm text-red-600 mt-1">{errors.agreeToTerms}</p>
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.agreeToTerms}
+                </p>
               )}
             </label>
           </div>
@@ -212,7 +228,7 @@ export function SignupForm() {
           {/* Register Button */}
           <Button
             onClick={handleFormSubmit}
-            className="w-full h-12 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg"
+            className="h-12 w-full rounded-lg bg-purple-600 font-medium text-white hover:bg-purple-700"
             disabled={!formData.agreeToTerms || isLoading}
           >
             {isLoading ? (
@@ -231,19 +247,25 @@ export function SignupForm() {
               <div className="w-full border-t border-gray-200" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-500">OR</span>
+              <span className="bg-white px-4 text-gray-500">OR</span>
             </div>
           </div>
 
-          <Button variant="outline" className="w-full h-12 border-gray-200 hover:bg-gray-50 bg-transparent">
-            <span className="mr-3 text-blue-600 font-semibold">G</span>
+          <Button
+            variant="outline"
+            className="h-12 w-full border-gray-200 bg-transparent hover:bg-gray-50"
+          >
+            <span className="mr-3 font-semibold text-blue-600">G</span>
             Continue with Google
           </Button>
 
           {/* Login Link */}
           <div className="text-center">
             <span className="text-gray-600">Already have an account? </span>
-            <Link href="/login" className="text-purple-600 hover:underline font-medium inline-flex items-center">
+            <Link
+              href="/login"
+              className="inline-flex items-center font-medium text-purple-600 hover:underline"
+            >
               Login
               <span className="ml-1">→</span>
             </Link>
@@ -251,5 +273,5 @@ export function SignupForm() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

@@ -1,58 +1,58 @@
-'use client';
-import { useRouter, useSearchParams } from 'next/navigation';
-import Image from 'next/image';
-import paystack from '../../components/paystack-logo.png';
-import { Suspense } from 'react';
-import Loading from '@/components/Loading';
+"use client";
+import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
+import paystack from "../../components/paystack-logo.png";
+import { Suspense } from "react";
+import Loading from "@/components/Loading";
 
 const features = [
   {
-    feature: '12 modules (self-paced, 12 weeks)',
+    feature: "12 modules (self-paced, 12 weeks)",
     basic: true,
     premium: true,
   },
   {
-    feature: 'Two live sessions per week',
+    feature: "Two live sessions per week",
     basic: true,
     premium: true,
   },
   {
-    feature: 'Resources & templates',
+    feature: "Resources & templates",
     basic: true,
     premium: true,
   },
   {
-    feature: 'Student forum access',
+    feature: "Student forum access",
     basic: true,
     premium: true,
   },
   {
-    feature: 'Practice quizzes',
+    feature: "Practice quizzes",
     basic: true,
     premium: true,
   },
   {
-    feature: 'Tutor-graded assessments & feedback',
+    feature: "Tutor-graded assessments & feedback",
     basic: false,
     premium: true,
   },
   {
-    feature: 'Final exam',
+    feature: "Final exam",
     basic: false,
     premium: true,
   },
   {
-    feature: 'Transcript',
+    feature: "Transcript",
     basic: false,
     premium: true,
   },
   {
-    feature: 'Priority support',
+    feature: "Priority support",
     basic: false,
     premium: true,
   },
   {
-    feature: 'Professional Diploma Certificate (upon meeting criteria)',
+    feature: "Professional Diploma Certificate (upon meeting criteria)",
     basic: false,
     premium: true,
   },
@@ -60,25 +60,25 @@ const features = [
 
 const plans = {
   basic: {
-    name: 'Basic Access',
-    price: '₦50,000',
-    key: 'basic',
+    name: "Basic Access",
+    price: "₦50,000",
+    key: "basic",
   },
   premium: {
-    name: 'Premium Access',
-    price: '₦90,000',
-    key: 'premium',
+    name: "Premium Access",
+    price: "₦90,000",
+    key: "premium",
   },
 };
 
 const PaymentScreen = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const plan = searchParams.get('plan') || 'premium'; // default = basic
+  const plan = searchParams.get("plan") || "premium"; // default = basic
   const selectedPlan = plans[plan as keyof typeof plans];
 
   const planFeatures = features.filter(
-    (f) => f[selectedPlan.key as 'basic' | 'premium']
+    (f) => f[selectedPlan.key as "basic" | "premium"],
   );
 
   {
@@ -121,41 +121,41 @@ const PaymentScreen = () => {
   };
 
   return (
-    <div className='min-h-screen w-full justify-center items-center flex flex-col bg-white p-8'>
-      <div className='rounded-[10px] border-[#EDEEF1] text-center border-[0.5px] p-5 lg:px-5 lg:py-4 shadow-sm'>
-        <p className='text-3xl lg:text-[42px] font-bold px-15'>
+    <div className="flex min-h-screen w-full flex-col items-center justify-center bg-white p-8">
+      <div className="rounded-[10px] border-[0.5px] border-[#EDEEF1] p-5 text-center shadow-sm lg:px-5 lg:py-4">
+        <p className="px-15 text-3xl font-bold lg:text-[42px]">
           {selectedPlan.name}
         </p>
 
-        <hr className='mt-2 text-[#EDEEF1] border-[0.5px]' />
+        <hr className="mt-2 border-[0.5px] text-[#EDEEF1]" />
 
-        <ul className='list-disc pl-6 text-left flex flex-col items-start gap-2 mt-4'>
+        <ul className="mt-4 flex list-disc flex-col items-start gap-2 pl-6 text-left">
           {planFeatures.map((f) => (
-            <li key={f.feature} className='text-base'>
+            <li key={f.feature} className="text-base">
               {f.feature}
             </li>
           ))}
         </ul>
-        <hr className='mt-4 text-[#EDEEF1] border-[0.5px]' />
+        <hr className="mt-4 border-[0.5px] text-[#EDEEF1]" />
 
-        <div className='mt-4'>
-          <p className='font-bold text-xl'>Total Cost</p>
-          <p className='font-bold text-2xl'>{selectedPlan.price}</p>
+        <div className="mt-4">
+          <p className="text-xl font-bold">Total Cost</p>
+          <p className="text-2xl font-bold">{selectedPlan.price}</p>
 
           <button
             onClick={payWithPaystack}
-            className='primary-button hover:cursor-pointer text-[15px] text-white px-14 mt-10 py-4 rounded-sm mb-7'
+            className="primary-button mt-10 mb-7 rounded-sm px-14 py-4 text-[15px] text-white hover:cursor-pointer"
           >
             Pay Now
           </button>
         </div>
       </div>
-      <p className='flex items-center text-sm pt-5 justify-center mt-8'>
+      <p className="mt-8 flex items-center justify-center pt-5 text-sm">
         Secure checkout with
         <Image
-          className='w-20 pl-2'
+          className="w-20 pl-2"
           src={paystack.src}
-          alt='Paystack Logo'
+          alt="Paystack Logo"
           width={80}
           height={32}
         />

@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { UserPlus, Users, Download, Send } from "lucide-react"
+import type React from "react";
+import { UserPlus, Users, Download, Send } from "lucide-react";
 
 interface QuickAction {
-  id: string
-  title: string
-  icon: React.ReactNode
-  description?: string
-  onClick?: () => void
+  id: string;
+  title: string;
+  icon: React.ReactNode;
+  description?: string;
+  onClick?: () => void;
 }
 
 export function StudentQuickActions(): React.JSX.Element {
   const handleActionClick = (actionId: string): void => {
-    console.log(`[v0] Action clicked: ${actionId}`)
-  }
+    console.log(`[v0] Action clicked: ${actionId}`);
+  };
 
   const actions: QuickAction[] = [
     {
@@ -41,36 +41,39 @@ export function StudentQuickActions(): React.JSX.Element {
     {
       id: "send-reminder",
       title: "Send Reminder",
-      icon: <Send className="h-5 text-purple-800 w-5 lg:h-6 lg:w-6" />,
+      icon: <Send className="h-5 w-5 text-purple-800 lg:h-6 lg:w-6" />,
       description: "Send notifications",
       onClick: () => handleActionClick("send-reminder"),
     },
-  ]
+  ];
 
   return (
-    <div className="rounded-lg bg-white p-4 shadow-sm border border-gray-100 sm:p-6">
-      <h3 className="mb-4 text-lg font-semibold text-gray-900 lg:text-xl">Quick Actions</h3>
+    <div className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm sm:p-6">
+      <h3 className="mb-4 text-lg font-semibold text-gray-900 lg:text-xl">
+        Quick Actions
+      </h3>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:gap-4">
         {actions.map((action: QuickAction) => (
           <button
             key={action.id}
             onClick={action.onClick}
-            className="flex items-center gap-3 rounded-lg border border-gray-200 p-3 text-left hover:bg-gray-50 hover:border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-200 lg:p-4"
+            className="flex items-center gap-3 rounded-lg border border-gray-200 p-3 text-left transition-all duration-200 hover:border-purple-200 hover:bg-gray-50 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-none lg:p-4"
           >
-            <div className={'text-purple-900 flex-shrink-0'}>{action.icon}</div>
+            <div className={"flex-shrink-0 text-purple-900"}>{action.icon}</div>
             <div className="min-w-0 flex-1">
-              <span className="text-sm font-medium text-gray-900 block lg:text-base">{action.title}</span>
+              <span className="block text-sm font-medium text-gray-900 lg:text-base">
+                {action.title}
+              </span>
               {action.description && (
-                <span className="text-xs text-gray-500 block lg:text-sm">{action.description}</span>
+                <span className="block text-xs text-gray-500 lg:text-sm">
+                  {action.description}
+                </span>
               )}
             </div>
           </button>
         ))}
       </div>
     </div>
-  )
+  );
 }
-
-
-

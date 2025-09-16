@@ -1,14 +1,14 @@
-import { Search } from 'lucide-react';
+import { Search } from "lucide-react";
 
 const AdminSearchBar = () => {
   return (
     <>
       <input
-        type='text'
-        name=''
-        id=''
-        placeholder='Search'
-        className='outline-none flex-1'
+        type="text"
+        name=""
+        id=""
+        placeholder="Search"
+        className="flex-1 outline-none"
       />
       <Search />
     </>

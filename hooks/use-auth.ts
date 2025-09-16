@@ -1,3 +1,3 @@
-import { useAuth as useAuthContext } from "@/auth-context"
+import { useAuth as useAuthContext } from "@/auth-context";
 
-export const useAuth = useAuthContext
+export const useAuth = useAuthContext;

@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { useAuth } from "@/hooks/use-auth"
+import type React from "react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/use-auth";
 
 interface PublicRouteProps {
-  children: React.ReactNode
-  redirectTo?: string
-  redirectIfAuthenticated?: boolean
+  children: React.ReactNode;
+  redirectTo?: string;
+  redirectIfAuthenticated?: boolean;
 }
 
 export function PublicRoute({
@@ -16,24 +16,24 @@ export function PublicRoute({
   redirectTo = "/",
   redirectIfAuthenticated = true,
 }: PublicRouteProps): React.JSX.Element {
-  const { isAuthenticated, isLoading } = useAuth()
-  const router = useRouter()
+  const { isAuthenticated, isLoading } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     if (!isLoading && isAuthenticated && redirectIfAuthenticated) {
-      router.push(redirectTo)
+      router.push(redirectTo);
     }
-  }, [isAuthenticated, isLoading, router, redirectTo, redirectIfAuthenticated])
+  }, [isAuthenticated, isLoading, router, redirectTo, redirectIfAuthenticated]);
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-gray-50">
         <div className="text-center">
           <p className="text-gray-600">Loading...</p>
         </div>
       </div>
-    )
+    );
   }
 
-  return <>{children}</>
+  return <>{children}</>;
 }

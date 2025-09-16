@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { UserPlus, Send, Upload, BookOpen } from "lucide-react"
+import type React from "react";
+import { UserPlus, Send, Upload, BookOpen } from "lucide-react";
 
 interface QuickAction {
-  id: string
-  title: string
-  icon: React.ReactNode
+  id: string;
+  title: string;
+  icon: React.ReactNode;
 }
 
 const TutorQuickActions: React.FC = (): React.JSX.Element => {
@@ -31,10 +31,10 @@ const TutorQuickActions: React.FC = (): React.JSX.Element => {
       title: "Assign Tutor to Course",
       icon: <BookOpen className="h-5 w-5" />,
     },
-  ]
+  ];
 
   return (
-    <div className="border px-4 py-6 flex flex-col gap-5 rounded-[5px]">
+    <div className="flex flex-col gap-5 rounded-[5px] border px-4 py-6">
       <div>
         <h3 className="text-[16px] font-bold">Quick Actions</h3>
       </div>
@@ -43,7 +43,7 @@ const TutorQuickActions: React.FC = (): React.JSX.Element => {
           {actions.map((action) => (
             <button
               key={action.id}
-              className="flex items-center justify-center p-4 bg-white border border-[#FBEFFFE5] rounded-[5px] gap-3"
+              className="flex items-center justify-center gap-3 rounded-[5px] border border-[#FBEFFFE5] bg-white p-4"
             >
               <div className="text-[#800080]">{action.icon}</div>
               <span className="text-center">{action.title}</span>
@@ -52,7 +52,7 @@ const TutorQuickActions: React.FC = (): React.JSX.Element => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TutorQuickActions
+export default TutorQuickActions;

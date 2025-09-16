@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -164,7 +164,9 @@ body {
   color: #fff; /* White text for contrast */
   border: 1px solid var(--primary-color);
   cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 /* Define the hover state */
@@ -185,7 +187,9 @@ body {
   color: var(--secondary-button-color);
   border: 1px solid var(--secondary-button-color);
   cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 .secondary-button:hover {
@@ -200,7 +204,9 @@ body {
 
 .tertiary-button {
   cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 .tertiary-button:hover {

@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import type React from 'react';
+import type React from "react";
 
-import Link from 'next/link';
-import Logo from './icons/logo';
-import { useState } from 'react';
-import { Montserrat } from 'next/font/google';
+import Link from "next/link";
+import Logo from "./icons/logo";
+import { useState } from "react";
+import { Montserrat } from "next/font/google";
 
 interface NavigationItem {
   href: string;
@@ -15,7 +15,7 @@ interface NavigationItem {
 }
 
 const montserrat = Montserrat({
-  subsets: ['latin'],
+  subsets: ["latin"],
 });
 export default function Header({ ...props }) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -24,10 +24,10 @@ export default function Header({ ...props }) {
   const closeMenu = (): void => setIsMenuOpen(false);
 
   const navigationItems: NavigationItem[] = [
-    { name: 'home', href: '/', label: 'Home' },
-    { name: 'about', href: '/about', label: 'About Course', isExternal: false },
-    { name: 'pricing', href: '/pricing', label: 'Pricing' },
-    { name: 'classroom', href: '/student/dashboard', label: 'My Classroom' },
+    { name: "home", href: "/", label: "Home" },
+    { name: "about", href: "/about", label: "About Course", isExternal: false },
+    { name: "pricing", href: "/pricing", label: "Pricing" },
+    { name: "classroom", href: "/student/dashboard", label: "My Classroom" },
   ];
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>): void => {
@@ -44,14 +44,14 @@ export default function Header({ ...props }) {
   // };
   return (
     <div className={`${montserrat.className}`} {...props}>
-      <header className='fixed top-0 w-full left-0 z-50 p-1 md:px-[100px] md:py-[14px] shadow-md flex items-center bg-[#FBEFFFB2] backdrop-blur-[2px]'>
-        <div className='flex items-center justify-between w-full md:px-8 lg:px-15'>
+      <header className="fixed top-0 left-0 z-50 flex w-full items-center bg-[#FBEFFFB2] p-1 shadow-md backdrop-blur-[2px] md:px-[100px] md:py-[14px]">
+        <div className="flex w-full items-center justify-between md:px-8 lg:px-15">
           <Logo />
 
-          <div className='hidden md:flex items-center lg:text-xl text-black justify-between w-1/2 lg:gap-5'>
+          <div className="hidden w-1/2 items-center justify-between text-black md:flex lg:gap-5 lg:text-xl">
             {navigationItems.map((item, index) => (
               <button
-                className='tertiary-button text-black bg-inherit px-4 rounded-full text-nowrap text-[18px]'
+                className="tertiary-button rounded-full bg-inherit px-4 text-[18px] text-nowrap text-black"
                 key={index}
               >
                 <Link key={index} href={item.href}>
@@ -63,16 +63,16 @@ export default function Header({ ...props }) {
 
           <button
             onClick={toggleMenu}
-            className='lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1'
-            aria-label='Toggle menu'
-            type='button'
+            className="flex h-8 w-8 flex-col items-center justify-center space-y-1 lg:hidden"
+            aria-label="Toggle menu"
+            type="button"
           >
-            <span className='w-6 h-0.5 bg-black'></span>
-            <span className='w-6 h-0.5 bg-black'></span>
-            <span className='w-6 h-0.5 bg-black'></span>
+            <span className="h-0.5 w-6 bg-black"></span>
+            <span className="h-0.5 w-6 bg-black"></span>
+            <span className="h-0.5 w-6 bg-black"></span>
           </button>
 
-          <div className='hidden lg:flex'>
+          <div className="hidden lg:flex">
             <Logo />
           </div>
         </div>
@@ -81,32 +81,32 @@ export default function Header({ ...props }) {
       {isMenuOpen && (
         <>
           <div
-            className='fixed inset-0  bg-white/10 backdrop-blur-sm z-40 md:hidden'
+            className="fixed inset-0 z-40 bg-white/10 backdrop-blur-sm md:hidden"
             onClick={handleOverlayClick}
-            role='button'
+            role="button"
             tabIndex={0}
-            aria-label='Close menu overlay'
+            aria-label="Close menu overlay"
           />
 
-          <div className='fixed right-0 bg-pink-100 rounded-lg shadow-lg z-50 w-64 p-6 lg:hidden'>
+          <div className="fixed right-0 z-50 w-64 rounded-lg bg-pink-100 p-6 shadow-lg lg:hidden">
             <button
               onClick={closeMenu}
-              className='absolute top-4 right-4 w-6 h-6 flex items-center justify-center text-gray-600 hover:text-black'
-              aria-label='Close menu'
-              type='button'
+              className="absolute top-4 right-4 flex h-6 w-6 items-center justify-center text-gray-600 hover:text-black"
+              aria-label="Close menu"
+              type="button"
             >
-              <span className='text-3xl border-4 font-bold border-black py-0.5 px-3 rounded-lg'>
+              <span className="rounded-lg border-4 border-black px-3 py-0.5 text-3xl font-bold">
                 ×
               </span>
             </button>
 
-            <nav className='mt-8 space-y-4'>
+            <nav className="mt-8 space-y-4">
               {navigationItems.map((item: NavigationItem, index: number) =>
-                item.href === '/about' ? (
+                item.href === "/about" ? (
                   <Link
                     key={index}
                     href={item.href}
-                    className='block text-black hover:text-purple-600 transition-colors'
+                    className="block text-black transition-colors hover:text-purple-600"
                   >
                     {item.label}
                   </Link>
@@ -114,11 +114,11 @@ export default function Header({ ...props }) {
                   <a
                     key={index}
                     href={item.href}
-                    className='block text-black hover:text-purple-600 transition-colors'
+                    className="block text-black transition-colors hover:text-purple-600"
                   >
                     {item.label}
                   </a>
-                )
+                ),
               )}
             </nav>
           </div>

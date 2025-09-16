@@ -1,10 +1,10 @@
-import type React from "react"
+import type React from "react";
 
 interface Activity {
-  id: string
-  title: string
-  description: string
-  timestamp: string
+  id: string;
+  title: string;
+  description: string;
+  timestamp: string;
 }
 
 export function RecentActivities(): React.JSX.Element {
@@ -33,25 +33,27 @@ export function RecentActivities(): React.JSX.Element {
       description: "September 9th.",
       timestamp: "5 hours ago",
     },
-  ]
+  ];
 
   return (
-    <div className="rounded-lg bg-white p-4 shadow-sm border border-gray-100 sm:p-6">
-      <h3 className="mb-4 text-lg font-semibold text-gray-900">Recent Student Activities</h3>
+    <div className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm sm:p-6">
+      <h3 className="mb-4 text-lg font-semibold text-gray-900">
+        Recent Student Activities
+      </h3>
 
       <div className="space-y-4">
         {activities.map((activity) => (
           <div key={activity.id} className="flex gap-3">
-            <div className="h-2 w-2 rounded-full bg-purple-500 mt-2 flex-shrink-0"></div>
-            <div className="flex-1 min-w-0">
+            <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-purple-500"></div>
+            <div className="min-w-0 flex-1">
               <p className="text-sm text-gray-900">
                 {activity.title} {activity.description}
               </p>
-              <p className="text-xs text-gray-500 mt-1">{activity.timestamp}</p>
+              <p className="mt-1 text-xs text-gray-500">{activity.timestamp}</p>
             </div>
           </div>
         ))}
       </div>
     </div>
-  )
+  );
 }

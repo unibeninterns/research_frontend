@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
 interface Notification {
-  id: string
-  message: string
-  time: string
+  id: string;
+  message: string;
+  time: string;
 }
 
 const TutorNotifications: React.FC = (): React.JSX.Element => {
@@ -25,11 +25,11 @@ const TutorNotifications: React.FC = (): React.JSX.Element => {
       message: "Assistant tutor assignment completed - Research Tech",
       time: "1 hour ago",
     },
-  ]
+  ];
 
   return (
-    <div className="bg-white rounded-lg border">
-      <div className="p-6 border-b">
+    <div className="rounded-lg border bg-white">
+      <div className="border-b p-6">
         <h2 className="text-lg font-semibold text-gray-900">Notifications</h2>
       </div>
 
@@ -37,17 +37,19 @@ const TutorNotifications: React.FC = (): React.JSX.Element => {
         <div className="space-y-4">
           {notifications.map((notification) => (
             <div key={notification.id} className="flex items-start space-x-3">
-              <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+              <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-purple-600"></div>
               <div className="flex-1">
                 <p className="text-sm text-gray-900">{notification.message}</p>
-                <p className="text-xs text-gray-500 mt-1">{notification.time}</p>
+                <p className="mt-1 text-xs text-gray-500">
+                  {notification.time}
+                </p>
               </div>
             </div>
           ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TutorNotifications
+export default TutorNotifications;

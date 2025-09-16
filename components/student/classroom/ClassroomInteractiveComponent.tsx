@@ -1,13 +1,8 @@
-import {
-  ArrowLeft,
-  ChevronDown,
-  ChevronUp,
-  Plus,
-} from 'lucide-react';
-import Image from 'next/image';
-import { createContext, useContext, useState } from 'react';
-import Note from './NotesComponents';
-import Quiz, { QuizCompletedComponent } from './Quiz';
+import { ArrowLeft, ChevronDown, ChevronUp, Plus } from "lucide-react";
+import Image from "next/image";
+import { createContext, useContext, useState } from "react";
+import Note from "./NotesComponents";
+import Quiz, { QuizCompletedComponent } from "./Quiz";
 
 // interface ToggleCompletedFunctions {
 //   showCompleted: () => void;
@@ -26,7 +21,7 @@ const ClassroomInteractiveComponent = ({
   currentTab: string;
   setTab: (tab: string) => void;
 }) => {
-  const tabs = ['Overview', 'Notes', 'Resources', 'Quiz'];
+  const tabs = ["Overview", "Notes", "Resources", "Quiz"];
   const [completed, setCompleted] = useState(false);
   const hideCompleted = () => setCompleted(false);
   const showCompleted = () => setCompleted(true);
@@ -35,15 +30,15 @@ const ClassroomInteractiveComponent = ({
     <QuizCompletedContext.Provider
       value={{ hideCompleted, showCompleted, completed }}
     >
-      <div className='h-full w-full flex flex-col items-center'>
-        {currentTab === 'Quiz' && (
-          <button className='ml-5 my-3 flex gap-5 self-start'>
+      <div className="flex h-full w-full flex-col items-center">
+        {currentTab === "Quiz" && (
+          <button className="my-3 ml-5 flex gap-5 self-start">
             <ArrowLeft />
             <p>Back to Module</p>
           </button>
         )}
-        <div className='relative w-full shadow-xs'>
-          <div className='flex w-full items-center justify-start gap-[36px] md:gap-[72px] mx-5'>
+        <div className="relative w-full shadow-xs">
+          <div className="mx-5 flex w-full items-center justify-start gap-[36px] md:gap-[56px]">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -51,26 +46,26 @@ const ClassroomInteractiveComponent = ({
                   setTab(tab);
                   setCompleted(false);
                 }}
-                className={`text-[14px] md:text-[16px] font-semibold ${
+                className={`tertiary-button px-1 py-0.5 text-[14px] font-semibold ${
                   currentTab === tab
-                    ? 'text-[#800080] border-b-[#800080] border-b z-2 transition duration-100 ease-in-out transform scale-102'
-                    : ''
+                    ? "z-2 scale-102 transform border-b border-b-[#800080] text-[#800080] transition duration-100 ease-in-out"
+                    : ""
                 }`}
               >
                 {tab}
               </button>
             ))}
           </div>
-          <hr className='absolute bottom-0 w-full' />
+          <hr className="absolute bottom-0 w-full" />
         </div>
-        <div className='w-full h-full py-5'>
-          {currentTab === 'Overview' ? (
+        <div className="h-full w-full py-5">
+          {currentTab === "Overview" ? (
             <OverviewComponent />
-          ) : currentTab === 'Notes' ? (
+          ) : currentTab === "Notes" ? (
             <NotesComponent />
-          ) : currentTab === 'Resources' ? (
+          ) : currentTab === "Resources" ? (
             <ResourcesComponent />
-          ) : currentTab === 'Quiz' ? (
+          ) : currentTab === "Quiz" ? (
             <QuizComponent />
           ) : null}
         </div>
@@ -85,41 +80,41 @@ const OverviewComponent = () => {
     show: `This module provides a comprehensive introduction to the technological tools and digital infrastructures that support modern research practices. It explores how innovation and technology intersect to improve research productivity, collaboration, and dissemination. From cloud-based tools and AI-assisted research to digital archiving and knowledge management systems, learners will gain insights into the evolving landscape of academic research.
     The goal is to familiarize students with emerging digital trends, demonstrate how to effectively leverage them in scholarly work, and encourage critical thinking around the ethical use of these technologies in research contexts.`,
     topics: [
-      'Evolution of research technologies',
-      'Tools for literature review and data analysis',
-      'Digital research collaboraiton platforms',
-      'Innovations in scientific publishing',
-      'Ethics and Integrity in tech-assisted research',
+      "Evolution of research technologies",
+      "Tools for literature review and data analysis",
+      "Digital research collaboraiton platforms",
+      "Innovations in scientific publishing",
+      "Ethics and Integrity in tech-assisted research",
     ],
     outcomes: [
-      'Identify and evaluate key digital tools used in academic research',
-      'Understand the role of technology in shaping research methodologies',
-      'Apply innovative tools in coducting and presenting scholarly work',
-      'Discuss ethical considerations in the use of digital research technologies',
+      "Identify and evaluate key digital tools used in academic research",
+      "Understand the role of technology in shaping research methodologies",
+      "Apply innovative tools in coducting and presenting scholarly work",
+      "Discuss ethical considerations in the use of digital research technologies",
     ],
   };
   return (
-    <div className='w-full flex flex-col items-center px-2'>
-      <div className='w-full text-[14px] md:text-[20px]'>{info.show}</div>
+    <div className="flex w-full flex-col items-center px-2">
+      <div className="w-full text-[16px]">{info.show}</div>
       {showMore ? (
-        <div className='w-full mt-3 flex flex-col mx-4'>
-          <div className='w-full'>
-            <h5 className='text-[16px] md:text-[20px] font-bold mb-2 '>Key Topics Covered</h5>
+        <div className="mx-4 mt-3 flex w-full flex-col">
+          <div className="w-full">
+            <h5 className="mb-2 text-[16px] font-bold">Key Topics Covered</h5>
             <>
               {info.topics.map((topic) => (
-                <li key={topic} className='text-[14px] md:text-[20px]'>
+                <li key={topic} className="text-[16px]">
                   {topic}
                 </li>
               ))}
             </>
           </div>
-          <div className='w-full my-3'>
-            <h5 className='text-[16px] md:text-[20px] font-bold mb-2'>
+          <div className="my-3 w-full">
+            <h5 className="mb-2 text-[16px] font-bold">
               Key Learning Outcomes
             </h5>
             <>
               {info.outcomes.map((topic) => (
-                <li key={topic} className='text-[14px] md:text-[20px]'>
+                <li key={topic} className="text-[16px]">
                   {topic}
                 </li>
               ))}
@@ -128,23 +123,23 @@ const OverviewComponent = () => {
           <hr />
           <LecturerCard />
           <hr />
-          <div className='flex flex-col w-full items-center mt-5 '>
-            <p className='text-xs mb-3'>
+          <div className="mt-5 flex w-full flex-col items-center">
+            <p className="mb-3 text-xs">
               Get DRID certificate by completing entire course
             </p>
-            <button className='text-[10px] text-[rgba(128,0,128,0.3)] border-[rgba(128,0,128,0.3)] border px-8 py-4 rounded-[5px]'>
+            <button className="rounded-[5px] border border-[rgba(128,0,128,0.3)] px-8 py-4 text-[10px] text-[rgba(128,0,128,0.3)]">
               DRID Certificate
             </button>
           </div>
         </div>
       ) : null}
-      <div className='text-[#800080] text-[20px] flex gap-5 self-start my-5'>
-        <p className='text-[14px] md:text-[20px]'>Show more</p>
+      <div className="tertiary-button my-5 flex gap-5 self-start text-[#800080]">
+        <p className="text-[16px]">Show more</p>
         <button onClick={() => setShowMore((prev) => !prev)}>
           {showMore ? (
-            <ChevronUp color='#800080' />
+            <ChevronUp color="#800080" />
           ) : (
-            <ChevronDown color='#800080' />
+            <ChevronDown color="#800080" />
           )}
         </button>
       </div>
@@ -154,28 +149,30 @@ const OverviewComponent = () => {
 
 const LecturerCard = () => {
   const lecturer = {
-    name: 'Dr. Trisha Okonkwo',
-    description: 'Senior Researcher, Digital Innovation Lab',
+    name: "Dr. Trisha Okonkwo",
+    description: "Senior Researcher, Digital Innovation Lab",
     fullDescription:
-      'Dr. Trisha Okonkwo is a Senior Research Fellow at the Digital Innovation Lab, where she specializes in the intersection of AI and social science. She has led over 15 international research projects and mentors early-career scholars across Africa. Her passion lies in using data to drive policy impact and inclusive innovation.',
-    image: '969234aacd9ebc42fda5f7e9f5cb46d0c64ecd88.png',
+      "Dr. Trisha Okonkwo is a Senior Research Fellow at the Digital Innovation Lab, where she specializes in the intersection of AI and social science. She has led over 15 international research projects and mentors early-career scholars across Africa. Her passion lies in using data to drive policy impact and inclusive innovation.",
+    image: "969234aacd9ebc42fda5f7e9f5cb46d0c64ecd88.png",
   };
   return (
-    <div className=' flex flex-row gap-3 w-full justify-center m-2 md:my-5'>
-      <div className='h-[110px] w-[110px] z-20'>
+    <div className="m-2 flex w-full flex-row justify-center gap-3 md:my-5">
+      <div className="z-20 h-[110px] w-[110px]">
         <Image
           src={`/lecturers/${lecturer.image}`}
           alt={lecturer.name}
-          className='object-cover rounded-[10px]'
+          className="rounded-[10px] object-cover"
           height={110}
           width={110}
         />
       </div>
-      <div className='flex flex-col w-[600px]'>
-        <div className='flex justify-between'>
-          <div className=''>
-            <h3 className='text-[18px] md:text-2xl font-semibold'>{lecturer.name}</h3>
-            <p className='tex-[14px] md:text-[18px] font-light'>{lecturer.description}</p>
+      <div className="flex w-[600px] flex-col">
+        <div className="flex justify-between">
+          <div className="">
+            <h3 className="text-[18px] font-semibold md:text-2xl">
+              {lecturer.name}
+            </h3>
+            <p className="text-[16px] font-light">{lecturer.description}</p>
           </div>
           {/* <button
                   onClick={hide}
@@ -184,8 +181,8 @@ const LecturerCard = () => {
                   <X strokeWidth={2} />
                 </button> */}
         </div>
-        <div className='mt-4'>
-          <p className='text-[14px] md:text-[20px]'>{lecturer.fullDescription}</p>
+        <div className="mt-4">
+          <p className="text-[16px]">{lecturer.fullDescription}</p>
         </div>
       </div>
     </div>
@@ -195,44 +192,44 @@ const LecturerCard = () => {
 const NotesComponent = () => {
   const notes = [
     {
-      module: '7: Data Analysis & Visualization',
-      subModule: '1. Introduction to Data Analysis',
-      note: 'The goal is to familiarize students with emerging digital trends, demonstrate how to effectively leverage them in scholarly work, and encourage critical thinking around the ethical use of these technologies in research contexts.',
+      module: "7: Data Analysis & Visualization",
+      subModule: "1. Introduction to Data Analysis",
+      note: "The goal is to familiarize students with emerging digital trends, demonstrate how to effectively leverage them in scholarly work, and encourage critical thinking around the ethical use of these technologies in research contexts.",
     },
     {
-      module: '5: Data Collection Methods',
-      subModule: '1. Introduction to Data Collection',
-      note: 'The goal is to familiarize students with emerging digital trends, demonstrate how to effectively leverage them in scholarly work, and encourage critical thinking around the ethical use of these technologies in research contexts. Evolution of research technologies Tools for literature review and data analysis Digital research collaboration platforms Innovations in scientific publishing Ethics and integrity in tech-assisted research',
+      module: "5: Data Collection Methods",
+      subModule: "1. Introduction to Data Collection",
+      note: "The goal is to familiarize students with emerging digital trends, demonstrate how to effectively leverage them in scholarly work, and encourage critical thinking around the ethical use of these technologies in research contexts. Evolution of research technologies Tools for literature review and data analysis Digital research collaboration platforms Innovations in scientific publishing Ethics and integrity in tech-assisted research",
     },
   ];
   return (
-    <div className='flex flex-col w-full'>
-      <div className='flex flex-col w-full'>
-        <div className='flex items-start px-[12px] gap-[12px] border'>
+    <div className="flex w-full flex-col">
+      <div className="flex w-full flex-col">
+        <div className="flex items-start gap-[12px] border px-[12px]">
           <textarea
-            placeholder='Create a new note'
-            className='w-full py-[12px] outline-0 text-[14px] md:text-[18px'
+            placeholder="Create a new note"
+            className="w-full py-[12px] text-[16px] outline-0"
           />
-          <button className='mt-[12px] bg-black p-[1px] md:p-[4px] rounded-full'>
-            <Plus color='#FFFFFF' strokeWidth={3.5} />
+          <button className="mt-[12px] rounded-full bg-black p-[1px]">
+            <Plus color="#FFFFFF" strokeWidth={2.5} />
           </button>
         </div>
-        <div className='flex gap-10 mt-3'>
-          <button className='flex gap-3 px-[16px] py-[8px] border-[#800080] border text-[12px] text-[#800080] items-center rounded-[5px]'>
+        <div className="mt-3 flex gap-10">
+          <button className="flex items-center gap-3 rounded-[5px] border border-[#800080] px-[16px] py-[8px] text-[12px] text-[#800080]">
             <span>Current Lecture</span>
             <ChevronDown />
           </button>
-          <button className='flex gap-3 px-[16px] py-[8px] border-[#800080] border text-[12px] text-[#800080] items-center rounded-[5px]'>
+          <button className="flex items-center gap-3 rounded-[5px] border border-[#800080] px-[16px] py-[8px] text-[12px] text-[#800080]">
             <span>Sort by Module</span>
             <ChevronDown />
           </button>
         </div>
       </div>
-      <div className='flex flex-col h-full gap-5 mt-5'>
+      <div className="mt-5 flex h-full flex-col gap-5">
         {notes.length > 0 ? (
           notes.map((note) => <Note key={note.note} note={note} />)
         ) : (
-          <div className='place-self-center my-10'>
+          <div className="my-10 place-self-center">
             <p>{`Click the "Create a new note" box or the "+" button to make your first note.`}</p>
           </div>
         )}
@@ -244,41 +241,41 @@ const NotesComponent = () => {
 const ResourcesComponent = () => {
   const resources = [
     {
-      title: 'Lesson 1: Introduction to Data Analysis',
-      text: 'The goal is to familiarize students with emerging digital trends, demonstrate how to effectively leverage them in scholarly work, and encourage critical thinking around the ethical use of these technologies in research contexts.',
+      title: "Lesson 1: Introduction to Data Analysis",
+      text: "The goal is to familiarize students with emerging digital trends, demonstrate how to effectively leverage them in scholarly work, and encourage critical thinking around the ethical use of these technologies in research contexts.",
     },
   ];
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <div>
         {resources.map((resource) => (
           <>
             <div
               key={resource.title}
-              className='rounded-[5px] border-[1.5px] border-[#800080] px-[16px] py-[12px] mb-3'
+              className="mb-3 rounded-[5px] border-[1.5px] border-[#800080] px-[16px] py-[12px]"
             >
-              <h5 className='md:text-lg font-bold border-b mb-3'>
+              <h5 className="mb-3 border-b font-bold md:text-lg">
                 {resource.title}
               </h5>
-              <p className='md:text-lg'>{resource.text}</p>
+              <p className="md:text-lg">{resource.text}</p>
             </div>
-            <div className='flex justify-end mr-5 text-[12px] font-bold gap-10'>
-              <button className='rounded-[5px] border border-[#800080] text-[#800080] px-[16px] py-[10px]'>
+            <div className="mr-5 flex justify-end gap-10 text-[12px] font-bold">
+              <button className="rounded-[5px] border border-[#800080] px-[16px] py-[10px] text-[#800080]">
                 Cancel
               </button>
-              <button className='rounded-[5px] border bg-[#800080] text-white px-[16px] py-[10px]'>
+              <button className="rounded-[5px] border bg-[#800080] px-[16px] py-[10px] text-white">
                 Save Note
               </button>
             </div>
           </>
         ))}
       </div>
-      <div className='flex gap-10 mt-5'>
-        <button className='flex gap-3 px-[16px] py-[8px] border-[#800080] border text-[12px] text-[#800080] items-center rounded-[5px]'>
+      <div className="mt-5 flex gap-10">
+        <button className="flex items-center gap-3 rounded-[5px] border border-[#800080] px-[16px] py-[8px] text-[12px] text-[#800080]">
           <span>Current Lecture</span>
           <ChevronDown />
         </button>
-        <button className='flex gap-3 px-[16px] py-[8px] border-[#800080] border text-[12px] text-[#800080] items-center rounded-[5px]'>
+        <button className="flex items-center gap-3 rounded-[5px] border border-[#800080] px-[16px] py-[8px] text-[12px] text-[#800080]">
           <span>Sort by Module</span>
           <ChevronDown />
         </button>
@@ -291,52 +288,52 @@ const QuizComponent = () => {
   const quizzes = [
     {
       question:
-        'Q1: What is the main benefit of using digital tools in research?',
+        "Q1: What is the main benefit of using digital tools in research?",
       options: [
-        { option: 'Faster funding', checked: true },
-        { option: 'Improved collaboration', checked: false },
-        { option: 'Better typing', checked: false },
-        { option: 'Less paperwork', checked: false },
+        { option: "Faster funding", checked: true },
+        { option: "Improved collaboration", checked: false },
+        { option: "Better typing", checked: false },
+        { option: "Less paperwork", checked: false },
       ],
     },
     {
       question:
-        'Q2: What is the main benefit of using digital tools in research?',
+        "Q2: What is the main benefit of using digital tools in research?",
       options: [
-        { option: 'Faster funding', checked: true },
-        { option: 'Improved collaboration', checked: false },
-        { option: 'Better typing', checked: false },
-        { option: 'Less paperwork', checked: false },
+        { option: "Faster funding", checked: true },
+        { option: "Improved collaboration", checked: false },
+        { option: "Better typing", checked: false },
+        { option: "Less paperwork", checked: false },
       ],
     },
     {
       question:
-        'Q3: What is the main benefit of using digital tools in research?',
+        "Q3: What is the main benefit of using digital tools in research?",
       options: [
-        { option: 'Faster funding', checked: true },
-        { option: 'Improved collaboration', checked: false },
-        { option: 'Better typing', checked: false },
-        { option: 'Less paperwork', checked: false },
+        { option: "Faster funding", checked: true },
+        { option: "Improved collaboration", checked: false },
+        { option: "Better typing", checked: false },
+        { option: "Less paperwork", checked: false },
       ],
     },
     {
       question:
-        'Q4: What is the main benefit of using digital tools in research?',
+        "Q4: What is the main benefit of using digital tools in research?",
       options: [
-        { option: 'Faster funding', checked: true },
-        { option: 'Improved collaboration', checked: false },
-        { option: 'Better typing', checked: false },
-        { option: 'Less paperwork', checked: false },
+        { option: "Faster funding", checked: true },
+        { option: "Improved collaboration", checked: false },
+        { option: "Better typing", checked: false },
+        { option: "Less paperwork", checked: false },
       ],
     },
     {
       question:
-        'Q5: What is the main benefit of using digital tools in research?',
+        "Q5: What is the main benefit of using digital tools in research?",
       options: [
-        { option: 'Faster funding', checked: true },
-        { option: 'Improved collaboration', checked: false },
-        { option: 'Better typing', checked: false },
-        { option: 'Less paperwork', checked: false },
+        { option: "Faster funding", checked: true },
+        { option: "Improved collaboration", checked: false },
+        { option: "Better typing", checked: false },
+        { option: "Less paperwork", checked: false },
       ],
     },
   ];
@@ -345,7 +342,7 @@ const QuizComponent = () => {
 
   if (completed) {
     return (
-      <div className='mt-20'>
+      <div className="mt-20">
         <QuizCompletedComponent />
       </div>
     );
@@ -354,16 +351,16 @@ const QuizComponent = () => {
   return (
     <div>
       <Quiz question={quizzes[currentQuestionIndex]} />
-      <hr className='border-[#800080]' />
-      <div className='flex justify-between mt-3'>
-        <p className='font-medium text-[16px] md:text-[20px]'>{`Question ${
+      <hr className="border-[#800080]" />
+      <div className="mt-3 flex justify-between">
+        <p className="text-[16px] font-medium md:text-[20px]">{`Question ${
           currentQuestionIndex + 1
         } of ${quizzes.length}`}</p>
-        <div className='flex justify-end mr-5 text-[12px] font-bold gap-10'>
+        <div className="mr-5 flex justify-end gap-10 text-[12px] font-bold">
           {currentQuestionIndex > 0 && (
             <button
               onClick={() => setCurrentQuestionIndex((prev) => prev - 1)}
-              className='rounded-[5px] border border-[#800080] text-[#800080] px-[16px] py-[10px]'
+              className="rounded-[5px] border border-[#800080] px-[16px] py-[10px] text-[#800080]"
             >
               Prev
             </button>
@@ -371,14 +368,14 @@ const QuizComponent = () => {
           {currentQuestionIndex + 1 === quizzes.length ? (
             <button
               onClick={showCompleted}
-              className='rounded-[5px] bg-[#800080] text-white px-[16px] py-[10px]'
+              className="rounded-[5px] bg-[#800080] px-[16px] py-[10px] text-white"
             >
               Submit
             </button>
           ) : (
             <button
               onClick={() => setCurrentQuestionIndex((prev) => prev + 1)}
-              className='rounded-[5px] border border-[#800080] text-[#800080] px-[16px] py-[10px]'
+              className="rounded-[5px] border border-[#800080] px-[16px] py-[10px] text-[#800080]"
             >
               Next
             </button>

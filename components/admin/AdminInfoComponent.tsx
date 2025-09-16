@@ -1,5 +1,5 @@
-'use client';
-import React from 'react';
+"use client";
+import React from "react";
 
 interface AdminCardInfo {
   icon: React.ReactNode;
@@ -9,15 +9,15 @@ interface AdminCardInfo {
 
 export const AdminInfoCard = ({ icon, param, value }: AdminCardInfo) => {
   return (
-    <div className='p-4 rounded-[5px] outline-[0.50px] outline-zinc-300 inline-flex justify-start items-center gap-5'>
-      <div className='p-2 bg-fuchsia-50 rounded-[50px] flex justify-center items-center text-fuchsia-800'>
+    <div className="inline-flex items-center justify-start gap-5 rounded-[5px] p-4 outline-[0.50px] outline-zinc-300">
+      <div className="flex items-center justify-center rounded-[50px] bg-fuchsia-50 p-2 text-fuchsia-800">
         {icon}
       </div>
-      <div className='flex-1 inline-flex flex-col justify-center items-start gap-1'>
-        <div className="self-stretch justify-start text-stone-900 text-xs font-medium font-['Montserrat'] whitespace-nowrap">
+      <div className="inline-flex flex-1 flex-col items-start justify-center gap-1">
+        <div className="justify-start self-stretch font-['Montserrat'] text-xs font-medium whitespace-nowrap text-stone-900">
           {param}
         </div>
-        <div className="self-stretch justify-start text-stone-900 text-2xl font-semibold font-['Montserrat']">
+        <div className="justify-start self-stretch font-['Montserrat'] text-2xl font-semibold text-stone-900">
           {value}
         </div>
       </div>
@@ -28,8 +28,8 @@ export const AdminInfoCard = ({ icon, param, value }: AdminCardInfo) => {
 const AdminInfoComponent = ({ cardInfo }: { cardInfo: AdminCardInfo[] }) => {
   return (
     <div
-      className={`flex p-1 w-full ${
-        cardInfo.length > 3 ? 'overflow-x-scroll' : ''
+      className={`flex w-full p-1 ${
+        cardInfo.length > 3 ? "overflow-x-scroll" : ""
       }`}
     >
       <style jsx>{`
@@ -48,7 +48,7 @@ const AdminInfoComponent = ({ cardInfo }: { cardInfo: AdminCardInfo[] }) => {
       `}</style>
       <div
         className={`flex gap-4 ${
-          cardInfo.length > 3 ? 'animate-scroll flex-nowrap' : ''
+          cardInfo.length > 3 ? "animate-scroll flex-nowrap" : ""
         }`}
       >
         {cardInfo &&

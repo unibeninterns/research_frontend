@@ -33,14 +33,18 @@ export default function AuthLayout({
 
               <div className="relative z-10 flex items-center justify-center lg:justify-start p-8 lg:p-16 h-full">
                 <div className="text-white max-w-md text-center lg:text-left">
-                <Image 
+                  <div className="flex left-0 mb-4">
+                    <Image 
                 src="/authLogo.png" 
                 alt="Drid Research Logo" 
                 width={54} 
                 height={54}
-                className="w-11 h-11 lg:w-[54px] lg:h-[54px]"
+                className="w-11 h-11 lg:w-[64px] lg:h-[64px]"
 />
-                  <h1 className="text-3xl lg:text-5xl font-bold mb-4 leading-tight">Enter a World of Knowledge</h1>
+                <p className="ml-4 text-left font-bold text-sm lg:text-xl">DIRECTORATE OF <br/>RESEARCH, INNOVATION<br/> AND DEVELOPMENT</p>
+                  </div>
+                
+                  <h1 className="text-2xl lg:text-5xl font-bold mb-4 leading-tight">Enter a World of Knowledge</h1>
                   <p className="text-md lg:text-xl text-white/90 leading-relaxed">
                     Join us in promoting education and research
                   </p>

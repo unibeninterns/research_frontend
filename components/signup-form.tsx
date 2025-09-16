@@ -9,6 +9,13 @@ import Link from "next/link"
 import { useAuth } from "@/hooks/use-auth"
 import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation" 
+import  { EmailLogin } from "./icons/emailLogin"
+import PadlockSignUp from "./icons/padlockSignUp"
+import Username from "./icons/username"
+import Profile from "./icons/profile"
+import Eye from "./icons/eye"
+import EyeSlash from "./icons/eyeSlash"
+import GoogleIcon from "./icons/googleIcon"
 
 
 interface SignupFormData {
@@ -107,7 +114,7 @@ export function SignupForm() {
       <CardContent className="p-8 flex-1 flex flex-col">
         {/* Tab Navigation */}
         <div className="flex mb-8">
-          <div className="flex-1 pb-3 text-center font-medium border-b-2 text-purple-600 border-purple-600">
+          <div className="flex-1 pb-3 text-center font-medium border-b-2 text-[#800080] border-[#800080]">
             Register
           </div>
           <Link
@@ -125,20 +132,37 @@ export function SignupForm() {
             </div>
           )}
 
-          <div className="relative">
-            <Input
-              type="text"
-              placeholder="Full Name"
-              value={formData.fullname}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                handleInputChange("fullname", e.target.value)
-              }
-              className={`h-12 ${errors.fullname ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
-            />
-            {errors.fullname && <p className="text-sm text-red-600 mt-1">{errors.fullname}</p>}
-          </div>
+<div className="mb-4">
+  <div className="relative">
+  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+    <Profile />
+  </div>
 
-          <div className="relative">
+  <Input
+    type="text"
+    placeholder="Full Name"
+    value={formData.fullname}
+    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+      handleInputChange("fullname", e.target.value)
+    }
+    className={`h-12 pl-10 w-full border ${
+      errors.fullname ? "border-red-300" : "border-gray-200"
+    } focus:border-purple-600 focus:ring-purple-600`}
+  />
+
+  
+</div>
+  {errors.fullname && (
+    <p className="text-sm text-red-600 mt-1">{errors.fullname}</p>
+  )}
+</div>
+
+
+<div className="mb-4">
+    <div className="relative">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+    <Username />
+  </div>
             <Input
               type="text"
               placeholder="Username"
@@ -146,12 +170,17 @@ export function SignupForm() {
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 handleInputChange("username", e.target.value)
               }
-              className={`h-12 ${errors.username ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
+              className={`h-12 pl-10 ${errors.username ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
-            {errors.username && <p className="text-sm text-red-600 mt-1">{errors.username}</p>}
+            
           </div>
-
-          <div className="relative">
+          {errors.username && <p className="text-sm text-red-600 mt-1">{errors.username}</p>}
+</div>
+        <div className="mb-4">
+ <div className="relative">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+    <EmailLogin />
+  </div>
             <Input
               type="email"
               placeholder="Email Address"
@@ -159,12 +188,19 @@ export function SignupForm() {
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 handleInputChange("email", e.target.value)
               }
-              className={`h-12 ${errors.email ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
+              className={`h-12 pl-10 ${errors.email ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
-            {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
+            
           </div>
+          {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
+        </div>
 
-          <div className="relative">
+         
+        <div className="mb-4">
+ <div className="relative">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+    <PadlockSignUp  className="w-5 h-5 text-gray-400"/>
+  </div>
             <Input
               type={showPassword ? "text" : "password"}
               placeholder="Password"
@@ -172,17 +208,20 @@ export function SignupForm() {
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 handleInputChange("password", e.target.value)
               }
-              className={`pr-20 h-12 ${errors.password ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
+              className={`pr-20 pl-10 h-12 ${errors.password ? "border-red-300" : "border-gray-200"} focus:border-purple-600 focus:ring-purple-600`}
             />
             <button
               type="button"
               onClick={handlePasswordToggle}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 text-sm"
             >
-              {showPassword ? "Hide" : "Show"}
+              {showPassword ? <EyeSlash/> : <Eye/>}
             </button>
-            {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password}</p>}
+            
           </div>
+          {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password}</p>}
+</div>
+         
 
           {/* Terms Checkbox */}
           <div className="flex items-start space-x-3">
@@ -192,15 +231,15 @@ export function SignupForm() {
               onCheckedChange={(checked: boolean | "indeterminate") =>
                 handleInputChange("agreeToTerms", checked === true)
               }
-              className={`mt-1 data-[state=checked]:bg-purple-600 data-[state=checked]:border-purple-600 ${errors.agreeToTerms ? "border-red-300" : ""}`}
+              className={`mt-1 data-[state=checked]:bg-[#800080] data-[state=checked]:border-purple-600 ${errors.agreeToTerms ? "border-red-300" : ""}`}
             />
             <label htmlFor="terms" className="text-sm text-gray-600 leading-relaxed">
               I agree to the{" "}
-              <a href="#" className="text-purple-600 hover:underline">
+              <a href="#" className="text-[#800080] hover:underline">
                 Terms of Service
               </a>{" "}
               and{" "}
-              <a href="#" className="text-purple-600 hover:underline">
+              <a href="#" className="text-[#800080] hover:underline">
                 Privacy Policy
               </a>
               {errors.agreeToTerms && (
@@ -212,7 +251,7 @@ export function SignupForm() {
           {/* Register Button */}
           <Button
             onClick={handleFormSubmit}
-            className="w-full h-12 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg"
+            className="w-full h-12 bg-[#800080] hover:bg-[#AA47AA] text-white font-medium rounded-lg"
             disabled={!formData.agreeToTerms || isLoading}
           >
             {isLoading ? (
@@ -234,16 +273,16 @@ export function SignupForm() {
               <span className="px-4 bg-white text-gray-500">OR</span>
             </div>
           </div>
-
-          <Button variant="outline" className="w-full h-12 border-gray-200 hover:bg-gray-50 bg-transparent">
-            <span className="mr-3 text-blue-600 font-semibold">G</span>
-            Continue with Google
+          <div className="flex item-center justify-center">
+            <Button variant="outline" className="w-24 h-12 border-[#F5F5F5] hover:bg-gray-50 bg-transparent">
+            <GoogleIcon/>
           </Button>
+          </div>        
 
           {/* Login Link */}
           <div className="text-center">
             <span className="text-gray-600">Already have an account? </span>
-            <Link href="/login" className="text-purple-600 hover:underline font-medium inline-flex items-center">
+            <Link href="/login" className="text-[#800080] hover:underline font-medium inline-flex items-center">
               Login
               <span className="ml-1">→</span>
             </Link>

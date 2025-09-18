@@ -36,21 +36,18 @@ export function RecentActivities(): React.JSX.Element {
   ];
 
   return (
-    <div className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm sm:p-6">
-      <h3 className="mb-4 text-lg font-semibold text-gray-900">
+    <div className="rounded-lg border border-gray-200 bg-white p-4 py-6">
+      <h3 className="mb-4 text-sm font-bold text-gray-900">
         Recent Student Activities
       </h3>
 
-      <div className="space-y-4">
+      <div className="flex flex-col gap-2">
         {activities.map((activity) => (
-          <div key={activity.id} className="flex gap-3">
-            <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-purple-500"></div>
-            <div className="min-w-0 flex-1">
-              <p className="text-sm text-gray-900">
-                {activity.title} {activity.description}
-              </p>
-              <p className="mt-1 text-xs text-gray-500">{activity.timestamp}</p>
-            </div>
+          <div key={activity.id} className="flex flex-col gap-1 hover:bg-[#FBEFFF80] hover:px-2 hover:py-2">
+            <p className="text-xs text-gray-900">
+              {activity.title} {activity.description}
+            </p>
+            <p className="text-[10px] text-gray-500">{activity.timestamp}</p>
           </div>
         ))}
       </div>

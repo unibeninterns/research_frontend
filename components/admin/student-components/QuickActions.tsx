@@ -14,25 +14,25 @@ function QuickActions() {
   const quickActions: QuickAction[] = [
     {
       id: 1,
-      title: "Add Live Session",
+      title: "Add New Student",
       icon: <CirclePlus className="h-4 w-4" />,
-      onClick: () => console.log("Add Live Session clicked"),
+      onClick: () => console.log("Add New Student clicked"),
     },
     {
       id: 2,
-      title: "Send Announcement",
+      title: "Bulk Enrollment",
       icon: <Bell className="h-4 w-4" />,
       onClick: () => console.log("Send Announcement clicked"),
     },
     {
       id: 3,
-      title: "Upload Content",
+      title: "Export Data",
       icon: <Upload className="h-4 w-4" />,
       onClick: () => console.log("Upload Content clicked"),
     },
     {
       id: 4,
-      title: "Approve Certificate",
+      title: "Send Reminder",
       icon: <CheckCircle className="h-4 w-4" />,
       onClick: () => console.log("Approve Certificate clicked"),
     },
@@ -41,21 +41,21 @@ function QuickActions() {
   return (
     <div className="flex flex-col gap-5 rounded-[5px] border-[0.5px] px-4 py-6">
       <div>
-        <h3 className="text-[16px] font-semibold pb-2 border-b">Quick Actions</h3>
+        <h3 className="border-b pb-2 text-[16px] font-semibold">
+          Quick Actions
+        </h3>
       </div>
-      <div>
-        <div className="grid grid-cols-2 gap-x-3 gap-y-4">
-          {quickActions.map((action) => (
-            <button
-              key={action.id}
-              onClick={action.onClick}
-              className="flex items-center justify-center gap-3 rounded-[5px] border border-[#FBEFFFE5] bg-white p-4"
-            >
-              <div className="text-[#800080]">{action.icon}</div>
-              <span className="text-center text-xs">{action.title}</span>
-            </button>
-          ))}
-        </div>
+      <div className="grid grid-cols-2 gap-x-3 gap-y-4">
+        {quickActions.map((action) => (
+          <button
+            key={action.id}
+            onClick={action.onClick}
+            className="flex items-center justify-center gap-3 rounded-[5px] border border-[#FBEFFFE5] bg-white p-4"
+          >
+            <div className="text-[#800080]">{action.icon}</div>
+            <span className="text-center text-xs">{action.title}</span>
+          </button>
+        ))}
       </div>
     </div>
   );

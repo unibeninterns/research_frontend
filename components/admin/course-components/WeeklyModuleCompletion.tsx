@@ -53,7 +53,7 @@ export function WeeklyModuleCompletion() {
   return (
     <div className="flex flex-col rounded-[10px] border border-gray-200 bg-white p-4 md:gap-6 md:p-6">
       <div className="flex items-center justify-between">
-        <h2 className="flex-1 text-[16px] font-bold">
+        <h2 className="flex-1 text-[16px] font-semibold">
           Weekly Module Completion
         </h2>
         <div className="flex flex-row gap-8">

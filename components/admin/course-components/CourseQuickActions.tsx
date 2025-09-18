@@ -1,39 +1,39 @@
 "use client";
 
 import type React from "react";
-import { CirclePlus, Edit, UserPlus, Upload } from "lucide-react";
+import { CirclePlus, Edit, UserPlus, Upload, LibraryBigIcon } from "lucide-react";
 
-interface QuickAction {
-  id: string;
-  title: string;
-  icon: React.ReactNode;
-}
-
-type CourseQuickActionsProps = Record<string, never>;
-
-const CourseQuickActions: React.FC<
-  CourseQuickActionsProps
-> = (): React.JSX.Element => {
-  const actions: QuickAction[] = [
+const CourseQuickActions = () => {
+  const actions = [
     {
       id: "add-course",
       title: "Add Course",
-      icon: <CirclePlus className="h-6 w-6" />,
+      icon: <CirclePlus className="h-4 w-4" />,
     },
     {
       id: "edit-course",
       title: "Edit Course",
-      icon: <Edit className="h-6 w-6" />,
+      icon: <Edit className="h-4 w-4" />,
+    },
+    {
+      id: "upload-syllabus",
+      title: "Upload Syllabus",
+      icon: <Upload className="h-4 w-4" />,
     },
     {
       id: "assign-tutor",
       title: "Assign Tutor",
-      icon: <UserPlus className="h-6 w-6" />,
+      icon: <UserPlus className="h-4 w-4" />,
     },
     {
-      id: "upload-module",
-      title: "Upload Module",
-      icon: <Upload className="h-6 w-6" />,
+      id: "upload-resource",
+      title: "Upload Resource",
+      icon: <Upload className="h-4 w-4" />,
+    },
+    {
+      id: "course-overview-setup",
+      title: "Course Overview Setup",
+      icon: <LibraryBigIcon className="h-4 w-4" />,
     },
   ];
 
@@ -43,17 +43,17 @@ const CourseQuickActions: React.FC<
 
   return (
     <div className="flex w-[262px] flex-col gap-5 rounded-[5px] border-[0.5px] px-4 py-6">
-      <h3 className="border-b pb-0.5 text-[16px] font-bold">Quick Actions</h3>
+      <h3 className="border-b pb-2 text-[16px] font-semibold">Quick Actions</h3>
 
-      <div className="flex flex-col gap-4">
-        {actions.map((action: QuickAction) => (
+      <div className="flex flex-col gap-3">
+        {actions.map((action) => (
           <button
             key={action.id}
             onClick={() => handleActionClick(action.id)}
-            className="flex items-center justify-start gap-3 rounded-[5px] border-[1px] border-[#FBEFFFE5] p-4"
+            className="flex items-center justify-start gap-2 rounded-[5px] border-[1px] border-[#FBEFFFE5] p-3"
           >
             <div className="text-[#800080]">{action.icon}</div>
-            <span className="text-sm">{action.title}</span>
+            <span className="text-xs">{action.title}</span>
           </button>
         ))}
       </div>

@@ -3,7 +3,7 @@ import type React from "react";
 import AdminInfoComponent from "@/components/admin/AdminInfoComponent";
 import StudentsTable from "@/components/admin/student-components/students-table";
 import { RecentActivities } from "@/components/admin/student-components/recent-activities";
-import { StudentQuickActions } from "@/components/admin/student-components/student-quick-actions";
+import QuickActions from "@/components/admin/student-components/QuickActions";
 import { useState } from "react";
 import { Users, UserCheck, FileText, TrendingUp, Target } from "lucide-react";
 
@@ -46,7 +46,7 @@ export default function StudentsPage() {
 
       <div className="grid gap-4 sm:gap-6 lg:grid-cols-2 lg:gap-8">
         <RecentActivities />
-        <StudentQuickActions />
+        <QuickActions />
       </div>
     </div>
   );

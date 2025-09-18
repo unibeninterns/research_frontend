@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { MoreHorizontal } from "lucide-react";
 
 const requests = [
@@ -15,31 +14,29 @@ const requests = [
     course: "Research Technologies and Innovation",
     requestDate: "02/09/2025",
     status: "Pending",
-    statusColor: "bg-yellow-100 text-yellow-800",
+    statusColor: "bg-[#FFF9E5] text-[#F6B600]",
   },
   {
     name: "Amaka Okechukwu",
     course: "Research Technologies and Innovation",
     requestDate: "15/09/2025",
     status: "Rejected",
-    statusColor: "bg-red-100 text-red-800",
+    statusColor: "bg-[#FFDCDD] text-[#FF383C]",
   },
   {
     name: "Ese Jerry",
     course: "Research Technologies and Innovation",
     requestDate: "05/09/2025",
     status: "Completed",
-    statusColor: "bg-green-100 text-green-800",
+    statusColor: "bg-[#DEFFD8] text-[#1DAE00]",
   },
 ];
 
 function CertificateRequests() {
   return (
     <div className="mt-8 flex flex-col gap-2 rounded-[10px] border-[0.5px] border-[#D9D9D9] bg-white p-1 md:gap-6 md:p-6">
-      <div className="flex flex-row gap-2 sm:items-center sm:justify-between">
-        <div className="text-lg font-semibold text-gray-900">
-          Certificate Requests
-        </div>
+      <div className="flex flex-row gap-2 text-[16px] sm:items-center sm:justify-between">
+        <div className="font-semibold text-gray-900">Certificate Requests</div>
         <Button
           variant="link"
           className="self-start p-0 text-[#800080] sm:self-auto"
@@ -74,13 +71,12 @@ function CertificateRequests() {
                 </td>
                 <td className="p-3 text-sm">{request.course}</td>
                 <td className="p-3 text-sm">{request.requestDate}</td>
-                <td className="px-2 py-3 sm:px-4 sm:py-4">
-                  <Badge
-                    variant="secondary"
-                    className={`${request.statusColor} text-[12px]`}
+                <td className="flex px-2 py-3 sm:px-4 sm:py-4">
+                  <p
+                    className={`rounded-[5px] px-2 py-1 text-[10px] ${request.statusColor}`}
                   >
                     {request.status}
-                  </Badge>
+                  </p>
                 </td>
                 <td className="px-2 py-3 sm:px-4 sm:py-4">
                   <Button

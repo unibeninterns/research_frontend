@@ -101,7 +101,7 @@ const CoursesTable: React.FC<CoursesTableProps> = (): React.JSX.Element => {
   return (
     <div className="mt-5 flex flex-col rounded-[10px] border border-gray-200 bg-white p-4 md:gap-6 md:p-6">
       <div className="flex items-center justify-between">
-        <h2 className="flex-1 text-[16px] font-bold">Courses</h2>
+        <h2 className="flex-1 text-[16px] font-semibold">Courses</h2>
         <div className="flex flex-1 flex-row items-center gap-8">
           <div className="flex rounded-[50px] border-[0.5px] px-2 py-1 text-[14px] md:flex-1 md:px-4 md:py-2">
             <input
@@ -109,7 +109,7 @@ const CoursesTable: React.FC<CoursesTableProps> = (): React.JSX.Element => {
               placeholder="Search courses..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="flex-1 outline-none"
+              className="flex-1 text-sm outline-none"
             />
             <Search />
           </div>

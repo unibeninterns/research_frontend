@@ -11,17 +11,20 @@ import {
 
 Chart.register(ArcElement, Tooltip, Legend);
 
+Chart.defaults.font.family = "Montserrat, sans-serif";
+Chart.defaults.font.size = 12;
+
 const data: ChartData<"doughnut", number[], string> = {
   labels: ["Completed", "In Progress", "Not Started"],
   datasets: [
     {
       label: "",
       data: [60, 30, 10],
-      backgroundColor: ["#800080DD", "#CDB7D9DD", "#FBAFFFDD"],
-      borderColor: ["#800080", "#CDB7D9", "#FBAFFF"],
-      borderWidth: 3,
-      borderAlign: "inner",
-      hoverOffset: 4,
+      backgroundColor: ["#800080", "#CDB7D9", "#FBAFFF"],
+      // borderColor: ["#800080", "#CDB7D9", "#FBAFFF"],
+      // borderWidth: 3,
+      // borderAlign: "inner",
+      // hoverOffset: 4,
     },
   ],
 };
@@ -38,7 +41,6 @@ const centerTextPlugin = {
     );
 
     const totalText = `Avg. Progress: ${sum}`;
-    ctx.font = "1rem Montserrat, sans-serif";
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
     ctx.fillStyle = "#1f2937";
@@ -51,7 +53,7 @@ const centerTextPlugin = {
 };
 
 const options: ChartOptions<"doughnut"> = {
-  cutout: "80%",
+  cutout: "83%",
   plugins: {
     legend: {
       display: true,
@@ -99,13 +101,11 @@ const AdminDoughnutChart = () => {
     <div className="flex h-[350px] flex-col">
       <div className="flex flex-row items-start justify-between gap-2">
         <h2 className="text-[16px] font-semibold text-gray-900">
-          Module Completion
-          <br />
-          Overview
+          Module Completion Overview
         </h2>
         <select
           defaultValue="review"
-          className="w-32 rounded-md border border-gray-200 bg-white px-2 py-1 text-[10px] focus:ring-2 focus:ring-[#800080] focus:outline-none"
+          className="rounded-md border border-gray-200 bg-white px-2 py-1 text-[10px] focus:ring-2 focus:ring-[#800080] focus:outline-none"
         >
           <option value="review">Review</option>
           <option value="last-month">Last Month</option>

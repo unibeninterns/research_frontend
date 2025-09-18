@@ -9,15 +9,15 @@ interface AdminCardInfo {
 
 export const AdminInfoCard = ({ icon, param, value }: AdminCardInfo) => {
   return (
-    <div className="inline-flex items-center justify-start gap-5 rounded-[5px] p-4 outline-[0.50px] outline-zinc-300">
-      <div className="flex items-center justify-center rounded-[50px] bg-fuchsia-50 p-2 text-fuchsia-800">
+    <div className="inline-flex items-start justify-start gap-5 rounded-[5px] p-4 outline-[0.5px] outline-zinc-300">
+      <div className="flex items-center justify-center rounded-[50px] bg-[#FBEFFF] p-2 text-[#800080]">
         {icon}
       </div>
       <div className="inline-flex flex-1 flex-col items-start justify-center gap-1">
         <div className="justify-start self-stretch font-['Montserrat'] text-xs font-medium whitespace-nowrap text-stone-900">
           {param}
         </div>
-        <div className="justify-start self-stretch font-['Montserrat'] text-2xl font-semibold text-stone-900">
+        <div className="justify-start self-stretch font-['Montserrat'] text-xl font-semibold text-stone-900">
           {value}
         </div>
       </div>

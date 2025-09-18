@@ -53,7 +53,7 @@ const Dashboard = () => {
   return (
     <div className="mt-5 mb-10">
       <AdminInfoComponent cardInfo={cardInfo} />
-      <div className="mt-5 flex flex-col items-start justify-between py-2 md:flex-row">
+      <div className="mt-5 flex flex-col items-start justify-between py-2 md:flex-row gap-6">
         <div className="rounded-[5px] border-[0.5px] border-[#D9D9D9] p-2">
           <AdminBarChart />
         </div>

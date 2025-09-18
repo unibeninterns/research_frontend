@@ -8,9 +8,9 @@ const AdminSearchBar = () => {
         name=""
         id=""
         placeholder="Search"
-        className="flex-1 outline-none"
+        className="flex-1 outline-none text-sm"
       />
-      <Search />
+      <Search className="h-4 w-4" />
     </>
   );
 };

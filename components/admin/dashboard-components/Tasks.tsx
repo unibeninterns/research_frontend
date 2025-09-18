@@ -42,30 +42,30 @@ function Tasks() {
   const getStatusColor = (status: Task["status"]): string => {
     switch (status) {
       case "Pending":
-        return "bg-yellow-100 text-yellow-800";
+        return "bg-[#FFF9E5] text-[#F6B600]";
       case "Due Today":
-        return "bg-red-100 text-red-800";
+        return "bg-[#FBEFFF] text-primary";
       case "Incomplete":
-        return "bg-gray-100 text-gray-800";
+        return "bg-[#EBEBEB] text-[#848484]";
       case "Upcoming":
-        return "bg-green-100 text-green-800";
+        return "bg-[#DEFFD8] text-[#1DAE00]";
       case "Urgent":
-        return "bg-red-100 text-red-800";
+        return "bg-[#FFDCDD] text-[#FF383C]";
       default:
-        return "bg-gray-100 text-gray-800";
-    }
+        return "bg-[#EBEBEB] text-[#848484]";
+    } 
   };
 
   return (
     <div className="flex w-[312] flex-col gap-5 rounded-[10px] border-[0.5px] px-4 py-6">
       <div>
-        <h3 className="text-[16px] font-bold">Tasks</h3>
+        <h3 className="text-[16px] font-semibold">Tasks</h3>
       </div>
-      <div className="gap flex flex-col items-start">
+      <div className="gap flex flex-col items-start gap-3">
         {tasks.map((task: Task) => (
           <div
             key={task.id}
-            className="flex w-full items-start gap-3 px-2 py-3"
+            className="flex w-full items-start gap-3 rounded-[5px] hover:bg-[#FBEFFF80] hover:px-2 hover:py-3"
           >
             <p className="flex h-4 w-4 items-center justify-center text-xs">
               {task.icon}

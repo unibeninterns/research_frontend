@@ -1,14 +1,20 @@
 "use client";
 
 import type React from "react";
-import { Search, Plus, MoreHorizontal } from "lucide-react";
+import {
+  Search,
+  Plus,
+  MoreHorizontal,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 interface Student {
   id: string;
   name: string;
   email: string;
   course: string;
-  enrollmentStatus: "Enrolled" | "pending" | "Completed" | "Suspended";
+  enrollmentStatus: "Enrolled" | "pending" | "Completed" | "Suspended" | "Registered";
   avgProgress: number;
 }
 
@@ -33,18 +39,19 @@ interface PaginationInfo {
 
 function StatusBadge({ status }: StatusBadgeProps): React.JSX.Element {
   const statusConfig = {
-    Enrolled: "bg-purple-100 text-purple-800",
-    pending: "bg-yellow-100 text-yellow-800",
-    Completed: "bg-green-100 text-green-800",
-    Suspended: "bg-red-100 text-red-800",
+    Enrolled: "bg-[#FBEFFF] text-primary",
+    pending: "bg-[#FFF9E5] text-[#F6B600]",
+    Completed: "bg-[#DEFFD8] text-[#1DAE00]",
+    Suspended: "bg-[#FFDCDD] text-[#FF383C]",
+    Registered: 'bg-[#5E00B133] text-[#5E00B1]',
   };
 
   return (
-    <span
-      className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${statusConfig[status]}`}
+    <p
+      className={`rounded-full px-2 py-1 text-xs ${statusConfig[status]}`}
     >
-      {status.charAt(0).toUpperCase() + status.slice(1)}
-    </span>
+      {status}
+    </p>
   );
 }
 
@@ -61,7 +68,7 @@ function StudentsTable({
       name: "John Doe",
       email: "john.doe@email.com",
       course: "Research Technologies and Innovation",
-      enrollmentStatus: "Enrolled",
+      enrollmentStatus: "Registered",
       avgProgress: 68,
     },
     {
@@ -166,46 +173,40 @@ function StudentsTable({
   };
 
   return (
-    <div className="rounded-lg border border-gray-100 bg-white shadow-sm">
-      <div className="border-b border-gray-200 p-3 sm:p-4 lg:p-6">
-        <div className="flex flex-col gap-3 sm:gap-4">
-          <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
-            Students
-          </h2>
+    <div className="mt-5 flex flex-col rounded-[10px] border border-gray-200 bg-white p-4 md:gap-6 md:p-6">
+      <div className="flex items-center justify-between">
+        <h2 className="flex-1 text-base font-semibold">Students</h2>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end md:gap-6">
-            <div className="relative flex-1 sm:flex-initial">
-              <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search students..."
-                value={searchTerm}
-                onChange={handleSearchChange}
-                className="w-full rounded-lg border border-gray-200 py-2 pr-4 pl-10 text-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none sm:w-64"
-              />
-            </div>
-
-            <select
-              value={selectedCourse}
-              onChange={handleCourseChange}
-              className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500 focus:outline-none sm:w-auto"
-            >
-              <option value="All Courses">All Courses</option>
-              <option value="Research Technologies">
-                Research Technologies
-              </option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="Data Analytics">Data Analytics</option>
-            </select>
-
-            <button
-              onClick={handleAddStudent}
-              className="flex w-full items-center justify-center gap-2 rounded-lg border border-purple-800 bg-white px-4 py-2 text-sm font-medium text-purple-800 transition-colors hover:bg-purple-700 hover:text-white focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-none sm:w-auto"
-            >
-              <Plus className="h-4 w-4" />
-              <span className="sm:inline">Add Student</span>
-            </button>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end md:gap-6">
+          <div className="flex rounded-[50px] border-[0.5px] p-1 text-[14px] md:flex-1 md:px-4 md:py-2">
+            <input
+              type="text"
+              placeholder="Search courses..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="flex-1 text-sm outline-none"
+            />
+            <Search className="h-4 w-4" />
           </div>
+
+          <select
+            value={selectedCourse}
+            onChange={handleCourseChange}
+            className="w-32 truncate rounded-md border border-gray-200 bg-white px-2 py-1 text-[10px] focus:ring-2 focus:ring-[#800080] focus:outline-none"
+          >
+            <option value="All Courses">All Courses</option>
+            <option value="Research Technologies">Research Technologies</option>
+            <option value="UI/UX Design">UI/UX Design</option>
+            <option value="Data Analytics">Data Analytics</option>
+          </select>
+
+          <button
+            onClick={handleAddStudent}
+            className="flex items-center gap-2 rounded-lg border border-[#800080] bg-white px-4 py-2 text-[10px] font-medium text-[#800080] transition-colors hover:bg-[#800080] hover:text-white focus:ring-2 focus:ring-[#800080] focus:outline-none"
+          >
+            <Plus className="h-4 w-4" />
+            <span>Add Student</span>
+          </button>
         </div>
       </div>
 
@@ -213,22 +214,22 @@ function StudentsTable({
         <table className="w-full min-w-[640px]">
           <thead className="bg-background">
             <tr>
-              <th className="px-3 py-3 text-left text-xs font-medium tracking-wide text-gray-500 uppercase sm:px-4 lg:px-6">
+              <th className="p-3 text-left text-[14px] font-medium text-[#7B7F87]">
                 Name
               </th>
-              <th className="px-3 py-3 text-left text-xs font-medium tracking-wide text-gray-500 uppercase sm:px-4 lg:px-6">
+              <th className="p-3 text-left text-[14px] font-medium text-[#7B7F87]">
                 Email
               </th>
-              <th className="hidden px-3 py-3 text-left text-xs font-medium tracking-wide text-gray-500 uppercase sm:px-4 lg:table-cell lg:px-6">
+              <th className="hidden p-3 text-left text-[14px] font-medium text-[#7B7F87] lg:table-cell">
                 Course
               </th>
-              <th className="px-3 py-3 text-left text-xs font-medium tracking-wide text-gray-500 uppercase sm:px-4 lg:px-6">
+              <th className="p-3 text-left text-[14px] font-medium text-[#7B7F87]">
                 Status
               </th>
-              <th className="px-3 py-3 text-left text-xs font-medium tracking-wide text-gray-500 uppercase sm:px-4 lg:px-6">
+              <th className="p-3 text-left text-[14px] font-medium text-[#7B7F87]">
                 Progress
               </th>
-              <th className="px-3 py-3 text-left text-xs font-medium tracking-wide text-gray-500 uppercase sm:px-4 lg:px-6">
+              <th className="p-3 text-left text-[14px] font-medium text-[#7B7F87]">
                 Actions
               </th>
             </tr>
@@ -239,44 +240,22 @@ function StudentsTable({
                 key={student.id}
                 className="transition-colors hover:bg-gray-50"
               >
-                <td className="px-3 py-4 sm:px-4 lg:px-6">
-                  <div className="flex items-center gap-3">
-                    <div className="min-w-0 flex-1">
-                      <div className="truncate font-medium text-gray-900">
-                        {student.name}
-                      </div>
-                      <div className="truncate text-sm text-gray-500 lg:hidden">
-                        {student.course}
-                      </div>
-                    </div>
+                <td className="flex flex-col p-3 text-sm lg:table-cell">
+                  <div className="truncate text-gray-900">{student.name}</div>
+                  <div className="truncate text-sm text-gray-500 lg:hidden">
+                    {student.course}
                   </div>
                 </td>
-                <td className="px-3 py-4 text-sm text-gray-900 sm:px-4 lg:px-6">
-                  <div className="max-w-[150px] truncate sm:max-w-none">
-                    {student.email}
-                  </div>
-                </td>
-                <td className="hidden px-3 py-4 text-sm text-gray-900 sm:px-4 lg:table-cell lg:px-6">
-                  <div className="max-w-[200px] truncate">{student.course}</div>
-                </td>
-                <td className="px-3 py-4 sm:px-4 lg:px-6">
+                <td className="p-3 text-sm">{student.email}</td>
+                <td className="p-3 text-sm">{student.course}</td>
+                <td className="p-3 text-xs flex items-center ">
                   <StatusBadge status={student.enrollmentStatus} />
                 </td>
-                <td className="px-3 py-4 text-sm text-gray-900 sm:px-4 lg:px-6">
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium">{student.avgProgress}%</span>
-                    <div className="hidden h-2 w-16 rounded-full bg-gray-200 sm:block">
-                      <div
-                        className="h-2 rounded-full bg-purple-600 transition-all duration-300"
-                        style={{ width: `${student.avgProgress}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                </td>
+                <td className="p-3 text-sm">{student.avgProgress}%</td>
                 <td className="px-3 py-4 sm:px-4 lg:px-6">
                   <button
                     onClick={() => handleActionClick(student.id)}
-                    className="rounded p-1 text-gray-400 transition-colors hover:text-gray-600 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-none"
+                    className="rounded p-1 text-gray-400 transition-colors hover:text-gray-600 focus:ring-2 focus:ring-[#800080] focus:ring-offset-2 focus:outline-none"
                     aria-label={`Actions for ${student.name}`}
                   >
                     <MoreHorizontal className="h-4 w-4" />
@@ -287,46 +266,40 @@ function StudentsTable({
           </tbody>
         </table>
       </div>
-
-      <div className="border-t border-gray-200 px-3 py-3 sm:px-4 lg:px-6">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-center text-sm text-gray-700 sm:text-left">
-            Showing{" "}
-            <span className="font-medium">
-              {(paginationInfo.currentPage - 1) *
-                paginationInfo.studentsPerPage +
-                1}
-              -
-              {Math.min(
-                paginationInfo.currentPage * paginationInfo.studentsPerPage,
-                paginationInfo.totalStudents,
-              )}
-            </span>{" "}
-            of{" "}
-            <span className="font-medium">
-              {paginationInfo.totalStudents.toLocaleString()}
-            </span>{" "}
-            students
-          </p>
-          <div className="flex items-center justify-center gap-2">
-            <button
-              disabled={paginationInfo.currentPage === 1}
-              className="rounded-lg border border-gray-300 px-3 py-1 text-sm text-gray-700 transition-colors hover:bg-gray-50 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Previous
-            </button>
-            <span className="px-2 text-sm text-gray-500">
-              Page {paginationInfo.currentPage} of {paginationInfo.totalPages}
-            </span>
-            <button
-              disabled={
-                paginationInfo.currentPage === paginationInfo.totalPages
-              }
-              className="rounded-lg border border-gray-300 px-3 py-1 text-sm text-gray-700 transition-colors hover:bg-gray-50 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
+      <div className="flex flex-row items-center justify-end gap-4 text-[13px]">
+        <p className="text-center text-gray-700 sm:text-left">
+          Showing{" "}
+          <span className="font-medium">
+            {(paginationInfo.currentPage - 1) * paginationInfo.studentsPerPage +
+              1}
+            -
+            {Math.min(
+              paginationInfo.currentPage * paginationInfo.studentsPerPage,
+              paginationInfo.totalStudents,
+            )}
+          </span>{" "}
+          of{" "}
+          <span className="font-medium">
+            {paginationInfo.totalStudents.toLocaleString()}
+          </span>{" "}
+          students
+        </p>
+        <div className="flex items-center justify-center gap-2">
+          <button
+            disabled={paginationInfo.currentPage === 1}
+            className="text-[#848484] hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <ChevronLeft />
+          </button>
+          <span className="px-2 text-gray-500">
+            Page {paginationInfo.currentPage} of {paginationInfo.totalPages}
+          </span>
+          <button
+            disabled={paginationInfo.currentPage === paginationInfo.totalPages}
+            className="text-[#848484] hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <ChevronRight />
+          </button>
         </div>
       </div>
     </div>

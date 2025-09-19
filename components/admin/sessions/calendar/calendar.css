@@ -1,0 +1,85 @@
+.fc-button-primary:not(:disabled) {
+  background-color: #ffffff;
+  color: #800080;
+  border: none;
+}
+
+.fc-button-primary:not(:disabled):hover {
+  color: #aa47aa;
+}
+
+.fc-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Specific button styles for clarity */
+.fc-today-button {
+  font-weight: 700;
+}
+
+/* General button group styling */
+.fc-button-group > .fc-button {
+  border-radius: 0;
+}
+
+.fc-button-group > .fc-button:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.fc-button-group > .fc-button:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.fc-button-group > .fc-button:not(:first-child) {
+  margin-left: -1px;
+}
+.fc-daygrid-day-frame {
+  position: relative;
+}
+.fc .fc-daygrid-day-number {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.fc-day-today {
+  background-color: #fff !important;
+}
+
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+  color: #800080;
+  border: 1px solid #800080;
+  border-radius: 50%;
+}
+/* .fc-col-header-cell {
+  padding: 20px 0;
+} */
+.fc-col-header-cell-cushion {
+  font-size: 12px;
+  font-weight: 400;
+  color: #333;
+}
+.fc-toolbar-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}
+.fc-daygrid-event {
+  border: none;
+  box-shadow: none;
+}
+
+.fc-daygrid-day-frame {
+  vertical-align: bottom;
+}

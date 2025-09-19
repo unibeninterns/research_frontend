@@ -43,7 +43,10 @@ export function RecentActivities(): React.JSX.Element {
 
       <div className="flex flex-col gap-2">
         {activities.map((activity) => (
-          <div key={activity.id} className="flex flex-col gap-1 hover:bg-[#FBEFFF80] hover:px-2 hover:py-2">
+          <div
+            key={activity.id}
+            className="flex flex-col gap-1 hover:bg-[#FBEFFF80] hover:px-2 hover:py-2"
+          >
             <p className="text-xs text-gray-900">
               {activity.title} {activity.description}
             </p>

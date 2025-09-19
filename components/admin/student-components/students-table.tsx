@@ -14,7 +14,12 @@ interface Student {
   name: string;
   email: string;
   course: string;
-  enrollmentStatus: "Enrolled" | "pending" | "Completed" | "Suspended" | "Registered";
+  enrollmentStatus:
+    | "Enrolled"
+    | "pending"
+    | "Completed"
+    | "Suspended"
+    | "Registered";
   avgProgress: number;
 }
 
@@ -43,13 +48,11 @@ function StatusBadge({ status }: StatusBadgeProps): React.JSX.Element {
     pending: "bg-[#FFF9E5] text-[#F6B600]",
     Completed: "bg-[#DEFFD8] text-[#1DAE00]",
     Suspended: "bg-[#FFDCDD] text-[#FF383C]",
-    Registered: 'bg-[#5E00B133] text-[#5E00B1]',
+    Registered: "bg-[#5E00B133] text-[#5E00B1]",
   };
 
   return (
-    <p
-      className={`rounded-full px-2 py-1 text-xs ${statusConfig[status]}`}
-    >
+    <p className={`rounded-full px-2 py-1 text-xs ${statusConfig[status]}`}>
       {status}
     </p>
   );
@@ -205,7 +208,7 @@ function StudentsTable({
             className="flex items-center gap-2 rounded-lg border border-[#800080] bg-white px-4 py-2 text-[10px] font-medium text-[#800080] transition-colors hover:bg-[#800080] hover:text-white focus:ring-2 focus:ring-[#800080] focus:outline-none"
           >
             <Plus className="h-4 w-4" />
-            <span>Add Student</span>
+            <p>Add Student</p>
           </button>
         </div>
       </div>
@@ -248,7 +251,7 @@ function StudentsTable({
                 </td>
                 <td className="p-3 text-sm">{student.email}</td>
                 <td className="p-3 text-sm">{student.course}</td>
-                <td className="p-3 text-xs flex items-center ">
+                <td className="flex items-center p-3 text-xs">
                   <StatusBadge status={student.enrollmentStatus} />
                 </td>
                 <td className="p-3 text-sm">{student.avgProgress}%</td>

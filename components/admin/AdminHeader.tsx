@@ -8,7 +8,7 @@ const AdminHeader: FC<{ pageHeader: string }> = ({ pageHeader }) => {
       <h1 className="flex-1 text-[20px] font-semibold md:text-[28px]">
         {pageHeader}
       </h1>
-      <div className="flex rounded-[50px] border-[0.5px] px-2 py-1 text-[14px] md:flex-1 md:px-4 md:py-2 md:text-base items-center gap-2">
+      <div className="flex items-center gap-2 rounded-[50px] border-[0.5px] px-2 py-1 text-[14px] md:flex-1 md:px-4 md:py-2 md:text-base">
         <AdminSearchBar />
       </div>
       <div className="flex items-center gap-3">

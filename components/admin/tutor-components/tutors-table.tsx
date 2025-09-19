@@ -75,7 +75,7 @@ const TutorsTable: React.FC = (): React.JSX.Element => {
 
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <button className="flex w-full items-center justify-center rounded-md bg-[#800080] px-4 py-1.5 text-white hover:bg-purple-800 sm:w-auto">
-                <span className="mr-1">+</span> Add Tutor
+                <p className="mr-1">+</p> Add Tutor
               </button>
               <button className="flex w-full items-center justify-center rounded-md border border-[#800080] px-4 py-1.5 text-[#800080] hover:bg-purple-50 sm:w-auto">
                 <Send className="mr-1 hidden h-4 w-4 lg:flex" />

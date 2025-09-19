@@ -41,7 +41,9 @@ function QuickActions() {
   return (
     <div className="flex flex-col gap-5 rounded-[5px] border-[0.5px] px-4 py-6">
       <div>
-        <h3 className="text-[16px] font-semibold pb-2 border-b">Quick Actions</h3>
+        <h3 className="border-b pb-2 text-[16px] font-semibold">
+          Quick Actions
+        </h3>
       </div>
       <div>
         <div className="grid grid-cols-2 gap-x-3 gap-y-4">

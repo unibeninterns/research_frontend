@@ -53,7 +53,7 @@ function Tasks() {
         return "bg-[#FFDCDD] text-[#FF383C]";
       default:
         return "bg-[#EBEBEB] text-[#848484]";
-    } 
+    }
   };
 
   return (

@@ -1,7 +1,13 @@
 "use client";
 
 import type React from "react";
-import { CirclePlus, Edit, UserPlus, Upload, LibraryBigIcon } from "lucide-react";
+import {
+  CirclePlus,
+  Edit,
+  UserPlus,
+  Upload,
+  LibraryBigIcon,
+} from "lucide-react";
 
 const CourseQuickActions = () => {
   const actions = [

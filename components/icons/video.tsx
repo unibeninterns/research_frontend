@@ -1,8 +1,9 @@
-const Video = ({ ...props }) => {
+const Video = ({ size = 40, ...props }) => {
   return (
     <svg
-      width="40"
-      height="40"
+      width={size}
+      height={size}
+      {...props}
       viewBox="0 0 60 61"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

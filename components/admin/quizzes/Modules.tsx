@@ -1,7 +1,7 @@
 "use client";
-import { QuizModule } from "@/app/admin/quizzes/page";
 import Ellipsis from "@/components/icons/ellipsis";
 import Export2 from "@/components/icons/export2";
+import QuizModule from "@/types/module";
 import { ChevronDown, ChevronUp, Pencil, Plus } from "lucide-react";
 import { useState } from "react";
 import AdminSearchBar from "../dashboard-components/AdminSearchBar";

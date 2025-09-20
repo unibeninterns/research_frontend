@@ -6,46 +6,12 @@ import QuizHeader from "@/components/admin/quizzes/quizHeader";
 import Assessment from "@/components/icons/assessment";
 import SessionsTick from "@/components/icons/sessionsTick";
 import Steps from "@/components/icons/steps";
+import { CourseModuleContext } from "@/context/course-module";
+import Course from "@/types/course";
+import QuizModule from "@/types/module";
 import { Pencil } from "lucide-react";
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  // useEffect,
-  useState,
-} from "react";
+import { useState } from "react";
 
-export interface Course {
-  course: string;
-  modules: number;
-  quizzes: number;
-  avgScore: string;
-  completion: string;
-  totalQuestions: number;
-  mode: "Published" | "Archived" | "Draft";
-}
-
-export interface QuizModule {
-  module: number;
-  topic: string;
-  quizQuestions: number;
-  timeLimit: number | null;
-  attemptsAllowed: number;
-  gradingType: "Auto" | "Manual";
-  mode: "Active" | "Draft";
-}
-
-export const CourseModuleContext = createContext<{
-  course: Course | null;
-  setCourse: Dispatch<SetStateAction<Course | null>>;
-  module: QuizModule | null;
-  setModule: Dispatch<SetStateAction<QuizModule | null>>;
-}>({
-  course: null,
-  setCourse: () => {},
-  module: null,
-  setModule: () => {},
-});
 const Quizzes = () => {
   const cardInfo = [
     {

@@ -1,4 +1,4 @@
-const Export2 = ({ size =12, ...props }) => {
+const Export2 = ({ size = 12, ...props }) => {
   return (
     <svg
       width={size}

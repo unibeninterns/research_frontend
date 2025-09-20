@@ -1,5 +1,5 @@
-import { CourseModuleContext } from "@/app/admin/quizzes/page";
 import VerticalLine from "@/components/icons/verticalLine";
+import { CourseModuleContext } from "@/context/course-module";
 import { ChevronRight } from "lucide-react";
 import { useContext } from "react";
 

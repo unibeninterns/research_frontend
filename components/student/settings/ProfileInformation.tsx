@@ -1,4 +1,4 @@
-import Pencil from "@/components/icons/pencil";
+import Pencil from "@/components/icons/Pencil";
 import Image from "next/image";
 const ProfileInformation = () => {
   return (

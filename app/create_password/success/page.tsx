@@ -1,4 +1,4 @@
-import TickCircle from "@/components/icons/tickCircle";
+import TickCircle from "@/components/icons/TickCircle";
 
 const Success = () => {
   return (

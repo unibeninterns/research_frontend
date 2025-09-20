@@ -3,7 +3,7 @@
 import type React from "react";
 
 import Link from "next/link";
-import Logo from "./icons/logo";
+import Logo from "./icons/Logo";
 import { useState } from "react";
 import { Montserrat } from "next/font/google";
 

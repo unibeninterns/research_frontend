@@ -1,6 +1,6 @@
-import CheckCircle from "@/components/icons/checkCircle";
-import BookCheck from "@/components/icons/bookCheck";
-import Downloaded from "@/components/icons/downloaded";
+import CheckCircle from "@/components/icons/CheckCircle";
+import BookCheck from "@/components/icons/BookCheck";
+import Downloaded from "@/components/icons/Downloaded";
 import { ChevronDown } from "lucide-react";
 
 const RecentActivities = () => {

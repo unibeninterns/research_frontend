@@ -1,5 +1,5 @@
-import Beaker from "@/components/icons/beaker";
-import Hourglass from "@/components/icons/hourglass";
+import Beaker from "@/components/icons/Beaker";
+import Hourglass from "@/components/icons/Hourglass";
 import { Progress } from "@/components/ui/progress";
 
 const WelcomeHeader = () => {

@@ -1,7 +1,7 @@
 "use client";
-import Eye from "@/components/icons/eye";
-import EyeSlash from "@/components/icons/eyeSlash";
-import PadlockSmall from "@/components/icons/padlockSmall";
+import Eye from "@/components/icons/Eye";
+import EyeSlash from "@/components/icons/EyeSlash";
+import PadlockSmall from "@/components/icons/PadlockSmall";
 import { ArrowRight } from "lucide-react";
 import { useState, MouseEvent } from "react";
 import { useForm } from "react-hook-form";

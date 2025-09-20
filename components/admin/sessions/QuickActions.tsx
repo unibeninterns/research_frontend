@@ -1,9 +1,9 @@
 "use client";
 
 import type React from "react";
-import CalendarPlus from "@/components/icons/calendarPlus";
-import Export from "@/components/icons/export";
-import SessionsX from "@/components/icons/sessionsX";
+import CalendarPlus from "@/components/icons/CalendarPlus";
+import Export from "@/components/icons/Export";
+import SessionsX from "@/components/icons/SessionsX";
 
 function QuickActions() {
   const quickActions = [

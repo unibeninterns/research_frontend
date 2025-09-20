@@ -7,19 +7,19 @@ import Footer from "../../components/HomeFooter";
 // import Image from 'next/image';
 import image1 from "../../public/about/8b55db4a8cc952ea101a90132d5ed08bbd565d47.jpg";
 import image2 from "../../public/about/fd22a6a3ffd7a34ff6b240ae40a44e4f66e25da8.jpg";
-import Calendar from "@/components/icons/calendar";
-import Monitor from "@/components/icons/monitor";
-import Video from "@/components/icons/video";
-import Assessment from "@/components/icons/assessment";
-import Briefcase from "@/components/icons/briefcaseSmall";
-import Person from "@/components/icons/person";
-import CreditCard from "@/components/icons/creditCard";
+import Calendar from "@/components/icons/Calendar";
+import Monitor from "@/components/icons/Monitor";
+import Video from "@/components/icons/Video";
+import Assessment from "@/components/icons/Assessment";
+import Briefcase from "@/components/icons/BriefcaseSmall";
+import Person from "@/components/icons/Person";
+import CreditCard from "@/components/icons/CreditCard";
 import { ArrowRight, Check } from "lucide-react";
-import Certificate1 from "@/components/icons/certificate1";
-import GraduationCap from "@/components/icons/graduationCap";
-import { Search } from "@/components/icons/search";
-import Teacher from "@/components/icons/teacher";
-import Lightbulb from "@/components/icons/lightbulb";
+import Certificate1 from "@/components/icons/Certificate1";
+import GraduationCap from "@/components/icons/GraduationCap";
+import { Search } from "@/components/icons/Search";
+import Teacher from "@/components/icons/Teacher";
+import Lightbulb from "@/components/icons/Lightbulb";
 
 const About = () => {
   const nutshell = [

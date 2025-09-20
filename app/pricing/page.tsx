@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import FAQs from "@/components/FAQs";
 import Header from "@/components/HomeHeader";
 import Footer from "@/components/HomeFooter";
-import Check from "@/components/icons/check";
-import Minus from "@/components/icons/minus";
-import CheckCircle from "@/components/icons/checkCircle";
-import Star from "@/components/icons/star";
+import Check from "@/components/icons/Check";
+import Minus from "@/components/icons/Minus";
+import CheckCircle from "@/components/icons/CheckCircle";
+import Star from "@/components/icons/Star";
 
 const Pricing = () => {
   const router = useRouter();

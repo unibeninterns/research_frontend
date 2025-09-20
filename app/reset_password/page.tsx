@@ -1,5 +1,5 @@
-import Message from "@/components/icons/message";
-import Padlock from "@/components/icons/padlock";
+import Message from "@/components/icons/Message";
+import Padlock from "@/components/icons/Padlock";
 import { ArrowRight } from "lucide-react";
 
 const ResetPassword = () => {

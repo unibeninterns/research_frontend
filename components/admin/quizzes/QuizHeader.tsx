@@ -1,4 +1,4 @@
-import VerticalLine from "@/components/icons/verticalLine";
+import VerticalLine from "@/components/icons/VerticalLine";
 import { CourseModuleContext } from "@/context/course-module";
 import { ChevronRight } from "lucide-react";
 import { useContext } from "react";

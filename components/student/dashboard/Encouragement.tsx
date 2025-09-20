@@ -1,4 +1,4 @@
-import DoubleStar from "@/components/icons/doubleStar";
+import DoubleStar from "@/components/icons/DoubleStar";
 const Encouragement = () => {
   return (
     <div className="flex items-start gap-3 rounded-[5px] border-[0.5px] p-4">

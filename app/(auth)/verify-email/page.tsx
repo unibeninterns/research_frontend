@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Email from "@/components/icons/email";
-
+import Email from "@/components/icons/Email";
 export default function VerifyEmailPage() {
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [loading, setLoading] = useState(false);

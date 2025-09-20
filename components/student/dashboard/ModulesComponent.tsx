@@ -1,6 +1,6 @@
-import CircleDashed from "@/components/icons/circleDashed";
-import Padlock2 from "@/components/icons/padlock2";
-import TickCircleNormal from "@/components/icons/tickCircleNormal";
+import CircleDashed from "@/components/icons/CircleDashed";
+import Padlock2 from "@/components/icons/Padlock2";
+import TickCircleNormal from "@/components/icons/TickCircleNormal";
 import { ArrowRight } from "lucide-react";
 
 interface ModuleInfo {

@@ -3,9 +3,9 @@ import Image from "next/image";
 import { createContext, useContext, useState } from "react";
 import Note from "./NotesComponents";
 import Quiz, { QuizCompletedComponent } from "./Quiz";
-import PDF from "@/components/icons/pdf";
-import PPT from "@/components/icons/ppt";
-import Link from "@/components/icons/link";
+import PDF from "@/components/icons/Pdf";
+import PPT from "@/components/icons/Ppt";
+import Link from "@/components/icons/Link";
 
 // interface ToggleCompletedFunctions {
 //   showCompleted: () => void;

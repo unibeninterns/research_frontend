@@ -1,17 +1,17 @@
 "use client";
+import { ScholarCap } from "@/components/icons/ScholarCap";
+import { Search } from "@/components/icons/Search";
 import Image from "next/image";
 import image from "../components/LandingPageImage.png";
-import { ScholarCap } from "@/components/icons/scholarCap";
-import { Search } from "@/components/icons/search";
 // import {CourseSVG} from "@/components/courseSVG"
-import { Certificate } from "@/components/icons/certificate";
-import Header from "../components/HomeHeader";
-import Footer from "../components/HomeFooter";
-import Project from "@/components/icons/project";
-import QuotationMark from "@/components/icons/quotation";
+import { Certificate } from "@/components/icons/Certificate";
+import Help from "@/components/icons/Help";
+import Notes from "@/components/icons/Notes";
+import Project from "@/components/icons/Project";
+import QuotationMark from "@/components/icons/Quotation";
 import { ArrowRight } from "lucide-react";
-import Help from "@/components/icons/help";
-import Notes from "@/components/icons/notes";
+import Footer from "../components/HomeFooter";
+import Header from "../components/HomeHeader";
 // import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {

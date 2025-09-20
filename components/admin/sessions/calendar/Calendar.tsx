@@ -4,7 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import { useRef } from "react";
 import "./calendar.css";
 import AdminSearchBar from "../../dashboard-components/AdminSearchBar";
-import CalendarPlus from "@/components/icons/calendarPlus";
+import CalendarPlus from "@/components/icons/CalendarPlus";
 
 interface Event {
   title: string;

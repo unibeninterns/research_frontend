@@ -8,9 +8,9 @@ import Link from "next/link";
 import { useAuth } from "@/hooks/use-auth";
 import { Checkbox } from "./ui/checkbox";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
-import GoogleIcon from "./icons/googleIcon";
-import Profile from "./icons/profile";
-import PadlockSignUp from "./icons/padlockSignUp";
+import GoogleIcon from "./icons/GoogleIcon";
+import Profile from "./icons/Profile";
+import PadlockSignUp from "./icons/PadlockSignUp";
 
 interface LoginFormData {
   email: string;

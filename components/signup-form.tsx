@@ -9,13 +9,13 @@ import Link from "next/link";
 import { useAuth } from "@/hooks/use-auth";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { EmailLogin } from "./icons/emailLogin";
-import PadlockSignUp from "./icons/padlockSignUp";
-import Username from "./icons/username";
-import Profile from "./icons/profile";
-import Eye from "./icons/eye";
-import EyeSlash from "./icons/eyeSlash";
-import GoogleIcon from "./icons/googleIcon";
+import { EmailLogin } from "./icons/EmailLogin";
+import PadlockSignUp from "./icons/PadlockSignUp";
+import Username from "./icons/Username";
+import Profile from "./icons/Profile";
+import Eye from "./icons/Eye";
+import EyeSlash from "./icons/EyeSlash";
+import GoogleIcon from "./icons/GoogleIcon";
 
 interface SignupFormData {
   fullname: string;

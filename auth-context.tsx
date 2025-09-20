@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { apiClient } from "./api";
 
 interface User {
@@ -73,6 +73,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           response.data?.error || "Signup failed. Please try again.",
         );
       }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error("Signup error:", error);
       throw new Error(

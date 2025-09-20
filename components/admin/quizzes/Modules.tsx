@@ -1,6 +1,6 @@
 "use client";
-import Ellipsis from "@/components/icons/ellipsis";
-import Export2 from "@/components/icons/export2";
+import Ellipsis from "@/components/icons/Ellipsis";
+import Export2 from "@/components/icons/Export2";
 import { CourseModuleContext } from "@/context/course-module";
 import QuizModule from "@/types/module";
 import { ChevronDown, ChevronUp, Pencil, Plus } from "lucide-react";

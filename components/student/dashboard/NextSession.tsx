@@ -1,5 +1,5 @@
-import CalendarBlack from "@/components/icons/calendarBlack";
-import PhoneBook from "@/components/icons/phoneBook";
+import CalendarBlack from "@/components/icons/CalendarBlack";
+import PhoneBook from "@/components/icons/PhoneBook";
 
 const NextSession = () => {
   return (

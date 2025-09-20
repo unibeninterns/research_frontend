@@ -1,5 +1,5 @@
 import type React from "react";
-import Video from "@/components/icons/video";
+import Video from "@/components/icons/Video";
 
 function UpcomingSessions() {
   const upcomingSessions = [

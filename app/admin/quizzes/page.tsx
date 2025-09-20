@@ -2,7 +2,8 @@
 import AdminInfoComponent from "@/components/admin/AdminInfoComponent";
 import Courses from "@/components/admin/quizzes/Courses";
 import Modules from "@/components/admin/quizzes/Modules";
-import QuizHeader from "@/components/admin/quizzes/quizHeader";
+import QuizComponent from "@/components/admin/quizzes/AdminQuizComponent";
+import QuizHeader from "@/components/admin/quizzes/QuizHeader";
 import Assessment from "@/components/icons/assessment";
 import SessionsTick from "@/components/icons/sessionsTick";
 import Steps from "@/components/icons/steps";
@@ -89,7 +90,15 @@ const Quizzes = () => {
     >
       <div className="mt-5 pb-10">
         {course ? <QuizHeader /> : <AdminInfoComponent cardInfo={cardInfo} />}
-        <div>{course ? <Modules /> : <Courses courses={courses} />}</div>
+        <div>
+          {module ? (
+            <QuizComponent />
+          ) : course ? (
+            <Modules />
+          ) : (
+            <Courses courses={courses} />
+          )}
+        </div>
       </div>
     </CourseModuleContext.Provider>
   );

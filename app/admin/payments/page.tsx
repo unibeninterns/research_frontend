@@ -1,4 +1,9 @@
+"use client";
 import AdminInfoComponent from "@/components/admin/AdminInfoComponent";
+import LineAreaGraph from "@/components/admin/payment/LineAreaGraph";
+import PaymentHistory from "@/components/admin/payment/PaymentHistory";
+import PayoutsHistory from "@/components/admin/payment/PayoutHistory";
+import { RecentActivities } from "@/components/admin/payment/RecentActivities";
 import Coins from "@/components/icons/Coins";
 import Pending from "@/components/icons/Pending";
 import Revenue from "@/components/icons/Revenue";
@@ -35,9 +40,14 @@ const Payment = () => {
     },
   ];
   return (
-    <div>
+    <div className="pb-5">
       <AdminInfoComponent cardInfo={cardInfo} />
-      <div></div>
+      <LineAreaGraph />
+      <PaymentHistory />
+      <PayoutsHistory />
+      <div className="mt-6 mb-15 flex justify-center">
+        <RecentActivities />
+      </div>
     </div>
   );
 };

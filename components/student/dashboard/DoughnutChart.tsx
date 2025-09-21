@@ -1,15 +1,16 @@
-import { Doughnut } from "react-chartjs-2";
 import {
-  Chart,
   ArcElement,
-  Tooltip,
-  Legend,
+  Chart,
   ChartData,
   ChartOptions,
-  //   plugins,
+  Legend,
+  Tooltip,
 } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
 
 Chart.register(ArcElement, Tooltip, Legend);
+
+Chart.defaults.font.family = "Montserrat";
 
 const data: ChartData<"doughnut", number[], string> = {
   // labels: ['Completed', 'In Progress', 'Not Started'],

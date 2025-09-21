@@ -151,7 +151,7 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
                     "flex items-center space-x-3 rounded-lg px-3 py-2 text-xs font-medium transition-colors",
                     isActive
                       ? "bg-[#F9DBFF3D] text-[#800080]"
-                      : "text-[#1E1E1E] hover:bg-gray-100", 
+                      : "text-[#1E1E1E] hover:bg-gray-100",
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

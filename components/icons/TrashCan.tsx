@@ -1,7 +1,6 @@
 const Ellipsis = ({ size = 24, ...props }) => {
   return (
     <svg
-      
       width={size}
       height={size}
       {...props}

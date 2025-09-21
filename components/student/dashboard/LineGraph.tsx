@@ -1,5 +1,5 @@
 import {
-  Chart as ChartJS,
+  Chart,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -12,7 +12,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-ChartJS.register(
+Chart.register(
   CategoryScale,
   LinearScale,
   PointElement,
@@ -21,6 +21,8 @@ ChartJS.register(
   Tooltip,
   Legend,
 );
+
+Chart.defaults.font.family = "Montserrat";
 
 const info = [
   { week: 1, completed: 0 },

@@ -5,5 +5,5 @@ export default interface QuizModule {
   timeLimit: number | null;
   attemptsAllowed: number;
   gradingType: "Auto" | "Manual";
-  mode: "Active" | "Draft" | 'Archived';
+  mode: "Active" | "Draft" | "Archived";
 }

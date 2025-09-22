@@ -55,6 +55,7 @@ export default function AuthLayout({
                     <p className="text-md leading-relaxed text-white/90 lg:text-xl">
                       Join us in promoting education and research
                     </p>
+
                   </div>
                 </div>
               </div>

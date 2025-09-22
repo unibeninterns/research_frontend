@@ -1,6 +1,6 @@
 import React from "react";
 
-const Email = ({ size = 16, ...props }) => {
+const Email = ({ size = "full", ...props }) => {
   return (
     <svg
       width={size}

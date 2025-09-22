@@ -7,10 +7,9 @@ export default function VerifyEmailPage() {
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
-  const [timer, setTimer] = useState(60); // 60 seconds countdown
+  const [timer, setTimer] = useState(60); 
   const router = useRouter();
 
-  // Handle OTP input
   const handleChange = (value: string, index: number) => {
     if (/^[0-9]?$/.test(value)) {
       const newOtp = [...otp];
@@ -24,7 +23,6 @@ export default function VerifyEmailPage() {
     }
   };
 
-  // Countdown timer
   useEffect(() => {
     if (timer > 0) {
       const countdown = setTimeout(() => setTimer(timer - 1), 1000);
@@ -32,7 +30,6 @@ export default function VerifyEmailPage() {
     }
   }, [timer]);
 
-  // Handle submit verification
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const token = otp.join("");
@@ -72,7 +69,6 @@ export default function VerifyEmailPage() {
     }
   };
 
-  // Handle resend code
   const handleResend = async () => {
     try {
       const res = await fetch(
@@ -99,12 +95,10 @@ export default function VerifyEmailPage() {
   return (
     <div className="flex min-h-full items-center justify-center bg-white px-4">
       <div className="w-full max-w-md text-center">
-        {/* Icon */}
         <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-fuchsia-600">
           <Email />
         </div>
 
-        {/* Title */}
         <h2 className="mb-2 text-lg font-semibold text-gray-900 md:text-2xl">
           Check your email
         </h2>
@@ -113,7 +107,6 @@ export default function VerifyEmailPage() {
           below to verify your account.
         </p>
 
-        {/* OTP Inputs */}
         <form onSubmit={handleSubmit}>
           <div className="mb-4 flex justify-center gap-1 md:gap-3">
             {otp.map((digit, index) => (
@@ -133,7 +126,6 @@ export default function VerifyEmailPage() {
             ))}
           </div>
 
-          {/* Timer / Resend link */}
           <p className="mb-6 flex text-start text-sm text-[#800080]">
             {timer > 0 ? (
               <>
@@ -153,7 +145,6 @@ export default function VerifyEmailPage() {
             )}
           </p>
 
-          {/* Verify Button */}
           <button
             type="submit"
             disabled={!isComplete || loading}
@@ -167,7 +158,6 @@ export default function VerifyEmailPage() {
           </button>
         </form>
 
-        {/* Message */}
         {message && (
           <p className="mt-4 text-center text-sm text-gray-700">{message}</p>
         )}

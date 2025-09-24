@@ -1,17 +1,20 @@
-import { FC } from 'react';
+import { FC } from "react";
 
 interface AnnouncementModalProps {
-    isOpen: boolean;
-    closeModal: () => void;
-  }
-  
-  const AnnouncementModal: FC<AnnouncementModalProps> = ({ isOpen, closeModal }) => {
-    if (!isOpen) return null;
+  isOpen: boolean;
+  closeModal: () => void;
+}
+
+const AnnouncementModal: FC<AnnouncementModalProps> = ({
+  isOpen,
+  closeModal,
+}) => {
+  if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
-      <div className="bg-white rounded-lg shadow-lg w-[720] p-6 h-[600]">
-        <div className="flex justify-between border-b-2 border-b-[#D9D9D9] items-center mb-8 pb-4">
+    <div className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-gray-500">
+      <div className="h-[600] w-[720] rounded-lg bg-white p-6 shadow-lg">
+        <div className="mb-8 flex items-center justify-between border-b-2 border-b-[#D9D9D9] pb-4">
           <h2 className="text-xl font-semibold">Announcement</h2>
           <button
             onClick={closeModal}
@@ -27,7 +30,7 @@ interface AnnouncementModalProps {
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="2"
+                strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
               />
             </svg>
@@ -41,13 +44,15 @@ interface AnnouncementModalProps {
           <input
             type="text"
             placeholder="e.g., Important Update on Capstone Project"
-            className="mt-2 py-2 px-6 w-full border text-[#848484] border-[#D9D9D9] rounded-full focus:outline-none focus:ring-2 "
+            className="mt-2 w-full rounded-full border border-[#D9D9D9] px-6 py-2 text-[#848484] focus:ring-2 focus:outline-none"
           />
         </div>
 
         <div className="mt-8">
-          <label className="block text-sm font-medium text-gray-700">Audience</label>
-          <select className="mt-2 text-[#848484] px-6 py-2 w-full border border-[#D9D9D9] rounded-full focus:outline-none focus:ring-2 ">
+          <label className="block text-sm font-medium text-gray-700">
+            Audience
+          </label>
+          <select className="mt-2 w-full rounded-full border border-[#D9D9D9] px-6 py-2 text-[#848484] focus:ring-2 focus:outline-none">
             <option>Select Audience</option>
             <option>Audience 1</option>
             <option>Audience 2</option>
@@ -55,28 +60,29 @@ interface AnnouncementModalProps {
         </div>
 
         <div className="mt-8">
-          <label className="block text-sm font-medium text-gray-700">Announcement Message</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Announcement Message
+          </label>
           <textarea
             placeholder="Input Message"
-            className="mt-2 px-6 py-2 w-full h-32 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 "
+            className="mt-2 h-32 w-full rounded-xl border border-gray-300 px-6 py-2 focus:ring-2 focus:outline-none"
           ></textarea>
         </div>
 
         <div className="mt-6 flex flex-col items-center">
-          <button className="bg-[#800080] text-white text-sm py-2 px-6 mb-4 rounded-md hover:bg-[#AA47AA]">
+          <button className="mb-4 rounded-md bg-[#800080] px-6 py-2 text-sm text-white hover:bg-[#AA47AA]">
             Send Announcement
           </button>
           <button
             onClick={closeModal}
-            className="text-[#800080] hover:text-[#AA47AA] border-2 border-[#800080] py-2 px-8 rounded-md font-semibold"
+            className="rounded-md border-2 border-[#800080] px-8 py-2 font-semibold text-[#800080] hover:text-[#AA47AA]"
           >
             Cancel
           </button>
-          
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default AnnouncementModal
+export default AnnouncementModal;

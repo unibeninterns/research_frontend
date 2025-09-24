@@ -20,7 +20,7 @@ const GreenPoint = () => {
         width="1.5689"
         height="0.581911"
         stroke="#1DAE00"
-        stroke-width="0.581911"
+        strokeWidth="0.581911"
       />
       <path
         opacity="0.25"

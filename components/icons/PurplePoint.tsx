@@ -20,7 +20,7 @@ const PurplePoint = () => {
         width="1.31159"
         height="0.581911"
         stroke="#800080"
-        stroke-width="0.581911"
+        strokeWidth="0.581911"
       />
       <path
         opacity="0.25"

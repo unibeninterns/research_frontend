@@ -1,18 +1,17 @@
 "use client";
-import type React from "react";
 import AdminInfoComponent from "@/components/admin/AdminInfoComponent";
-import StudentsTable from "@/components/admin/student-components/students-table";
-import { RecentActivities } from "@/components/admin/student-components/recent-activities";
 import QuickActions from "@/components/admin/student-components/QuickActions";
+import { RecentActivities } from "@/components/admin/student-components/recent-activities";
+import StudentsTable from "@/components/admin/student-components/students-table";
+import { FileText, Target, TrendingUp, UserCheck, Users } from "lucide-react";
 import { useState } from "react";
-import { Users, UserCheck, FileText, TrendingUp, Target } from "lucide-react";
 
 export default function StudentsPage() {
   const [search] = useState("");
   const [course] = useState("");
   const cardInfo = [
     {
-      param: "Total Students",
+      param: "Total Students Enrolled",
       value: "1,284",
       icon: <Users className="h-5 w-5 text-purple-900 lg:h-6 lg:w-6" />,
     },

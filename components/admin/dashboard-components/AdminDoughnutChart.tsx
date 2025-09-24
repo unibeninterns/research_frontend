@@ -1,13 +1,15 @@
-import { Doughnut } from "react-chartjs-2";
 import {
-  Chart,
   ArcElement,
-  Tooltip,
-  Legend,
+  Chart,
   ChartData,
   ChartOptions,
-  //   plugins,
+  Legend,
+  Tooltip,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import { Doughnut } from "react-chartjs-2";
+
+Chart.register(ChartDataLabels);
 
 Chart.register(ArcElement, Tooltip, Legend);
 
@@ -93,6 +95,7 @@ const options: ChartOptions<"doughnut"> = {
         },
       },
     },
+    datalabels: { display: false },
   },
 };
 

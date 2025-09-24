@@ -13,6 +13,7 @@ import {
 } from "chart.js";
 import { useEffect, useState } from "react";
 
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Line } from "react-chartjs-2";
 
 Chart.register(
@@ -25,6 +26,7 @@ Chart.register(
   Legend,
   Filler,
 );
+Chart.register(ChartDataLabels);
 
 Chart.defaults.font.family = "Montserrat";
 Chart.defaults.font.size = 12;
@@ -37,7 +39,7 @@ const createImageFromSVG = (svgString: string) => {
 
 const greenPointSVG = `<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="8.9101" y="8.33246" width="1.5689" height="0.581911" fill="url(#paint0_linear_1932_8362)"/>
-  <rect x="8.9101" y="8.33246" width="1.5689" height="0.581911" stroke="#1DAE00" stroke-width="0.581911"/>
+  <rect x="8.9101" y="8.33246" width="1.5689" height="0.581911" stroke="#1DAE00" strokeWidth="0.581911"/>
   <path opacity="0.25" d="M8.61914 0.0415039L16.6191 8.0415L8.61914 16.0415L0.619141 8.0415L8.61914 0.0415039Z" fill="#1DAE00"/>
   <path d="M12.9121 8.0415L8.61914 12.3345L4.32617 8.0415L8.61914 3.74854L12.9121 8.0415Z" fill="#1DAE00" stroke="white"/>
   <defs>
@@ -50,7 +52,7 @@ const greenPointSVG = `<svg width="17" height="17" viewBox="0 0 17 17" fill="non
 
 const purplePointSVG = `<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="8.94135" y="8.59857" width="1.31159" height="0.581911" fill="url(#paint0_linear_1932_8345)"/>
-  <rect x="8.94135" y="8.59857" width="1.31159" height="0.581911" stroke="#800080" stroke-width="0.581911"/>
+  <rect x="8.94135" y="8.59857" width="1.31159" height="0.581911" stroke="#800080" strokeWidth="0.581911"/>
   <path opacity="0.25" d="M8.65039 0.307617L16.6504 8.30762L8.65039 16.3076L0.650391 8.30762L8.65039 0.307617Z" fill="#800080"/>
   <path d="M12.9434 8.30762L8.65039 12.6006L4.35742 8.30762L8.65039 4.01465L12.9434 8.30762Z" fill="#800080" stroke="white"/>
   <defs>
@@ -130,6 +132,7 @@ const LineAreaGraph = () => {
           boxHeight: 10,
         },
       },
+      datalabels: { display: false },
     },
     font: {
       family: "Montserrat",

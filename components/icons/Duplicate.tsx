@@ -12,7 +12,7 @@ const Duplicate = ({ size = 12, ...props }) => {
         d="M7.84961 4.15039V10.0996H1.90039V4.15039H7.84961Z"
         fill="#800080"
         stroke="#800080"
-        stroke-width="0.8"
+        strokeWidth="0.8"
       />
     </svg>
   );

@@ -20,41 +20,55 @@ Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 Chart.defaults.font.family = "Montserrat, sans-serif";
 Chart.defaults.font.size = 12;
 
-const AdminBarChart = () => {
+const AdminBarChart = ({
+  info,
+}: {
+  info: {
+    labels: string[];
+    earned: number[];
+    payout: number[];
+  };
+}) => {
   const data: ChartData<"bar", number[], string> = {
-    labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+    labels: info.labels,
     datasets: [
       {
-        label: "Signups",
-        data: [20, 54, 48, 40],
+        label: "Revenue Earned",
+        data: info.earned,
         backgroundColor: "#800080",
         barPercentage: 0.8,
         categoryPercentage: 0.7,
-        stack: "signups-stack",
+        stack: "revenue-stack",
       },
       {
         label: "",
-        data: [100, 100, 100, 100],
+        data: [
+          400000, 400000, 400000, 400000, 400000, 400000, 400000, 400000,
+          400000, 400000,
+        ],
         backgroundColor: "#FAFAFA",
         barPercentage: 0.8,
         categoryPercentage: 0.7,
-        stack: "signups-stack",
+        stack: "revenue-stack",
       },
       {
-        label: "Enrollments",
-        data: [70, 32, 55, 60],
+        label: "Revenue Paid Out",
+        data: info.payout,
         backgroundColor: "#FBEFFF",
         barPercentage: 0.8,
-        stack: "enrollments-stack",
+        stack: "payout-stack",
         categoryPercentage: 0.7,
       },
       {
         label: "",
-        data: [100, 100, 100, 100],
+        data: [
+          400000, 400000, 400000, 400000, 400000, 400000, 400000, 400000,
+          400000, 400000,
+        ],
         backgroundColor: "#FAFAFA",
         barPercentage: 0.8,
         categoryPercentage: 0.7,
-        stack: "enrollments-stack",
+        stack: "payout-stack",
       },
     ],
   };
@@ -80,19 +94,22 @@ const AdminBarChart = () => {
       },
       y: {
         beginAtZero: true,
-        max: 100,
+        ticks: {
+          stepSize: 40000,
+        },
         grid: {
           display: false,
         },
+        max: 400000,
       },
     },
   };
   return (
-    <div className="flex h-[350px] flex-col">
+    <div className="flex h-[350px] flex-col rounded-[5px] border-[0.5px] border-[#D9D9D9] p-2">
       <div className="flex flex-row items-start justify-between gap-2">
-        <h2 className="flex-1 text-[16px] font-semibold text-gray-900">
-          Platform Engagement Overview
-        </h2>
+        <h3 className="flex-1 text-[16px] font-semibold text-gray-900">
+          Payouts per course
+        </h3>
         <select
           defaultValue="this-month"
           className="rounded-md border border-gray-200 bg-white px-2 py-1 text-[10px] focus:ring-2 focus:ring-[#800080] focus:outline-none"

@@ -8,7 +8,7 @@ const VerticalLine = ({ size = 15, ...props }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <line x1="0.75" y1="15" x2="0.75" stroke="#848484" stroke-width="0.5" />
+      <line x1="0.75" y1="15" x2="0.75" stroke="#848484" strokeWidth="0.5" />
     </svg>
   );
 };

@@ -1,29 +1,29 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import AdminHeader from "@/components/admin/AdminHeader";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
-  LayoutDashboard,
-  Video,
-  FolderOpen,
-  Settings,
-  LogOut,
+  ChartNoAxesCombined,
   ChevronLeft,
   ChevronRight,
-  LibraryBig,
-  GraduationCap,
-  ListChecks,
-  UserPen,
-  ChartNoAxesCombined,
   CreditCard,
   FileBadge,
+  FolderOpen,
+  GraduationCap,
+  LayoutDashboard,
+  LibraryBig,
+  ListChecks,
+  LogOut,
+  Settings,
+  UserPen,
+  Video,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import logo2 from "../../components/logo2.png";
-import AdminHeader from "@/components/admin/AdminHeader";
 
 const navigationItems = [
   {
@@ -321,6 +321,9 @@ export default function AdminLayout({ children }: StudentLayoutProps) {
                     isCollapsed && "justify-center",
                   )}
                   title={isCollapsed ? item.name : undefined}
+                  onClick={() => {
+                    setPageHeader(item.pageHeader);
+                  }}
                 >
                   <item.icon className="h-5 w-5 flex-shrink-0" />
                   {!isCollapsed && <span>{item.name}</span>}

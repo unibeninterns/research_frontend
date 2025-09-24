@@ -134,7 +134,7 @@ const ExpensesLineArea = () => {
       y: {
         // suggestedMax: 3,
         ticks: {
-          stepSize: 400000,
+          stepSize: 150000,
         },
       },
     },

@@ -62,7 +62,7 @@ const AnalyticsReports = () => {
     ],
   };
   const tabs = tabKeys;
-  const [currentTab, setTab] = useState<TabKey>("Expenses");
+  const [currentTab, setTab] = useState<TabKey>("Revenue");
   return (
     <div>
       <AdminInfoComponent cardInfo={cardInfo[currentTab]} />

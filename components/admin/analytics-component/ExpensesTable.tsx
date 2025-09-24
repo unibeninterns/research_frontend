@@ -5,37 +5,37 @@ const ExpensesTable = () => {
   const tableInfo = [
     {
       date: "01/09/25",
-      type: "hOSTING",
+      type: "hosting",
       description: "AWS monthly hosting",
       amount: "Completed",
     },
     {
       date: "01/09/25",
-      type: "hOSTING",
+      type: "hosting",
       description: "AWS monthly hosting",
       amount: "Completed",
     },
     {
       date: "01/09/25",
-      type: "hOSTING",
+      type: "hosting",
       description: "AWS monthly hosting",
       amount: "Completed",
     },
     {
       date: "01/09/25",
-      type: "hOSTING",
+      type: "hosting",
       description: "AWS monthly hosting",
       amount: "Completed",
     },
     {
       date: "01/09/25",
-      type: "hOSTING",
+      type: "hosting",
       description: "AWS monthly hosting",
       amount: "Completed",
     },
     {
       date: "01/09/25",
-      type: "hOSTING",
+      type: "hosting",
       description: "AWS monthly hosting",
       amount: "Completed",
     },
@@ -106,8 +106,7 @@ const ExpensesTable = () => {
                   <td className="p-3 text-sm">{info.date}</td>
                   <td className="p-3 text-sm">{info.type}</td>
                   <td className="p-3 text-sm">{info.description}</td>
-                  <td className="p-3 text-xs">{info.amount}</td>
-                </tr>
+                  <td className="p-3 text-sm">{info.amount}</td></tr>
               ))}
             </tbody>
           </table>

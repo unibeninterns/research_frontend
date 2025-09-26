@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import AddStudentModal from "@/components/modals/AddStudentModal";
+import AddStudentModal from "@/components/modals/AddTutorModal";
 
 export default function Home() {
   const [isAddStudentModalOpen, setIsAddStudentModalOpen] = useState(false);

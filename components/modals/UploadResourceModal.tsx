@@ -105,14 +105,14 @@ const UploadResourceModal: FC<UploadResourceModalProps> = ({ isOpen, closeModal 
           <div className="flex flex-col items-center justify-between pt-4">
             <button
               type="submit"
-              className="bg-[#800080] text-white py-2 px-8 mb-6 rounded-md hover:bg-purple-700 "
+              className="bg-[#800080] text-white py-2 px-8 mb-6 rounded-md hover:bg-[#AA47AA] "
             >
               Upload Resource
             </button>
             <button
               type="button"
               onClick={closeModal}
-              className="border border-[#800080] text-[#800080] py-1 px-8 rounded-md hover:bg-purple-50"
+              className="border border-[#800080] text-[#800080] py-1 px-8 rounded-md hover:bg-[#AA47AA]"
             >
               Cancel
             </button>

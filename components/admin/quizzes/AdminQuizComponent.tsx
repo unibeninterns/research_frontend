@@ -9,7 +9,7 @@ import SaveDraft from "@/components/icons/SaveDraft";
 import TrashCan from "@/components/icons/TrashCan";
 import TrashCan2 from "@/components/icons/TrashCan2";
 import { Question } from "@/components/student/classroom/Quiz";
-import { CourseModuleContext } from "@/context/course-module";
+import { CourseModuleContext } from "@/context/quizzesContext";
 import QuizModule from "@/types/module";
 import { ChevronDown, ChevronUp, Pencil } from "lucide-react";
 import { useContext, useState } from "react";

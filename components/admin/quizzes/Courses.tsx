@@ -1,8 +1,8 @@
+import { CourseModuleContext } from "@/context/quizzesContext";
+import Course from "@/types/course";
 import { ChevronRight, Plus } from "lucide-react";
 import { useContext } from "react";
 import AdminSearchBar from "../dashboard-components/AdminSearchBar";
-import { CourseModuleContext } from "@/context/course-module";
-import Course from "@/types/course";
 
 const Courses = ({ courses }: { courses: Course[] }) => {
   return (

@@ -7,3 +7,14 @@ export default interface QuizModule {
   gradingType: "Auto" | "Manual";
   mode: "Active" | "Draft" | "Archived";
 }
+export interface AdminResourceModule {
+    topic: string;
+    subModules: {
+      topic: string;
+      len: number;
+      date: string;
+      type: string;
+      detail: string;
+    }[];
+    locked: boolean;
+  }

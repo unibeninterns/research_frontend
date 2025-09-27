@@ -1,7 +1,8 @@
-export const Certificate = ({ ...props }) => (
+export const Certificate = ({ size = 16, ...props }) => (
   <svg
-    width="30"
-    height="30"
+      width={size}
+      height={size}
+      {...props}
     viewBox="0 0 30 30"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

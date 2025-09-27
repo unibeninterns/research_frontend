@@ -1,14 +1,14 @@
 "use client";
 import AdminInfoComponent from "@/components/admin/AdminInfoComponent";
+import QuizComponent from "@/components/admin/quizzes/AdminQuizComponent";
 import Courses from "@/components/admin/quizzes/Courses";
 import Modules from "@/components/admin/quizzes/Modules";
-import QuizComponent from "@/components/admin/quizzes/AdminQuizComponent";
 import QuizHeader from "@/components/admin/quizzes/QuizHeader";
 // import Assessment from "@/components/icons/assessment";
 import Assessment from "@/components/icons/Assessment";
 import SessionsTick from "@/components/icons/SessionsTick";
 import Steps from "@/components/icons/Steps";
-import { CourseModuleContext } from "@/context/course-module";
+import { CourseModuleContext } from "@/context/quizzesContext";
 import Course from "@/types/course";
 import QuizModule from "@/types/module";
 import { Pencil } from "lucide-react";

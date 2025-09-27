@@ -49,10 +49,7 @@ const AdminDoughnutChart = () => {
     cutout: "80%",
     layout: {
       padding: {
-        top: 40,
-        right: 60,
-        bottom: 40,
-        left: 60,
+        top: 60,
       },
     },
     plugins: {
@@ -85,110 +82,116 @@ const AdminDoughnutChart = () => {
       const centerX = (chartArea.left + chartArea.right) / 2;
       const centerY = (chartArea.top + chartArea.bottom) / 2;
 
-      const labelPositions: {
+      const radialOffset = 36;
+      const elbowGap = 5;
+      const padding = 50;
+      const extraTail = 0;
+      const textGap = 4;
+      const minLabelGap = 18;
+      const items: {
+        arcEdgeX: number;
+        arcEdgeY: number;
         midX: number;
         midY: number;
+        angle: number;
+        isLeft: boolean;
         text: string;
         color: string;
-        isLeft: boolean;
         y: number;
       }[] = [];
 
       meta.data.forEach((arc, i) => {
-        // TODO: solve the type problem
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { startAngle, endAngle, outerRadius } = arc as any;
+        const arcAny = arc as any;
+        const startAngle: number = arcAny.startAngle;
+        const endAngle: number = arcAny.endAngle;
+        const outerRadius: number = arcAny.outerRadius;
+
         const angle = (startAngle + endAngle) / 2;
+        const arcEdgeX = centerX + Math.cos(angle) * outerRadius;
+        const arcEdgeY = centerY + Math.sin(angle) * outerRadius;
 
-        const lineStartX = centerX + Math.cos(angle) * outerRadius;
-        const lineStartY = centerY + Math.sin(angle) * outerRadius;
+        const midX = centerX + Math.cos(angle) * (outerRadius + radialOffset);
+        const midY = centerY + Math.sin(angle) * (outerRadius + radialOffset);
 
-        const offset = 20;
-        const midX = centerX + Math.cos(angle) * (outerRadius + offset);
-        const midY = centerY + Math.sin(angle) * (outerRadius + offset);
-
-        const text = `${info[i].label}: ${info[i].value}`;
         const isLeft = angle > Math.PI / 2 && angle < (3 * Math.PI) / 2;
+        const text = `${info[i].label}: ${info[i].value}%`;
 
-        labelPositions.push({
+        items.push({
+          arcEdgeX,
+          arcEdgeY,
           midX,
           midY,
+          angle,
+          isLeft,
           text,
           color: info[i].color,
-          isLeft,
           y: midY,
         });
-
-        ctx.save();
-        ctx.strokeStyle = info[i].color;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(lineStartX, lineStartY);
-        ctx.lineTo(midX, midY);
-        ctx.stroke();
-        ctx.restore();
       });
 
-      labelPositions.sort((a, b) => a.y - b.y);
-      const minGap = 18;
-      for (let i = 1; i < labelPositions.length; i++) {
-        const prev = labelPositions[i - 1];
-        const curr = labelPositions[i];
-        if (curr.y - prev.y < minGap) {
-          labelPositions[i].y = prev.y + minGap;
+      items.sort((a, b) => a.y - b.y);
+      for (let i = 1; i < items.length; i++) {
+        const prev = items[i - 1];
+        const curr = items[i];
+        if (curr.y - prev.y < minLabelGap) {
+          curr.y = prev.y + minLabelGap;
         }
       }
 
-      labelPositions.forEach((label) => {
+      ctx.save();
+      ctx.font = "12px";
+      ctx.textBaseline = "bottom";
+      items.forEach((item) => {
+        const textWidth = ctx.measureText(item.text).width;
+        const dir = item.isLeft ? -1 : 1;
+
+        const elbowStartX = item.midX;
+        const elbowStartY = item.y;
+
+        const elbowInnerX = elbowStartX + dir * elbowGap;
+
+        const mainHorizontalLength = textWidth + padding * 2 + extraTail;
+
+        const mainLineEndX = elbowInnerX + dir * mainHorizontalLength;
+
         ctx.save();
-        ctx.strokeStyle = label.color;
-        ctx.fillStyle = "#333";
-        ctx.font = "12px Montserrat";
-        ctx.textBaseline = "bottom";
-        ctx.textAlign = label.isLeft ? "right" : "left";
-
-        const textWidth = ctx.measureText(label.text).width;
-        const padding = 8;
-        const textGap = 3;
-
-        let lineX1: number, lineX2: number, textX: number;
-
-        if (label.isLeft) {
-          lineX1 = label.midX - (textWidth + padding);
-          lineX2 = label.midX;
-          textX = lineX2;
-        } else {
-          lineX1 = label.midX;
-          lineX2 = label.midX + (textWidth + padding);
-          textX = lineX1;
-        }
-
-        ctx.beginPath();
+        ctx.strokeStyle = item.color;
         ctx.lineWidth = 2;
-        ctx.moveTo(lineX1, label.y);
-        ctx.lineTo(lineX2, label.y);
+        ctx.beginPath();
+        ctx.moveTo(item.arcEdgeX, item.arcEdgeY);
+        ctx.lineTo(elbowStartX, elbowStartY);
         ctx.stroke();
+        ctx.restore();
 
-        ctx.fillText(label.text, textX, label.y - textGap);
+        ctx.save();
+        ctx.strokeStyle = item.color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(elbowStartX, elbowStartY);
+        ctx.lineTo(elbowInnerX, elbowStartY);
+        ctx.lineTo(mainLineEndX, elbowStartY);
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.save();
+        ctx.fillStyle = "#333";
+        ctx.font = "12px";
+        ctx.textBaseline = "bottom";
+        ctx.textAlign = item.isLeft ? "right" : "left";
+
+        const textX = item.isLeft
+          ? mainLineEndX + textWidth
+          : mainLineEndX - textWidth;
+        const textY = elbowStartY - textGap;
+
+        ctx.fillText(item.text, textX, textY);
         ctx.restore();
       });
+
+      ctx.restore();
     },
   };
-
-  //   const variableRadiusPlugin: Plugin<"doughnut"> = {
-  //     id: "variableRadiusDoughnut",
-  //     beforeDatasetDraw(chart, args) {
-  //       const meta = chart.getDatasetMeta(args.index);
-
-  //       meta.data.forEach((arc, i) => {
-  //         const t = transformedData[i];
-
-  //         // @ts-expect-error (Arc private props)
-  //         const baseOuter = arc.outerRadius;
-  //         arc.outerRadius = baseOuter * 0.5 + t.radius;
-  //       });
-  //     },
-  //   };
 
   return (
     <div className="my-6 flex flex-col gap-6 rounded-[5px] border p-4">
@@ -205,7 +208,7 @@ const AdminDoughnutChart = () => {
         </select>
       </div>
 
-      <div className="mt-4 flex h-100 items-center justify-center">
+      <div className="mt-4 flex h-80 items-center justify-center">
         <Doughnut data={data} options={options} plugins={[calloutPlugin]} />
       </div>
     </div>

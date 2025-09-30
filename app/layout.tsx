@@ -1,14 +1,17 @@
-import type React from "react";
+"use client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Montserrat } from "next/font/google";
-import "./globals.css";
 import Script from "next/script";
+import type React from "react";
+import "./globals.css";
 // import Header from "../../components/header"
 // import Footer from "../../components/footer"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
 });
-
+const queryClient = new QueryClient();
 export default function RootLayout({
   children,
 }: {
@@ -24,7 +27,12 @@ export default function RootLayout({
         />
       </head>
       <body className="w-full">
-        <main className={`${montserrat.className} text-black`}>{children}</main>
+        <main className={`${montserrat.className} text-black`}>
+          <QueryClientProvider client={queryClient}>
+            {children}
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </main>
       </body>
     </html>
   );

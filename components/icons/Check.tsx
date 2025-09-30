@@ -27,7 +27,7 @@ const Check = ({ ...props }) => {
           width="21"
           height="17"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood flood-opacity="0" result="BackgroundImageFix" />
           <feColorMatrix

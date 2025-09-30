@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import StudentLayout from "@/components/student/StudentLayout";
-import { AuthProvider } from "@/auth-context";
+// import { AuthProvider } from "@/auth-context";
+import UserInfoComponent from "@/context/UserContext";
 
 export const metadata: Metadata = {
   title: "DRID - Learning Management System",
@@ -13,8 +14,8 @@ export default function StudentRootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <AuthProvider>
+    <UserInfoComponent>
       <StudentLayout>{children}</StudentLayout>
-    </AuthProvider>
+    </UserInfoComponent>
   );
 }

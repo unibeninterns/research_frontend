@@ -1,6 +1,9 @@
 // pages/_app.tsx
-import "./globals.css";
+import dotenv from "dotenv";
 import type { AppProps } from "next/app";
+import "./globals.css";
+
+dotenv.config();
 
 function MyApp({ Component, pageProps }: AppProps) {
   // Use custom layout if the page has one

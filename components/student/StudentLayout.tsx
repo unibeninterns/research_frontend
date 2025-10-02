@@ -1,23 +1,21 @@
 "use client";
-
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import Logo from "@/components/icons/Logo";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
-  LayoutDashboard,
   BookOpen,
-  Video,
-  MessageSquare,
-  FolderOpen,
-  Settings,
-  LogOut,
   ChevronLeft,
   ChevronRight,
+  FolderOpen,
+  LayoutDashboard,
+  LogOut,
+  MessageSquare,
+  Settings,
+  Video,
 } from "lucide-react";
-import Image from "next/image";
-import logo2 from "../logo2.png";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 const navigationItems = [
   {
@@ -114,13 +112,7 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
         {/* Mobile Header */}
         <div className="flex items-center justify-between border-b border-gray-200 p-3">
           <div className="flex items-center gap-3">
-            <Image
-              src={logo2}
-              width={56}
-              height={56}
-              alt="DRID logo"
-              className="h-8 w-10"
-            />
+            <Logo />
             <span className="pt-3 text-lg font-extrabold tracking-wide text-[#800080] md:text-2xl">
               DRID
             </span>
@@ -209,13 +201,7 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
         <div className="flex items-center justify-between border-b border-gray-200 p-3">
           {!isCollapsed && (
             <div className="flex items-center gap-3">
-              <Image
-                src={logo2}
-                width={56}
-                height={56}
-                alt="DRID logo"
-                className="h-8 w-10"
-              />
+              <Logo />
               <span className="pt-3 text-lg font-extrabold tracking-wide text-[#800080] md:text-2xl">
                 DRID
               </span>
@@ -330,13 +316,7 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
             </svg>
           </button>
           <div className="flex items-center gap-3">
-            <Image
-              src={logo2}
-              width={56}
-              height={56}
-              alt="DRID logo"
-              className="h-8 w-10"
-            />
+            <Logo />
             <span className="pt-3 text-lg font-extrabold tracking-wide text-[#800080] md:text-2xl">
               DRID
             </span>

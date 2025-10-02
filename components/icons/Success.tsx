@@ -1,5 +1,5 @@
 import React from "react"
-const Success = ({ size = 20, className = "", ...props }) => {
+const Success = () => {
     return (
         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="60" height="60" rx="30" fill="#DEFFD8"/>

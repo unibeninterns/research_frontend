@@ -1,7 +1,7 @@
 import Image from "next/image";
-import footerImg from "../components/Photo.png";
-import Logo from "./icons/Logo";
-import LinkedIn from "./icons/LinkedIn";
+import footerImg from "@/public/heroSection/Photo.png";
+import LinkedIn from "@/components/icons/LinkedIn";
+import Logo from "@/components/icons/Logo";
 
 export default function Footer() {
   const footerLinks = [

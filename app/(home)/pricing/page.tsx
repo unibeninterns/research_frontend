@@ -1,13 +1,12 @@
 "use client";
-import { ArrowRight } from "lucide-react";
-import { useRouter } from "next/navigation";
-import FAQs from "@/components/FAQs";
-import Header from "@/components/HomeHeader";
-import Footer from "@/components/HomeFooter";
+import FAQs from "@/components/home/FAQs";
 import Check from "@/components/icons/Check";
-import Minus from "@/components/icons/Minus";
 import CheckCircle from "@/components/icons/CheckCircle";
+import Minus from "@/components/icons/Minus";
 import Star from "@/components/icons/Star";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Pricing = () => {
   const router = useRouter();
@@ -123,8 +122,10 @@ const Pricing = () => {
   ];
   return (
     <>
-      <Header />
-      <section className="flex min-h-screen w-full flex-col items-center bg-white px-1 py-10 md:px-25 md:py-20">
+      <section
+        id="plans"
+        className="flex min-h-screen w-full flex-col items-center bg-white px-1 py-10 md:px-25 md:py-20"
+      >
         <div className="mt-3 flex flex-col items-center lg:mt-10">
           <p className="text-[18px] font-semibold text-[#800080] uppercase">
             Plans & Pricing
@@ -133,7 +134,7 @@ const Pricing = () => {
             Choose your plan
           </h2>
         </div>
-        <div className="mt-3 flex flex-col items-center gap-6 md:mt-5 md:flex-row md:items-start lg:mt-15 lg:gap-14">
+        <div className="mt-3 flex flex-col items-center gap-6 md:mt-5 md:flex-row md:items-start lg:mt-15 lg:gap-50">
           <div className="flex flex-col items-center">
             <div className="relative flex h-[450px] w-[300px] flex-col items-center border border-[#D9D9D9] px-4 md:h-[500px] md:w-[350px] lg:h-[600px] lg:w-[352px] lg:py-2">
               <div className="flex flex-col items-center lg:mt-12">
@@ -155,12 +156,12 @@ const Pricing = () => {
                   ))}
                 </div>
               </div>
-              <div
-                onClick={() => handlePlanSelect("basic")}
+              <Link
+                href={"/payment?plan=basic"}
                 className="absolute bottom-5 rounded-[5px] bg-[#800080] px-[15px] py-[5px] text-[18px] font-[700] text-white hover:cursor-pointer md:bottom-10 md:px-[30px] md:py-[10px] md:text-[20px] lg:bottom-15 lg:px-[48px] lg:py-[16px]"
               >
-                Get Started
-              </div>
+                <button>Get Started</button>
+              </Link>
             </div>
             <p className="mt-1 w-full text-center text-[14px] md:mt-3 md:text-[18px]">
               NB: Access auto-expires after 12 weeks.
@@ -197,12 +198,13 @@ const Pricing = () => {
                 ))}
               </div>
             </div>
-            <button
-              onClick={() => handlePlanSelect("basic")}
+            <Link
+              href={"/payment?plan=premium"}
               className="absolute bottom-5 rounded-[5px] bg-[#800080] px-[15px] py-[5px] text-[18px] font-[700] text-white hover:cursor-pointer md:bottom-10 md:px-[30px] md:py-[10px] md:text-[20px] lg:bottom-15 lg:px-[48px] lg:py-[16px]"
             >
-              Get Started
-            </button>
+              <button>Get Started</button>
+            </Link>
+
             {stars.map((star, index) => (
               <div
                 key={index}
@@ -399,7 +401,6 @@ const Pricing = () => {
           <FAQs faqs={faqs} />
         </div>
       </section>
-      <Footer />
     </>
   );
 };

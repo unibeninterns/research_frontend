@@ -1,11 +1,9 @@
 "use client";
-
-import type React from "react";
-
-import Link from "next/link";
-import Logo from "./icons/Logo";
-import { useState } from "react";
+import Logo from "@/components/icons/Logo";
 import { Montserrat } from "next/font/google";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 interface NavigationItem {
   href: string;
@@ -29,19 +27,29 @@ export default function Header({ ...props }) {
     { name: "pricing", href: "/pricing", label: "Pricing" },
     { name: "classroom", href: "/student/dashboard", label: "My Classroom" },
   ];
+  const linkPageToPath = (path: string) => {
+    switch (path) {
+      case "about":
+        return "about";
+      case "pricing":
+        return "pricing";
+      case "student":
+        return "classroom";
+      default:
+        return "home";
+    }
+  };
+  const pathname = usePathname();
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const [page, setPage] = useState<NavigationItem["name"]>(
+    linkPageToPath(pathname.split("/")[1]),
+  );
+
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     closeMenu();
   };
 
-  // const handleMenuItemClick = (
-  //   e: React.MouseEvent<HTMLAnchorElement>
-  // ): void => {
-  //   components / icons;
-  //   e.preventDefault();
-  //   closeMenu();
-  // };
   return (
     <div className={`${montserrat.className}`} {...props}>
       <header className="fixed top-0 left-0 z-50 flex w-full items-center bg-[#FBEFFFB2] p-1 shadow-md backdrop-blur-[2px] md:px-[100px] md:py-[14px]">
@@ -51,8 +59,9 @@ export default function Header({ ...props }) {
           <div className="hidden w-1/2 items-center justify-between text-black md:flex lg:gap-5 lg:text-xl">
             {navigationItems.map((item, index) => (
               <button
-                className="tertiary-button rounded-full bg-inherit px-4 text-[18px] text-nowrap text-black"
+                className={`tertiary-button rounded-full bg-inherit px-4 text-[18px] text-nowrap ${page === item.name ? "text-primary" : "text-black"}`}
                 key={index}
+                onClick={() => setPage(item.name)}
               >
                 <Link key={index} href={item.href}>
                   {item.label}

@@ -35,8 +35,8 @@ export const registerUser = async (registrationInfo: RegistrationSchema) => {
       ...registrationInfo,
     });
     return response.data as Token;
-  } catch (e) {
-    console.log(e.message);
+  } catch (e: unknown) {
+    console.log(e);
   }
 };
 

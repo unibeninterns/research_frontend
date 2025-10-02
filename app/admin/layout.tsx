@@ -1,6 +1,6 @@
 "use client";
-
 import AdminHeader from "@/components/admin/AdminHeader";
+import Logo from "@/components/icons/Logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -19,11 +19,9 @@ import {
   UserPen,
   Video,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import logo2 from "../../components/logo2.png";
 
 const navigationItems = [
   {
@@ -157,13 +155,7 @@ export default function AdminLayout({ children }: StudentLayoutProps) {
         {/* Mobile Header */}
         <div className="flex items-center justify-between border-b border-gray-200 p-4">
           <div className="flex items-center gap-4">
-            <Image
-              src={logo2}
-              width={56}
-              height={56}
-              alt="DRID logo"
-              className="h-10 w-12"
-            />
+            <Logo size={56} />
             <span className="pt-4 text-xl font-extrabold tracking-wide text-[#800080] md:text-3xl">
               DRID
             </span>
@@ -252,13 +244,7 @@ export default function AdminLayout({ children }: StudentLayoutProps) {
         <div className="flex items-center justify-between border-b border-gray-200 p-4">
           {!isCollapsed && (
             <div className="flex items-center gap-4">
-              <Image
-                src={logo2}
-                width={56}
-                height={56}
-                alt="DRID logo"
-                className="h-10 w-12"
-              />
+              <Logo size={56} />
               <span className="pt-4 text-xl font-extrabold tracking-wide text-[#800080] md:text-3xl">
                 DRID
               </span>
@@ -288,7 +274,7 @@ export default function AdminLayout({ children }: StudentLayoutProps) {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "flex items-center space-x-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                    "flex items-center space-x-3 rounded-lg px-3 py-2 text-xs font-medium transition-colors",
                     isActive
                       ? "bg-[#F9DBFF3D] text-[#800080]"
                       : "text-gray-700 hover:bg-gray-100",
@@ -314,7 +300,7 @@ export default function AdminLayout({ children }: StudentLayoutProps) {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "flex items-center space-x-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                    "flex items-center space-x-3 rounded-lg px-3 py-2 text-xs font-medium transition-colors",
                     isActive
                       ? "bg-[#F9DBFF3D] text-[#800080]"
                       : "text-gray-700 hover:bg-gray-100",
@@ -333,7 +319,7 @@ export default function AdminLayout({ children }: StudentLayoutProps) {
             {/* Desktop Logout Button */}
             <button
               className={cn(
-                "flex w-full items-center space-x-3 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors",
+                "flex w-full items-center space-x-3 rounded-lg px-3 py-2 text-left text-xs font-medium transition-colors",
                 "text-gray-700 hover:bg-gray-100",
                 isCollapsed && "justify-center",
               )}
@@ -373,13 +359,7 @@ export default function AdminLayout({ children }: StudentLayoutProps) {
             </svg>
           </button>
           <div className="flex items-center gap-4">
-            <Image
-              src={logo2}
-              width={56}
-              height={56}
-              alt="DRID logo"
-              className="h-10 w-12"
-            />
+            <Logo size={56} />
             <span className="pt-4 text-xl font-extrabold tracking-wide text-[#800080] md:text-3xl">
               DRID
             </span>

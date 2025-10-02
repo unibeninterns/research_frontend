@@ -1,25 +1,24 @@
 "use client";
+import FAQs from "@/components/home/FAQs";
+import LecturerSection from "@/components/home/lecturers";
 import Image from "next/image";
-import LecturerSection from "@/components/lecturers";
-import FAQs from "@/components/FAQs";
-import Header from "../../components/HomeHeader";
-import Footer from "../../components/HomeFooter";
 // import Image from 'next/image';
-import image1 from "../../public/about/8b55db4a8cc952ea101a90132d5ed08bbd565d47.jpg";
-import image2 from "../../public/about/fd22a6a3ffd7a34ff6b240ae40a44e4f66e25da8.jpg";
-import Calendar from "@/components/icons/Calendar";
-import Monitor from "@/components/icons/Monitor";
-import Video from "@/components/icons/Video";
 import Assessment from "@/components/icons/Assessment";
 import Briefcase from "@/components/icons/BriefcaseSmall";
-import Person from "@/components/icons/Person";
-import CreditCard from "@/components/icons/CreditCard";
-import { ArrowRight, Check } from "lucide-react";
+import Calendar from "@/components/icons/Calendar";
 import Certificate1 from "@/components/icons/Certificate1";
+import CreditCard from "@/components/icons/CreditCard";
 import GraduationCap from "@/components/icons/GraduationCap";
+import Lightbulb from "@/components/icons/Lightbulb";
+import Monitor from "@/components/icons/Monitor";
+import Person from "@/components/icons/Person";
 import { Search } from "@/components/icons/Search";
 import Teacher from "@/components/icons/Teacher";
-import Lightbulb from "@/components/icons/Lightbulb";
+import Video from "@/components/icons/Video";
+import image1 from "@/public/about/8b55db4a8cc952ea101a90132d5ed08bbd565d47.jpg";
+import image2 from "@/public/about/fd22a6a3ffd7a34ff6b240ae40a44e4f66e25da8.jpg";
+import { ArrowRight, Check } from "lucide-react";
+import Link from "next/link";
 
 const About = () => {
   const nutshell = [
@@ -204,7 +203,6 @@ const About = () => {
 
   return (
     <>
-      <Header />
       <section className="relative flex h-[100dvh] w-full items-center border bg-[linear-gradient(90deg,rgba(47,20,50,0.8),rgba(45,17,43,0.8),rgba(43,13,36,0.8),rgba(52,29,65,0.85))] lg:p-25">
         <Image
           src={image1 || "/placeholder.svg"}
@@ -226,9 +224,11 @@ const About = () => {
             <br />
             tomorrow
           </p>
-          <button className="primary-button text-md mt-[56px] rounded-[5px] bg-[rgba(128,0,128,1)] px-[51px] py-[17px] font-semibold text-white lg:text-[20px]">
-            VIEW COURSE CURRICULUM
-          </button>
+          <Link href={"#curriculum"}>
+            <button className="primary-button text-md mt-[56px] rounded-[5px] bg-[rgba(128,0,128,1)] px-[51px] py-[17px] font-semibold text-white lg:text-[20px]">
+              VIEW COURSE CURRICULUM
+            </button>
+          </Link>
         </div>
       </section>
       <section className="flex h-screen w-full place-items-center bg-[#FBEFFF] lg:px-25">
@@ -293,7 +293,10 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className="min-h-screen w-full bg-white px-2 py-10 md:px-4 lg:px-[100px]">
+      <section
+        id="curriculum"
+        className="min-h-screen w-full bg-white px-2 py-10 md:px-4 lg:px-[100px]"
+      >
         <div className="flex w-full flex-col items-center lg:mt-25">
           <h2 className="mb-2 text-2xl leading-none font-bold lg:mb-5 lg:text-[42px]">
             Curriculum Snapshot
@@ -393,7 +396,10 @@ const About = () => {
               ))}
             </div>
           </div>
-          <div className="m-2 flex flex-1 flex-col items-center justify-center rounded-2xl border-2 border-[#F9DBFF] bg-white px-2 py-4">
+          <div
+            id="FAQs"
+            className="m-2 flex flex-1 flex-col items-center justify-center rounded-2xl border-2 border-[#F9DBFF] bg-white px-2 py-4"
+          >
             <h4 className="px-2 py-4 text-xl font-bold lg:m-4 lg:text-[32px]">
               Frequently Asked Questions
             </h4>
@@ -403,13 +409,13 @@ const About = () => {
         <p className="mt-12 mb-6">
           NB: Tuition for this program is ₦50,000 only.
         </p>
-        <a
-          href=""
+        <Link
+          href="/pricing#plans"
           className="tertiary-button mb-2 flex w-[280px] items-center justify-between text-sm text-[#800080] md:text-base lg:mt-6"
         >
           <p>View full pricing details</p>
           <ArrowRight />
-        </a>
+        </Link>
       </section>
       <section className="flex flex-col items-center justify-start bg-[#FEFBFF] lg:py-25">
         <h4 className="mb-2 text-2xl font-bold md:text-4xl lg:text-[32px]">
@@ -419,15 +425,14 @@ const About = () => {
           Join other research professionals building the future.
         </p>
         <div className="mt-12 flex flex-col items-center justify-center">
-          <a
-            href="#"
+          <Link
+            href="/signup"
             className="primary-button rounded-md text-sm font-semibold text-white md:py-5 md:text-[20px] lg:px-8 lg:py-3"
           >
             REGISTER NOW
-          </a>
+          </Link>
         </div>
       </section>
-      <Footer />
     </>
   );
 };

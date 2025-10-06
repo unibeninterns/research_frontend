@@ -1,15 +1,6 @@
+import { Token } from "@/interfaces/auth/user";
 import axiosClient from "@/services/axios/axios";
-import { Token } from "@/types/user";
 import { z } from "zod";
-
-// export interface RegistrationSchema {
-//   email: string;
-//   fullname: string;
-//   username: string;
-//   acceptedTermsOfUse: boolean;
-//   password: string;
-//   confirm_password: string;
-// }
 
 export const registerSchema = z.object({
   fullname: z

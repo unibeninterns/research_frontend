@@ -7,3 +7,7 @@ export default interface Course {
   totalQuestions: number;
   mode: "Published" | "Archived" | "Draft";
 }
+
+
+
+

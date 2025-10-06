@@ -1,5 +1,5 @@
-import Course from "@/types/course";
-import QuizModule from "@/types/module";
+import Course from "@/interfaces/student/course";
+import QuizModule from "@/interfaces/student/module";
 import { Dispatch, SetStateAction, createContext } from "react";
 
 export const CourseModuleContext = createContext<{

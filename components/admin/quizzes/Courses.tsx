@@ -1,5 +1,5 @@
 import { CourseModuleContext } from "@/context/quizzesContext";
-import Course from "@/types/course";
+import Course from "@/interfaces/student/course";
 import { ChevronRight, Plus } from "lucide-react";
 import { useContext } from "react";
 import AdminSearchBar from "../dashboard-components/AdminSearchBar";

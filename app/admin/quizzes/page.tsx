@@ -9,8 +9,8 @@ import Assessment from "@/components/icons/Assessment";
 import SessionsTick from "@/components/icons/SessionsTick";
 import Steps from "@/components/icons/Steps";
 import { CourseModuleContext } from "@/context/quizzesContext";
-import Course from "@/types/course";
-import QuizModule from "@/types/module";
+import Course from "@/interfaces/student/course";
+import QuizModule from "@/interfaces/student/module";
 import { Pencil } from "lucide-react";
 import { useState } from "react";
 

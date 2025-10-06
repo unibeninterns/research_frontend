@@ -1,5 +1,5 @@
+import { Token, User } from "@/interfaces/auth/user";
 import axiosClient from "@/services/axios/axios";
-import { Token, User } from "@/types/user";
 import { z } from "zod";
 
 export const loginSchema = z.object({

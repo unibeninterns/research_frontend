@@ -1,4 +1,4 @@
-export type User = {
+export interface User {
   id: string;
   email: string;
   fullname: string;
@@ -9,4 +9,4 @@ export type User = {
   createdAt: string;
   updatedAt: string;
 };
-export type Token = { __access: string; __refresh: string };
+export interface Token { __access: string; __refresh: string };

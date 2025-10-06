@@ -1,4 +1,4 @@
-import { AdminResourceModule } from "@/types/module";
+import { AdminResourceModule } from "@/interfaces/student/module";
 import { Dispatch, SetStateAction, createContext } from "react";
 
 export const CourseContext = createContext<{

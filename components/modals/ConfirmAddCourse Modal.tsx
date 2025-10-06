@@ -30,8 +30,8 @@ const CourseSuccessModal: React.FC<CourseSuccessModalProps> = ({
           </div>
 
         <div className="flex flex-col items-center justify-center">
-            <Success className="mb-8"/>
-            <p className="text-3xl font-semibold mb-8">Course Successfully Added</p>
+            <Success />
+            <p className="text-3xl font-semibold my-8">Course Successfully Added</p>
             <div className="flex flex-col justify-center items-center">
           <button
             className="bg-[#800080] hover:bg-[#AA47AA] text-white px-6 py-2 rounded mb-6 w-full"

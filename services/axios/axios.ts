@@ -1,4 +1,5 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+import { refreshUser } from "../auth/loginService";
 
 const config: AxiosRequestConfig = {
   baseURL: process.env.BASE_URL || "https://research-server-1.onrender.com",
@@ -7,27 +8,57 @@ const config: AxiosRequestConfig = {
     "Content-Type": "application/json",
   },
 };
+const getAccessToken = () => localStorage.getItem("__access");
+const getRefreshToken = () => localStorage.getItem("__refresh");
 
-const axiosClient: AxiosInstance = axios.create(config);
+const setAccessToken = (token: string) => {
+  localStorage.setItem("__access", token);
+};
+
+const clearTokensAndRedirect = () => {
+  localStorage.removeItem("__access");
+  localStorage.removeItem("__refresh");
+  window.location.href = "/login";
+};
+
+const axiosClient = axios.create(config);
 
 axiosClient.interceptors.request.use((config) => {
-  const protectedPaths: string[] = ["auth/user"];
-  const requireAuth = protectedPaths.some((path) => config.url?.includes(path));
-  if (requireAuth) {
-    const token = localStorage.getItem("token");
-    config.headers.Authorization = `Bearer ${token}`;
+  if (config.url?.startsWith("/api/")) {
+    const token = getAccessToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
   }
   return config;
 });
 
 axiosClient.interceptors.response.use(
-  (response) => {
-    return response.data;
-  },
-  (error) => {
-    if (error.response?.status === 401) {
-      window.location.href = "/login";
+  (response) => response.data,
+  async (error) => {
+    const originalRequest = error.config;
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      try {
+        const refreshToken = getRefreshToken();
+        if (!refreshToken) throw new Error("No refresh token found");
+
+        const newTokens = await refreshUser(refreshToken);
+
+        if (newTokens && newTokens.__access) {
+          setAccessToken(newTokens.__access);
+
+          originalRequest.headers.Authorization = `Bearer ${newTokens.__access}`;
+          return axiosClient(originalRequest);
+        }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {
+        clearTokensAndRedirect();
+      }
     }
+    return Promise.reject(error);
   },
 );
 
